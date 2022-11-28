@@ -17,6 +17,7 @@
 - Custom font and spacing for Headers in lists vs in normal paragraph
     - By default, pairing H1/H2, H3/H4 and H5/H6
     - Custom spacing for Headers mainly for Reading View
+- Color Schemes
 - List Embed (inline "clean" block embed for lists blocks)
     – made to work well in Live Preview (but still experimental)
 - Auxiliary Customisation
@@ -27,6 +28,14 @@
     - (not yet ready) Different background for Journal
 
 > This theme is still work in progress. There are more features I have in mind -- those will be updated/released in due time.
+
+## Companion plugins
+Listive works best with the following plugins installed to enable more complicated features and give more control to refine the look and feel.
+- **Contextual Typography** plugin for advanced layout features such as custom spacing for 1st para/list.
+- **Style Settings** plugin for refining the look and feel including choosing/creating custom color scheme.
+
+## Credits
+- [Obsidian You theme](https://github.com) for the FAB I adopted (because I find it very useful when using on a phone)
 
 ## Support Me
 I do this on my free time for personal joy. However, a cup of coffee or two would motivate me further! If you like what I do, and want to contribute back, you can support me via Ko-fi

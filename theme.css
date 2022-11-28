@@ -1,20 +1,16 @@
-/* === Listive Theme - by Efemkay === *//* updated 16Nov2022 */
+/* === Listive Theme - by Efemkay === *//* updated 28Nov2022 */
 
 @import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Karla&display=swap');
 
 
-/* ========================================================================== */
-/* === SECTION FOR WORKSPACE / GENERAL UI =================================== */
-/* ========================================================================== */
+/* =============================================================================
+	Section for WORKSPACE / GENERAL UI
+	- non-color Workspace / UI design
+============================================================================= */
 
-/* --- WORKSPACE - Readable Line Length --- */
-/* --- for editing and reading view */
-
-	.markdown-source-view.mod-cm6 .cm-contentContainer,
-/*	.markdown-source-view.mod-cm6 .cm-line:not(.HyperMD-table-row), */
-	.markdown-preview-view .markdown-preview-sizer > div
-	{ max-width: 750px; }
+	/* --- WORKSPACE - Readable Line Length --- */
+		/* this feature uses Style Settings */
 
 
 
@@ -107,14 +103,6 @@
 */
 
 
-/* @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
-.arabic {
-	font-family: 'Rakkas', cursive;
-}
-
-.arabic {font-family: "Rakkas"; font-size: 40px;}
-
 /*
    Inspirational colours are two purples #800080 (pure purple) and #993399 (my preferred hue of purple),
    as well as shades of gray (based on W3S lightness from #000 to #FFF). using adobe color wheel and
@@ -130,276 +118,276 @@
    #263340 and #131a20 are darker shades of #304050
 */
 
-/* ========================================================================== */
-/* === SECTION FOR DEFAULTS / ROOT / BODY =================================== */
-/* ========================================================================== */
 
-/* setting up variables for theme */
+/* =============================================================================
+	Section for DEFAULTS / BODY
+	- workspace color themes
+============================================================================= */
 
-body {
-	--divider-color: var(--background-secondary);
-}
+	/* setting up variables for theme */
 
-.theme-light {
-	/* #d1ccd1 is inversed lightness of #332E33, define the secondary to #DEC8C8 */
-	/* ecdfdf lighter shade of #DEC8C8 */
-	/* #ecdfdf #e2cfcf */
-	--background-primary: hsl(0, 0%, 92%);
-
-	--background-secondary: hsl(300, 5%, 80%); /*#9e949e*/
-	--background-secondary-alt: #a6a6a6; /*#a6a6a6; /*#867986*/
-
-	--background-accent: #afbfcf; /* inverse of #304050 */
-	--background-accent-alt: hsl(0, 0%, 88%);	/* 4% darker shade of background-primary, active line and backlinks */
-
-	--background-modifier-border: #ada7a4;
-	--background-modifier-cover: hsl(0, 0%, 85%);
-	/*hsl(0, 0%, 90%)*/
-	--background-modifier-form-field: #e6e6e6;
-/*	--interactive-accent: #60809f; /* for interactive buttons */
-	--interactive-accent-hover: #708ca9; /* for interactive buttons */
-
-	/* color variables for Hover Editor plugin, monochromatic & compound of #e6e6e6 */
-	--he-title-bar-active-bg: #EAA4A4;
-	--he-title-bar-inactive-bg: #EAA4A4;
-	--he-title-bar-active-pinned-bg: #A7B3A1;
-	--he-title-bar-inactive-pinned-bg: #A7B3A1;
-
-	--text-muted: #1a1a1a;
-	--text-faint: #808080;
-
-	/* my custom variables */
-	--background-modifier-backlinks: hsl(0, 0%, 90%);	/* for backlinks, 2% darker than primary */
-
-}
-
-.color-scheme-base.theme-dark,
-.theme-dark {
-	/* Base Color - #262626
-	   - #3D373A - analogous
-	   - #332E33 - analogous
-	   |-- #433d43 - ligher shade
-	   - #1a1a1a - darker shade
-	   - #333333 - lighter shade
-	   - #735050 - monochromatic
-	   - #595350 - compound
-	   Base Color 2 - #304050 - special purple
-	   Base Color 3 - #4682B4 (SteelBlue) & lighter #5a91bf
-	*/
-
-	/* Base Color 1 - for main workspace */
-	--background-primary: hsl(0, 0%, 20%);	/* for main workspace / #333 */
-	--background-primary-alt: #1a1a1a; 		/* and pre (code) background */
-	/* Using Analogous of #262626 - for sidebar and modal dialog */
-	--background-secondary: hsl(300, 5%, 25%); /* #433d43 */
-	--background-secondary-alt: hsl(300, 5%, 19%);	/* 6% darker than secondary */
-	/* auxilary, mixed of shade of gray & blue-purple */
-	--background-accent: hsl(300, 15%, 27%);			/* for blockquote & journal shading / before this #304050 or #394d60 */
-	--background-accent-alt: hsl(0, 0%, 16%);	/* 4% darker shade of background-primary, active line and backlinks */
-	--background-modifier-border: hsl(20, 5%, 33%); /* #595350; 	/* for horizontal line & border */
-	--background-modifier-cover: #262626; 	/* for title bar / #332E33 */
-	--background-modifier-cover: hsl(0, 0%, 16%); 	/* for title bar / #332E33 */
-/*	--background-modifier-cover: #262626; 	/* for title bar / #332E33 */
-/*	--interactive-accent: #4682B4; 			/* for interactive buttons */
-/*	--interactive-accent-hover: #5a91bf; 	/* for interactive buttons */
-
-	/* my custom variables */
-	--background-modifier-border-active: hsl(20, 5%, 53%);	/* for border active, lighter for dark mode */
-	--background-modifier-backlinks: hsl(0, 0%, 18%);	/* for backlinks, 2% darker than primary */
-
-	/* plugins variables */
-	/* color variables for Hover Editor plugin, #735050 is monochromatic of #262626 */
-	--he-title-bar-active-pinned-bg: #735050;
-	--he-title-bar-inactive-pinned-bg: #735050;
-	--he-title-bar-active-bg: #3D373A;
-	--he-title-bar-inactive-bg: #3D373A;
-
-}
-
-/* alternative color scheme */
-
-.color-scheme-discord.theme-dark {
-	/*
-		hsl(220, 8%, 23%) -- main pane/chat window
-		hsl(223, 7%, 20%) -- sidebar for channels (dark)
-		hsl(218, 8%, 27%) -- input for chats (lighter)
-		hsl(216, 7%, 14%) -- sidebar for servers (darker)
-		hsl(225, 8%, 10%) -- popup (almost black)
-		hsl(217, 8%, 34%) -- buttons (lightest)
-	*/
-	--background-primary: hsl(220, 8%, 23%);
-	--background-modifier-cover: hsl(223, 7%, 20%);
-	--background-secondary: hsl(218, 8%, 27%);
-	--background-secondary-alt: hsl(218, 8%, 21%);	/* 6% darker than secondary */
-	--background-accent: hsl(223, 7%, 30%);
-	--background-accent-alt: hsl(220, 8%, 19%);		/* 4% darker shade of background-primary, active line and backlinks */
-
-	/* my custom variables */
-	--background-modifier-backlinks: hsl(220, 8%, 21%);	/* for backlinks, 2% darker than primary */
-}
-.color-scheme-discord.theme-light {
-	/*
-		hsl(0, 0%, 100%) -- main pane/chat window
-		hsl(220, 13%, 95%) -- sidebar for channels (dark)
-		hsl(210, 11%, 93%) -- input for chats (lighter)
-		hsl(216, 10%, 90%) -- sidebar for servers (darker)
-		hsl(0, 0%, 100%) -- popup (white)
-		hsl(213, 9%, 46%) -- buttons (bit darker)
-	*/
-	--background-primary: hsl(220, 16%, 92%);
-	--background-modifier-cover: hsl(223, 14%, 85%);
-	--background-secondary: hsl(218, 16%, 85%);
-	--background-secondary-alt: hsl(218, 16%, 81%);	/* 6% darker than secondary */
-	--background-accent: hsl(223, 14%, 90%);
-	--background-accent-alt: hsl(220, 16%, 88%);		/* 4% darker shade of background-primary, active line and backlinks */
-
-	/* my custom variables */
-	--background-modifier-backlinks: hsl(220, 16%, 90%);	/* for backlinks, 2% darker than primary */
-}
-
-.is-mobile.is-force-oled-black-mobile.theme-dark,
-.oled-black.theme-dark {
-	--background-primary: black;
-	--background-primary-alt: hsl(0, 0%, 8%);
-	--background-modifier-cover: #1a1a1a;
-	--background-secondary: hsl(0, 0%, 16%);
-	--background-secondary-alt: hsl(0, 0%, 12%);
-	--background-accent: hsl(300, 20%, 15%);
-	--background-accent-alt: hsl(0, 0%, 20%);
-
-	--color-base-100: hsl(0, 0%, 78%); /* original dark-theme base-100 is hsl(0, 0%, 85%), for font color */
-
-	/* my custom variables */
-	--background-modifier-backlinks: hsl(0, 0%, 22%);	/* for backlinks, 2% darker than primary */
-}
-
-
-/*
---background-primary: #2e3437
---background-primary-alt: #444444
---background-secondary: #333333
---background-secondary-alt: #000000
---background-accent: #000
---background-modifier-border: #565656
-*/
-
-
-
-/* === Line Spacing, Margin & Padding === */
-/* --- general, ul li and headings */
-
-	/* general line height. Editing View and Reading View */
-	.cm-s-obsidian .CodeMirror-line *,
-	.cm-s-obsidian .cm-line { line-height: 1.3em; padding-block: 0.2em; }
-	.markdown-preview-view { line-height: 1.3em; }
-
-	/* lists line height. Reading View only */
-	/* originally, only padding-top: 0.3em */
-	.mod-cm6 .HyperMD-list-line.cm-line,
-	.markdown-rendered ul li
-		{ line-height: 1.3em; padding-top: 0.2em; padding-bottom: 0.1em;}
-
-/* test for no padding dashboard *//*
-	h2[data-heading^="Journal"] + ul {padding-left: 1px;}
-	h2[data-heading^="Journal"] + ul::before {border-left-width: 0px;}
-
-/* === Side Toggle === */
-
-/* === Modal === */
-/*	.modal.mod-settings .vertical-tab-header { border-right-width: 0;}
-
-
-/* ========================================================================== */
-/* === SECTION FOR Main Pane (Middle) ======================================= */
-/* ========================================================================== */
-
-
-
-/* === OTHER TEXT FORMATTING === */
-
-	.cm-s-obsidian .cm-formatting-link { font-weight: 300; }
-
-	/* Active Line */
-	.cm-active { background-color: var(--background-active-line); }
-
-
-
-/* === Backlinks & Results area === */
-
-	/* separator for backlink */
-	.embedded-backlinks { border-top: 0.3em double DarkSlateGray; }
-
-	/* background and border for backlink & search */
-	/* var(--background-secondary-alt) is the darker ones */
-	/* apply to both backlinks and search */
-	.search-result { border-radius: 0.3em; margin-bottom: calc(var(--size-4-1)/2); } /* margin-bottom: 0.2em */
-	.search-result-file-matches { border: unset; margin-bottom: var(--size-4-1); } /* border: unset to be deleted once mobile is 0.16.x */
-	/* apply only to backlinks */
-	.mod-root .embedded-backlinks .search-result { background-color: var(--background-modifier-backlinks); }
-	.mod-root .embedded-backlinks .search-result-file-title:hover,
-	.mod-root .embedded-backlinks .search-result-file-match:hover { background-color: var(--background-modifier-cover); color: var(--text-normal); }
-	/* apply only to search pane */
-	.workspace-tabs .search-result { background-color: var(--background-secondary-alt);}
-	.workspace-tabs .search-result-file-title:hover,
-	.workspace-tabs .search-result-file-match:hover { background-color: var(--background-modifier-cover); color: var(--text-normal); }
-
-	/* adjustment for obsidian 0.16.x */
-	.search-result-file-title {background-color: unset;}
-	.search-result-file-matches {box-shadow: unset; background-color: unset;}
-
-/* === Internal Query (might touch on NIL's as well) === */
-
-	/* adjustment for query search results */
-	.internal-query { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--background-modifier-border); }
-	.internal-query .internal-query-header { font-weight: bold; color: var(--h5-color); padding: var(--size-4-2); }
-	.internal-query .nav-header { grid-column: 2/3; justify-self: end;}
-	.internal-query .search-result-container { grid-column: 1/3; border: unset; background-color: unset;}
-
-
-/* === # Embed & Popover Embed === */
-
-	/* embeds in Editing & Reading View */
-	.markdown-embed,
-	.markdown-embed .markdown-preview-view { padding: 0 0.5em 0.2em 0.5em; }
-	.markdown-embed { margin: 0.5em 0; } /* previously have !important here */
-
-	/* --- Clean Embed in Lists -- General effect to hide the link --- */
-	.HyperMD-list-line .internal-embed.is-loaded {display: inline-grid;}
-
-	/* --- Clean Embed in Lists (on by default) --- */
-	.list-embed-global :is(.HyperMD-list-line, ul) .internal-embed.is-loaded .markdown-embed { margin: 0 0 0 -1.70em; padding: 0; border: none; top: 0; background-color: ;}
-	.list-embed-global .HyperMD-list-line .internal-embed.is-loaded .markdown-embed { max-width: 600px;}
-	.list-embed-global ul .internal-embed.is-loaded .markdown-embed.markdown-embed { margin-left: -1.6em; }
-	.list-embed-global :is(.HyperMD-list-line, ul) .internal-embed.is-loaded .markdown-embed ul:first-of-type { margin-block: 0;}
-	.list-embed-global :is(.HyperMD-list-line, ul) .internal-embed.is-loaded ~ .snw-reference.snw-embed.snw-embed { position: absolute; right: 2.5em; top: 0.5em; }
-
-	/* --- Clean Embed in Lists (specify in alias/alt) --- */
-	/* remove margin and padding */
-	.HyperMD-list-line [alt*="list-embed"].internal-embed .markdown-embed { margin: 0 0 0 -1.7em; padding: 0; border: none; top: 0; }
-	.HyperMD-list-line .internal-embed .markdown-embed ul:first-of-type { margin-block: 0;}
-	li [alt*="list-embed"].internal-embed .markdown-embed { margin: 0 0 0 -1.6em; padding: 0; border: none; height: auto;}
-	/* hide the link icon and show when hover */
-	:is(.list-embed-global, [alt*="list-embed"]) :is(.file-embed-link svg, .markdown-embed-link) svg { opacity: 0.2; }
-	:is(.list-embed-global, [alt*="list-embed"]) :is(.markdown-embed:hover .file-embed-link svg, .markdown-embed:hover .markdown-embed-link) svg { opacity: 1; }
-	/* give different background color when hover */
-	:is(.list-embed-global :not(.popover), [alt*="list-embed"].internal-embed) :is(.markdown-embed:hover, .file-embed:hover) { background-color: var(--background-secondary); }
-	/* adjust the SNW block reference counter */
-	[alt*="list-embed"] ~ .snw-reference.snw-embed.snw-embed { position: absolute; right: 2.5em; top: 0.5em; }
-	li .snw-reference.snw-block-preview { position:absolute; top: 1em; right: 0; }
-	ul li {position: relative;}
-	.snw-reference.snw-embed + br {display: none;}
-
-
-
-
-	/* embeds in popover view */
-	.popover.hover-popover { width: 550px; min-height: 400px; border: 1px solid Gray; }
-	.popover.hover-popover .markdown-embed { height: 390px; }
-
-	/* adjust the padding for popover */
-	.popover.hover-popover > .markdown-embed > .markdown-embed-content > .markdown-preview-view {
-		--file-margins: var(--size-4-2) var(--size-4-6);
+	body {
+		--divider-color: var(--background-secondary);
 	}
+
+	.theme-light {
+		/* #d1ccd1 is inversed lightness of #332E33, define the secondary to #DEC8C8 */
+		/* ecdfdf lighter shade of #DEC8C8 */
+		/* #ecdfdf #e2cfcf */
+		--background-primary: hsl(0, 0%, 92%);
+
+		--background-secondary: hsl(300, 5%, 80%); /*#9e949e*/
+		--background-secondary-alt: #a6a6a6; /*#a6a6a6; /*#867986*/
+
+		--background-accent: #afbfcf; /* inverse of #304050 */
+		--background-accent-alt: hsl(0, 0%, 88%);	/* 4% darker shade of background-primary, active line and backlinks */
+
+		--background-modifier-border: #ada7a4;
+		--background-modifier-cover: hsl(0, 0%, 85%);
+		/*hsl(0, 0%, 90%)*/
+		--background-modifier-form-field: #e6e6e6;
+	/*	--interactive-accent: #60809f; /* for interactive buttons */
+		--interactive-accent-hover: #708ca9; /* for interactive buttons */
+
+		/* color variables for Hover Editor plugin, monochromatic & compound of #e6e6e6 */
+		--he-title-bar-active-bg: #EAA4A4;
+		--he-title-bar-inactive-bg: #EAA4A4;
+		--he-title-bar-active-pinned-bg: #A7B3A1;
+		--he-title-bar-inactive-pinned-bg: #A7B3A1;
+
+		--text-muted: #1a1a1a;
+		--text-faint: #808080;
+
+		/* my custom variables */
+		--background-modifier-backlinks: hsl(0, 0%, 90%);	/* for backlinks, 2% darker than primary */
+
+	}
+
+	.color-scheme-base.theme-dark,
+	.theme-dark {
+		/* Base Color - #262626
+		   - #3D373A - analogous
+		   - #332E33 - analogous
+		   |-- #433d43 - ligher shade
+		   - #1a1a1a - darker shade
+		   - #333333 - lighter shade
+		   - #735050 - monochromatic
+		   - #595350 - compound
+		   Base Color 2 - #304050 - special purple
+		   Base Color 3 - #4682B4 (SteelBlue) & lighter #5a91bf
+		*/
+
+		/* Base Color 1 - for main workspace */
+		--background-primary: hsl(0, 0%, 20%);	/* for main workspace / #333 */
+		--background-primary-alt: #1a1a1a; 		/* and pre (code) background */
+		/* Using Analogous of #262626 - for sidebar and modal dialog */
+		--background-secondary: hsl(300, 5%, 25%); /* #433d43 */
+		--background-secondary-alt: hsl(300, 5%, 19%);	/* 6% darker than secondary */
+		/* auxilary, mixed of shade of gray & blue-purple */
+		--background-accent: hsl(300, 15%, 27%);			/* for blockquote & journal shading / before this #304050 or #394d60 */
+		--background-accent-alt: hsl(0, 0%, 16%);	/* 4% darker shade of background-primary, active line and backlinks */
+		--background-modifier-border: hsl(20, 5%, 33%); /* #595350; 	/* for horizontal line & border */
+		--background-modifier-cover: #262626; 	/* for title bar / #332E33 */
+		--background-modifier-cover: hsl(0, 0%, 16%); 	/* for title bar / #332E33 */
+	/*	--background-modifier-cover: #262626; 	/* for title bar / #332E33 */
+	/*	--interactive-accent: #4682B4; 			/* for interactive buttons */
+	/*	--interactive-accent-hover: #5a91bf; 	/* for interactive buttons */
+
+		/* my custom variables */
+		--background-modifier-border-active: hsl(20, 5%, 53%);	/* for border active, lighter for dark mode */
+		--background-modifier-backlinks: hsl(0, 0%, 18%);	/* for backlinks, 2% darker than primary */
+
+		/* plugins variables */
+		/* color variables for Hover Editor plugin, #735050 is monochromatic of #262626 */
+		--he-title-bar-active-pinned-bg: #735050;
+		--he-title-bar-inactive-pinned-bg: #735050;
+		--he-title-bar-active-bg: #3D373A;
+		--he-title-bar-inactive-bg: #3D373A;
+
+	}
+
+	/* alternative color scheme */
+
+	.color-scheme-discord.theme-dark {
+		/*
+			hsl(220, 8%, 23%) -- main pane/chat window
+			hsl(223, 7%, 20%) -- sidebar for channels (dark)
+			hsl(218, 8%, 27%) -- input for chats (lighter)
+			hsl(216, 7%, 14%) -- sidebar for servers (darker)
+			hsl(225, 8%, 10%) -- popup (almost black)
+			hsl(217, 8%, 34%) -- buttons (lightest)
+		*/
+		--background-primary: hsl(220, 8%, 23%);
+		--background-modifier-cover: hsl(223, 7%, 20%);
+		--background-secondary: hsl(218, 8%, 27%);
+		--background-secondary-alt: hsl(218, 8%, 21%);	/* 6% darker than secondary */
+		--background-accent: hsl(223, 7%, 30%);
+		--background-accent-alt: hsl(220, 8%, 19%);		/* 4% darker shade of background-primary, active line and backlinks */
+
+		/* my custom variables */
+		--background-modifier-backlinks: hsl(220, 8%, 21%);	/* for backlinks, 2% darker than primary */
+	}
+	.color-scheme-discord.theme-light {
+		/*
+			hsl(0, 0%, 100%) -- main pane/chat window
+			hsl(220, 13%, 95%) -- sidebar for channels (dark)
+			hsl(210, 11%, 93%) -- input for chats (lighter)
+			hsl(216, 10%, 90%) -- sidebar for servers (darker)
+			hsl(0, 0%, 100%) -- popup (white)
+			hsl(213, 9%, 46%) -- buttons (bit darker)
+		*/
+		--background-primary: hsl(220, 16%, 92%);
+		--background-modifier-cover: hsl(223, 14%, 85%);
+		--background-secondary: hsl(218, 16%, 85%);
+		--background-secondary-alt: hsl(218, 16%, 81%);	/* 6% darker than secondary */
+		--background-accent: hsl(223, 14%, 90%);
+		--background-accent-alt: hsl(220, 16%, 88%);		/* 4% darker shade of background-primary, active line and backlinks */
+
+		/* my custom variables */
+		--background-modifier-backlinks: hsl(220, 16%, 90%);	/* for backlinks, 2% darker than primary */
+	}
+
+	.is-mobile.is-force-oled-black-mobile.theme-dark,
+	.oled-black.theme-dark {
+		--background-primary: black;
+		--background-primary-alt: hsl(0, 0%, 8%);
+		--background-modifier-cover: #1a1a1a;
+		--background-secondary: hsl(0, 0%, 16%);
+		--background-secondary-alt: hsl(0, 0%, 12%);
+		--background-accent: hsl(300, 20%, 15%);
+		--background-accent-alt: hsl(0, 0%, 20%);
+
+		--color-base-100: hsl(0, 0%, 78%); /* original dark-theme base-100 is hsl(0, 0%, 85%), for font color */
+
+		/* my custom variables */
+		--background-modifier-backlinks: hsl(0, 0%, 12%);	/* for backlinks, 12% lighter than primary, special for oled black */
+	}
+
+
+	/*
+	--background-primary: #2e3437
+	--background-primary-alt: #444444
+	--background-secondary: #333333
+	--background-secondary-alt: #000000
+	--background-accent: #000
+	--background-modifier-border: #565656
+	*/
+
+
+
+
+	/* test for no padding dashboard *//*
+		h2[data-heading^="Journal"] + ul {padding-left: 1px;}
+		h2[data-heading^="Journal"] + ul::before {border-left-width: 0px;}
+
+	/* === Side Toggle === */
+
+	/* === Modal === */
+	/*	.modal.mod-settings .vertical-tab-header { border-right-width: 0;}
+
+
+/* =============================================================================
+	Section for Content Core Customisation
+	- line spacing, default margins/paddings (not for headers/typography)
+============================================================================= */
+
+	/* === General Line Spacing, Margin & Padding === */
+
+		/* general line height. Editing View and Reading View */
+		.cm-s-obsidian .CodeMirror-line *,
+		.cm-s-obsidian .cm-line { line-height: 1.3em; padding-block: 0.2em; }
+		.markdown-preview-view { line-height: 1.3em; }
+
+		/* lists line height. Reading View only */
+		/* originally, only padding-top: 0.3em */
+		.mod-cm6 .HyperMD-list-line.cm-line,
+		.markdown-rendered ul li
+			{ line-height: 1.3em; padding-top: 0.2em; padding-bottom: 0.1em;}
+
+
+	/* === OTHER TEXT FORMATTING === */
+
+		.cm-s-obsidian .cm-formatting-link { font-weight: 300; }
+
+		/* Active Line */
+		.cm-active { background-color: var(--background-active-line); }
+
+
+	/* === Backlinks & Results area === */
+
+		/* separator for backlink */
+		.embedded-backlinks { border-top: 0.3em double DarkSlateGray; }
+
+		/* background and border for backlink & search */
+		/* var(--background-secondary-alt) is the darker ones */
+		/* apply to both backlinks and search */
+		.search-result { border-radius: 0.3em; margin-bottom: calc(var(--size-4-1)/2); } /* margin-bottom: 0.2em */
+		.search-result-file-matches { border: unset; margin-bottom: var(--size-4-1); } /* border: unset to be deleted once mobile is 0.16.x */
+		/* apply only to backlinks */
+		.mod-root .embedded-backlinks .search-result { background-color: var(--background-modifier-backlinks); }
+		.mod-root .embedded-backlinks .search-result-file-title:hover,
+		.mod-root .embedded-backlinks .search-result-file-match:hover { background-color: var(--background-modifier-cover); color: var(--text-normal); }
+		/* apply only to search pane */
+		.workspace-tabs .search-result { background-color: var(--background-secondary-alt);}
+		.workspace-tabs .search-result-file-title:hover,
+		.workspace-tabs .search-result-file-match:hover { background-color: var(--background-modifier-cover); color: var(--text-normal); }
+
+		/* adjustment for obsidian 0.16.x */
+		.search-result-file-title {background-color: unset;}
+		.search-result-file-matches {box-shadow: unset; background-color: unset;}
+
+
+	/* === Internal Query (might touch on NIL's as well) === */
+
+		/* adjustment for query search results */
+		.internal-query { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--background-modifier-border); }
+		.internal-query .internal-query-header { font-weight: bold; color: var(--h5-color); padding: var(--size-4-2); }
+		.internal-query .nav-header { grid-column: 2/3; justify-self: end;}
+		.internal-query .search-result-container { grid-column: 1/3; border: unset; background-color: unset;}
+
+
+	/* === Embed & Popover Embed === */
+
+		/* embeds in Editing & Reading View */
+		.markdown-embed,
+		.markdown-embed .markdown-preview-view { padding: 0 0.5em 0.2em 0.5em; }
+		.markdown-embed { margin: 0.5em 0; } /* previously have !important here */
+
+		/* embeds in popover view */
+		.popover.hover-popover { width: 550px; min-height: 400px; border: 1px solid Gray; }
+		.popover.hover-popover .markdown-embed { height: 390px; }
+
+		/* adjust the padding for popover */
+		.popover.hover-popover > .markdown-embed > .markdown-embed-content > .markdown-preview-view { --file-margins: var(--size-4-2) var(--size-4-6); }
+
+
+	/* === Embed -- List Embed === */
+		body {--list-embed-adj: 0px;}
+
+		/* --- Clean Embed in Lists -- General effect to hide the link --- */
+		.HyperMD-list-line .internal-embed.is-loaded {display: inline-grid;}
+
+		/* --- Clean Embed in Lists (on by default) --- */
+		.list-embed-global :is(.HyperMD-list-line, ul) .internal-embed.is-loaded .markdown-embed { margin: 0 0 0 calc(-1.70em + var(--list-embed-adj)); padding: 0; border: none; top: 0; background-color: ;}
+		.list-embed-global .HyperMD-list-line .internal-embed.is-loaded .markdown-embed { max-width: 600px;}
+		.list-embed-global ul .internal-embed.is-loaded .markdown-embed.markdown-embed { margin-left: calc(-1.6em + var(--list-embed-adj)); }
+		.list-embed-global :is(.HyperMD-list-line, ul) .internal-embed.is-loaded .markdown-embed ul:first-of-type { margin-block: 0;}
+
+		/* --- Clean Embed in Lists (specify in alias/alt) --- */
+		/* remove margin and padding */
+		.HyperMD-list-line [alt*="list-embed"].internal-embed .markdown-embed { margin: 0 0 0 -1.7em; padding: 0; border: none; top: 0; }
+		.HyperMD-list-line .internal-embed .markdown-embed ul:first-of-type { margin-block: 0;}
+		li [alt*="list-embed"].internal-embed .markdown-embed { margin: 0 0 0 -1.6em; padding: 0; border: none; height: auto;}
+		/* hide the link icon and show when hover */
+		:is(.list-embed-global, [alt*="list-embed"]) :is(.file-embed-link svg, .markdown-embed-link) svg { opacity: 0.2; }
+		:is(.list-embed-global, [alt*="list-embed"]) :is(.markdown-embed:hover .file-embed-link svg, .markdown-embed:hover .markdown-embed-link) svg { opacity: 1; }
+		/* give different background color when hover */
+		:is(.list-embed-global :not(.popover), [alt*="list-embed"].internal-embed) :is(.markdown-embed, .file-embed) { background-color: var(--background-primary); }
+		:is(.list-embed-global :not(.popover), [alt*="list-embed"].internal-embed) :is(.markdown-embed:hover, .file-embed:hover) { background-color: var(--background-secondary); }
+
+
+
+
 
 	/* i add this for some list or sth, cannot remember. i comment out first
 	p { margin-block-end: 0.5em; }
@@ -411,85 +399,83 @@ body {
 	.status-bar { padding-top: 0.1em; padding-bottom: 0.1em; line-height: 1em; max-height: unset; }
 
 
-/* === TABLE formatting === */
-	/* this code has the min specificity, */
-	/* may be overriden if applying a community theme */
-/*	.table-view-table > tbody > tr > td { border-top: 1px solid DarkSlateGray; } */
-	.table-view-table li:not(.cards li.dataview-result-list-li) { margin-left: 1rem; }
+	/* === TABLE formatting === */
+		/* dataview minor adjustment on how bullet is shown */
+		.table-view-table li:not(.cards li.dataview-result-list-li) { margin-left: 1rem; }
 
-	/* - Margin for Tables */
-	.markdown-preview-view table { margin-top: 0.5em; }
+		/* - Margin for Tables */
+		.markdown-preview-view table { margin-top: 0.5em; }
 
-
-/* === CODE BlOCK === */
-	/* put border but not for yaml */
-	.markdown-rendered pre:not(.frontmatter) { border: 1px solid var(--background-secondary); }
-
-/* === CALLOUT BLOCKS === */
-
-	/* - added callout padding on the right (12px to 16px)
-	   - define callout content padding, initially 0 */
-	body {
-		--callout-content-padding: 10px 0 5px 0; /* i remove first, */
-		--callout-padding: var(--size-4-3) var(--size-4-4) var(--size-4-3) var(--size-4-6); /* give additional padding on the right side */
-	}
-	/*.callout ul:first-child {margin-left: 0.3rem;}*/
-	.callout ul:first-of-type {margin-top: 0;}
-	.callout ul:last-of-type {margin-bottom: 0;}
-
-/* === BLOCK QUOTE / BLOCKQUOTE === */
-	/*	background-color: #622569; /* W3S Flower Palettes */
-	body {
-		--blockquote-border-thickness: 4px;
-		--blockquote-background-color: var(--background-secondary);
-	}
-	.markdown-preview-view blockquote,
-	.markdown-source-view.mod-cm6.is-live-preview .HyperMD-quote:before,
-	.markdown-source-view.mod-cm6 .cm-blockquote-border:before{
-		border-radius: 2px 0 0 2px;
-	}
-	.markdown-preview-view blockquote {
-		padding-left: 20px;
-		padding-block: var(--size-4-1);
-	}
-	.theme-dark .cm-s-obsidian span.cm-quote { color: white; }
+		/* === Latex table-layout === */
+			table:not(.dataview) { width: auto; border-collapse: collapse; border-spacing: 0; overflow-x: auto; background-color: var(--background-secondary); }
+			table:not(.dataview, .calendar) { box-shadow: 0 0 4px rgba(0, 0, 0, 0.50); border-top: 3px solid black; border-bottom: 3px solid black; }
+			/* adjust padding, line-height & font weight */
+			.markdown-rendered th, .markdown-rendered td { border: none; padding: 0.4em 0.6em; line-height: 1.1em; }
+			.markdown-rendered th { background-color: ; font-weight: 700; }
+			/* add inside border */
+			table:not(.dataview) > tbody > tr:first-child > td, table > tbody > tr:first-child > th { border-top: 1.5px solid var(--background-modifier-border); }
+			table:not(.dataview, .calendar) > tbody > tr:last-child > td, table > tbody > tr:last-child > th { border-bottom: 1.5px solid var(--background-modifier-border); }
+			/* add background color */
+			table:not(.dataview) tr:nth-child(even) { background-color: var(--background-secondary-alt); }
+			table:not(.dataview) tbody tr:hover td { background-color: var(--background-primary-alt); }
+		/* --------------------------------------------   */
 
 
-/* === Graph View Mods ===*/
-	/* to style the new nodes in the 0.9.1+ */
-	.theme-light .graph-view.color-arrow { color: #5cc863; }
-	.theme-light .graph-view.color-fill-tag { color: #440154; }
-	.theme-light .graph-view.color-fill-attachment { color: #277f8e; }
-	.theme-light .graph-view.color-circle { color: var(--text-normal); }
-	.theme-light .graph-view.color-text { color: var(--text-normal); }
-	.theme-light .graph-view.color-fill-highlight { color: var(--interactive-accent); }
-	.theme-light .graph-view.color-line-highlight { color: rgb(var(--interactive-accent-rgb)); }
 
-	.theme-dark .graph-view.color-fill-unresolved {	/* color: #fde725; */ }
-	.theme-dark .graph-view.color-fill { color: DimGray; }
-	.theme-dark .graph-view.color-line { color: DarkSlateGray; /*  color: var(--background-modifier-border); */ }
+	/* === CODE BlOCK === */
+		/* put border but not for yaml */
+		.markdown-rendered pre:not(.frontmatter) { border: 1px solid var(--background-secondary); }
 
-	/* === Mermaid related === */
-	/* title */
-	.mermaid .titleText {font-family: var(--h2-font) !important;}
 
-/* ========================================================================== */
-	/* === SECTION FOR EDGE CASES / MINOR TWEAKS ================================ */
-/* ========================================================================== */
+	/* === CALLOUT BLOCKS === */
+		/* - added callout padding on the right (12px to 16px)
+		   - define callout content padding, initially 0 */
+		body {
+			--callout-content-padding: 10px 0 5px 0; /* i remove first, */
+			--callout-padding: var(--size-4-3) var(--size-4-4) var(--size-4-3) var(--size-4-6); /* give additional padding on the right side */
+		}
+		/*.callout ul:first-child {margin-left: 0.3rem;}*/
+		.callout ul:first-of-type {margin-top: 0;}
+		.callout ul:last-of-type {margin-bottom: 0;}
 
-/* === Latex table-layout === */
-	table:not(.dataview) { width: auto; border-collapse: collapse; border-spacing: 0; overflow-x: auto; background-color: var(--background-secondary); }
-	table:not(.dataview, .calendar) { box-shadow: 0 0 4px rgba(0, 0, 0, 0.50); border-top: 3px solid black; border-bottom: 3px solid black; }
-	/* adjust padding, line-height & font weight */
-	.markdown-rendered th, .markdown-rendered td { border: none; padding: 0.4em 0.6em; line-height: 1.1em; }
-	.markdown-rendered th { background-color: ; font-weight: 700; }
-	/* add inside border */
-	table:not(.dataview) > tbody > tr:first-child > td, table > tbody > tr:first-child > th { border-top: 1.5px solid var(--background-modifier-border); }
-	table:not(.dataview, .calendar) > tbody > tr:last-child > td, table > tbody > tr:last-child > th { border-bottom: 1.5px solid var(--background-modifier-border); }
-	/* add background color */
-	table:not(.dataview) tr:nth-child(even) { background-color: var(--background-secondary-alt); }
-	table:not(.dataview) tbody tr:hover td { background-color: var(--background-primary-alt); }
-/* --------------------------------------------   */
+
+	/* === BLOCK QUOTE / BLOCKQUOTE === */
+		/*	background-color: #622569; /* W3S Flower Palettes */
+		body {
+			--blockquote-border-thickness: var(--size-4-1);
+			--blockquote-background-color: var(--background-secondary);
+		}
+		/* add border radius and adjust padding but only for reading view */
+		.markdown-preview-view blockquote { border-radius: 2px 0 0 2px; }
+		.markdown-preview-view blockquote { padding-left: var(--size-4-4); padding-block: var(--size-4-2); }
+		/* blockquote in list - margin. Reading only */
+		.markdown-rendered ul li blockquote { margin: 0; padding-left: var(--size-4-3); }
+
+
+	/* === Graph View Mods ===*/
+		/* to style the new nodes in the 0.9.1+ */
+		.theme-light .graph-view.color-arrow { color: #5cc863; }
+		.theme-light .graph-view.color-fill-tag { color: #440154; }
+		.theme-light .graph-view.color-fill-attachment { color: #277f8e; }
+		.theme-light .graph-view.color-circle { color: var(--text-normal); }
+		.theme-light .graph-view.color-text { color: var(--text-normal); }
+		.theme-light .graph-view.color-fill-highlight { color: var(--interactive-accent); }
+		.theme-light .graph-view.color-line-highlight { color: rgb(var(--interactive-accent-rgb)); }
+
+		.theme-dark .graph-view.color-fill-unresolved {	/* color: #fde725; */ }
+		.theme-dark .graph-view.color-fill { color: DimGray; }
+		.theme-dark .graph-view.color-line { color: DarkSlateGray; /*  color: var(--background-modifier-border); */ }
+
+		/* === Mermaid related === */
+		/* title */
+		.mermaid .titleText {font-family: var(--h2-font) !important;}
+
+
+/* =============================================================================
+	SECTION for EDGE CASES / MINOR TWEAKS
+	- datavew dv-card / dv-list-nav
+============================================================================= */
+
 
 
 /* === adjust margin for ## Review section === */
@@ -527,7 +513,8 @@ body {
 
 /* === Hider -- to hide things === */
 	/* hide frontmatter, yaml */
-	.frontmatter-container { display: none; }
+	body { --lst-frontmatter-display: none; }
+	.frontmatter-container { display: var(--lst-frontmatter-display); }
 
 
 
@@ -586,10 +573,38 @@ body {
 	span.path, span.option, span.selection
 		{ background-color: DarkSlateGray; border-radius: 0.2em; padding-inline: 0.2em; font-weight: 600; font-family: var(--font-monospace); }
 
+	/* === Mod for mobile heading indent multiline === */
+	/* to fix second/third line for headings not aligned with the first line */
+		.is-mobile .heading-collapse-indicator.collapse-indicator.collapse-icon {
+			padding-left: 8px;
+			padding-right: 4px;
+		}
 
-/* ========================================================================== */
-/* === SECTION FOR MODS FOR MOBILE ========================================= */
-/* ========================================================================== */
+	/* === Mod for float image in lists === */
+		.tag-mcllist-float-img ul img {float: right; margin-left: 0.5em;}
+		img[alt*="right"] {float: right; margin-left: 0.5em;}
+
+		/* image and caption using callout [!caption] */
+		/* adopted from anubis's snippet -- https://discord.com/channels/686053708261228577/744933215063638183/1037935390276976660 */
+		.callout[data-callout="caption"] { background-color: transparent; padding: 0 !important; margin: 0 !important; }
+		.callout[data-callout="caption"] .callout-title { display: none; }
+		.callout[data-callout="caption"] .callout-content { display: contents; }
+		.callout[data-callout="caption"] .callout-content p { text-align: center; font-style: italic; font-size: 0.9em; }
+		.callout[data-callout="caption"] .callout-content p .snw-reference { display: none;}
+		.callout[data-callout="caption"] .callout-content span.internal-embed.image-embed.is-loaded { display: block; }
+
+		/* .internal-embed.image-embed.is-loaded::after {content: attr(alt); font-family: Courgette;} */
+
+
+	/* === Mod for Dataview Card and List Nav === */
+		.callout[data-callout-metadata*="dv-list-nav"] ul {display: flex; padding-inline-start: var(--list-indent); --list-indent: 0;}
+		.callout[data-callout-metadata*="dv-list-nav"] li {flex: 1 1 auto; border-radius: 1em; background-color: var(--background-secondary); text-align: center; list-style: none; margin-inline: var(--size-4-1) !important; padding-inline: 0.5em; }
+
+
+/* =============================================================================
+	SECTION for MODS FOR MOBILE
+	- FAB
+============================================================================= */
 
 /* === Floating Action Button FAB === */
 	body.is-mobile:not(.custom-page-header) .view-action:nth-last-of-type(4) { top: calc(75vh); }
@@ -616,78 +631,121 @@ body {
 	.view-header { z-index: 2; }
 
 
-/* === Mod for mobile heading indent multiline === */
-/* to fix second/third line for headings not aligned with the first line */
-	.is-mobile .heading-collapse-indicator.collapse-indicator.collapse-icon {
-		padding-left: 8px;
-		padding-right: 4px;
-	}
 
-/* === Mod for float image in lists === */
-	.tag-mcllist-float-img ul img {float: right; margin-left: 0.5em;}
-	img[alt*="right"] {float: right; margin-left: 0.5em;}
+/* =============================================================================
+	SECTION for Plugins Support/Adjustment
+	- Outliner and Zoom
+	- Indentation Guide and Style Settings
+	- Query Control and SNW
+	- Omnisearch
+	- Spaced Repetition
+============================================================================= */
 
-
-/* ========================================================================== */
-/* === SECTION FOR MODS FOR PLUGINS ========================================= */
-/* ========================================================================== */
-
-/* This is for adjusting visuals other than main contents i.e. sidebar items
-	spacing and color theme. not sure, but could be checklist plugin */
-	header.svelte-128mhjl { font-size: 1em !important; }
-	.content.svelte-1paq1ml.svelte-1paq1ml { font-size: 0.95em !important; }
-	li.svelte-1paq1ml.svelte-1paq1ml { margin-bottom: 0.2em !important; }
+	/* This is for adjusting visuals other than main contents i.e. sidebar items
+		spacing and color theme. not sure, but could be checklist plugin */
+		header.svelte-128mhjl { font-size: 1em !important; }
+		.content.svelte-1paq1ml.svelte-1paq1ml { font-size: 0.95em !important; }
+		li.svelte-1paq1ml.svelte-1paq1ml { margin-bottom: 0.2em !important; }
 
 
-/* === Plugin: Checklist === */
-	.checklist-plugin-main li.svelte-6nbpzm.svelte-6nbpzm {margin-bottom: 2px; padding-top: 0;}
-	.checklist-plugin-main.checklist-plugin-main {
-		--checklist-headerFontSize: 1.1em;
-		--checklist-contentFontSize: 0.9em;
-		--checklist-contentPadding--compact: 2px 6px;
-	}
+	/* === Plugin: Checklist === */
+		.checklist-plugin-main li.svelte-6nbpzm.svelte-6nbpzm {margin-bottom: 2px; padding-top: 0;}
+		.checklist-plugin-main.checklist-plugin-main {
+			--checklist-headerFontSize: 1.1em;
+			--checklist-contentFontSize: 0.9em;
+			--checklist-contentPadding--compact: 2px 6px;
+		}
 
 
-/* === Plugin: Obsidian Charts === */
-	.block-language-chart { margin-left: 0 !important; }
-	.hidden-offset { --chart-color-1: #333; --chart-color-2: blue; }
+	/* === Plugin: Obsidian Charts === */
+		.block-language-chart { margin-left: 0 !important; }
+		.hidden-offset { --chart-color-1: #333; --chart-color-2: blue; }
 
 
-/* === Plugin: Obsidian Query Control adjustment === */
-	.embedded-backlinks .search-input-container input {width: 90%;}
-
-	.backlink-pane .search-results-children.is-rendered ul { padding-inline-start: 2em; }
-	.backlink-pane .search-results-children.is-rendered ul ul { padding-inline-start: 1.5em; }
-
-
-/* === Plugin: Omnisearch === */
-	.omnisearch-modal .modal-title {padding: 1em 1em 0;}
+	/* === Plugin: Obsidian Query Control adjustment === */
+		.embedded-backlinks .search-input-container input {width: 90%;}
+		.backlink-pane .search-results-children.is-rendered ul { padding-inline-start: 2em; }
+		.backlink-pane .search-results-children.is-rendered ul ul { padding-inline-start: 1.5em; }
 
 
-/* === Plugin: Spaced Repitition === */
-	.sr-modal-content .tree-item-flair-outer { flex-basis: 80px; }
-	.sr-modal-content .tree-item-flair-outer > span { width: 100%; display: flex; }
-	.sr-modal-content .tree-item-flair-outer > span > span { flex: 1 1 auto; text-align: center; padding-block: 0.1em; }
+	/* === Plugin: Omnisearch === */
+		.omnisearch-modal .modal-title {padding: 1em 1em 0;}
 
 
-/* === Plugin: Style Settings === */
-	/* make the input box on same row as the title/description */
-	.view-content .style-settings-container .setting-item:not(.setting-item-heading) { flex-direction: row; }
-	.view-content .style-settings-container {border-left: 1px solid var(--background-modifier-border); padding-bottom: 0; }
-	.view-content .style-settings-container[data-level="2"] {padding-left: 1rem; margin-left: 0; }
-	/* adjust the padding left */
-	.style-settings-container[data-level="0"] {margin-left: 0.3rem; margin-bottom: 1em;}
-	.style-settings-heading[data-level] + .style-settings-container {padding-left: 1.5rem;}
-	/* */
-	.style-settings-heading[data-level="0"]:not(.is-collapsed) { margin-bottom: 1em;}
-	/* font color */
-	.style-settings-container[data-level="0"] > .style-settings-heading .setting-item-name { color: var(--h3-color); }
-	.style-settings-container[data-level="0"] > .style-settings-container > .style-settings-heading .setting-item-name { color: var(--h4-color); }
-	.style-settings-heading[data-level="2"] .setting-item-name { color: var(--h4-color); }
+	/* === Plugin: Spaced Repitition === */
+		.sr-modal-content .tree-item-flair-outer { flex-basis: 80px; }
+		.sr-modal-content .tree-item-flair-outer > span { width: 100%; display: flex; }
+		.sr-modal-content .tree-item-flair-outer > span > span { flex: 1 1 auto; text-align: center; padding-block: 0.1em; }
 
 
+	/* === Plugin: Style Settings === */
+		/* make the input box on same row as the title/description */
+		.view-content .style-settings-container .setting-item:not(.setting-item-heading) { flex-direction: row; }
+		.view-content .style-settings-container {border-left: 1px solid var(--background-modifier-border); padding-bottom: 0; }
+		.view-content .style-settings-container[data-level="2"] {padding-left: 1rem; margin-left: 0; }
+		/* adjust the padding left */
+		.style-settings-container[data-level="0"] {margin-left: 0.3rem; margin-bottom: 1em;}
+		.style-settings-heading[data-level] + .style-settings-container {padding-left: 1.5rem;}
+		/* */
+		.style-settings-heading[data-level="0"]:not(.is-collapsed) { margin-bottom: 1em;}
+		/* adjust padding for collapse icon only for first header */
+		.workspace-leaf-content[data-type="style-settings"] > .view-content > .setting-item-heading > .setting-item-info > .setting-item-name {padding-left: 1em;}
+				.workspace-leaf-content[data-type="style-settings"] > .view-content > .setting-item-heading > .setting-item-info > .setting-item-name span.style-settings-collapse-indicator {margin-left: -1.15em; }
+		/* font color */
+		.style-settings-container[data-level="0"] > .style-settings-heading .setting-item-name { color: var(--h3-color); }
+		.style-settings-container[data-level="0"] > .style-settings-container > .style-settings-heading .setting-item-name { color: var(--h4-color); }
+		.style-settings-heading[data-level="2"] .setting-item-name { color: var(--h4-color); }
+		.style-settings-container .setting-item:not([data-level]) {background-color: var(--background-secondary); }
+
+		.style-settings-container .setting-item {padding: 0.75em;}
+		.style-settings-heading:not(.is-collapsed) { margin-bottom: 16px; }
+		.setting-item:last-child {margin-bottom: var(--size-4-3);}
+
+		/* adjust the bottom padding to avoid overflow */
+		.workspace-leaf-content[data-type="style-settings"] > .view-content {padding-bottom: 2rem;}
+
+	/* === Plugin: Strange New Word (SNW) === */
+
+		/* adjustment for SNW plugin -- follow exactly per app.css but remove the `.markdown-rendered` */
+		.snw-ref-item-info.search-result-file-match:hover {background-color: var(--background-modifier-hover);}
+
+		/* SNW block reference counter - adjustment for List Embed compatibility */
+		[alt*="list-embed"] ~ .snw-reference.snw-embed.snw-embed { position: absolute; right: 2.5em; top: 0.5em; }
+		.list-embed-global :is(.HyperMD-list-line, ul) .internal-embed.is-loaded ~ .snw-reference.snw-embed.snw-embed { position: absolute; right: 2.5em; top: 0.5em; }
+
+		ul li {position: relative;}
+		li .snw-reference.snw-block-preview { position:absolute; top: 1em; right: 0; }
+		.snw-reference.snw-embed + br {display: none;}
+
+		/* make the numbers not bold */
+		.snw-reference {font-weight: normal;}
 
 
+	/* === Plugin: Outliner and Zoom === */
+
+		/* Zoom plugin adjustment for my bullet spacing adjustment above */
+		.zoom-plugin-bls-zoom .cm-editor .cm-formatting-list-ul:hover:before,
+		.zoom-plugin-bls-zoom .cm-editor .list-bullet:hover:before
+			{ margin-top: -0.05em !important; margin-left: -0.15em !important; }
+		/* --- Adjustment for Outliner Plugin --- */
+		.outliner-plugin-list-lines-content-container { left: calc(22px + var(--list-guide-outliner-adj)); }
+
+
+	/* === mgmeyer Indentation Guide Plugin Adjustment === */
+
+		/* adjustment for relationship width */
+		.ig-uncategorized .cm-line[style*="text-indent"]:not(.HyperMD-list-line) .ig-tab::before,
+		.ig-lists .HyperMD-list-line .ig-tab::before,
+		.ig-code .HyperMD-codeblock .ig-tab::before { width: 1px !important; }
+
+		/* --- Obsidian own Indentation guide feature */
+		body {
+			--indentation-guide-color: var(--background-modifier-border) !important;
+			--indentation-guide-color-active: var(--background-modifier-border-active);
+			--indentation-guide-active-color: var(--background-modifier-border-active) !important; /* for mgmeyer's plugin */
+		}
+		.markdown-rendered.show-indentation-guide li > ul::before, .markdown-rendered.show-indentation-guide li > ol::before
+			{ left: calc(-14px + var(--list-guide-outliner-adj)); }
 
 
 /*
@@ -699,16 +757,26 @@ body {
 */
 
 
-/* ===================================== */
-/* === Section for Heading or Header === */
+/* =============================================================================
+	Section for Typography (including Heading or Header)
+	- header color theme, font type and style
+	- header spacing and margins (including those in ul/ol)
+	- code block, mathjax/latex
+==============================================================================*/
 
 	.theme-light {
 		--h1-color: #224244; /* #bccad6 #DDD */
+		--h1-color: hsl(217, 22%, 30%);
 		--h2-color: #4e687e; /* shade of #55A6AD. #8d9db6 #AAA 00bdbd */
+		--h2-color: hsl(217, 22%, 40%);
 		--h3-color: #8d9db6; /* #667292 #2DC1C1 00a3a3 */
+		--h3-color: hsl(217, 22%, 50%);
 		--h4-color: #8e6d0b; /* #fbefcc AntiqueWhite */
+		--h4-color: hsl(45, 45%, 40%);
 		--h5-color: #8f410a; /* #f9ccac */
+		--h5-color: hsl(45, 45%, 30%);
 		--h6-color: #8c310d; /* #f4a688 */
+		--h6-color: hsl(45, 45%, 20%);
 		--text-selection: DarkGray;
 	}
 	.theme-dark {
@@ -717,19 +785,25 @@ body {
 		/* prior alternatives using sky palettes and sand palettes
 		*/
 		--h1-color: #ddedee; /* #bccad6 #DDD */
+		--h1-color: hsl(217, 22%, 90%);
 		--h2-color: #bccad6; /* shade of #55A6AD. #8d9db6 #AAA 00bdbd */
+		--h2-color: hsl(217, 22%, 80%);
 		--h3-color: #8d9db6; /* #667292 #2DC1C1 00a3a3 */
+		--h3-color: hsl(217, 22%, 70%);
 		--h4-color: #fbefcc; /* #fbefcc AntiqueWhite */
+		--h4-color: hsl(45, 45%, 85%);
 		--h5-color: #f9ccac; /* #f9ccac */
+		--h5-color: hsl(45, 45%, 75%);
 		--h6-color: #f4a688; /* #f4a688 */
+		--h6-color: hsl(45, 45%, 65%);
 		--text-selection: #3333ff;
 	}
 
 	body {
 		--h1-font: Courgette;
 		--h2-font: Courgette;
-		--h3-font: 'Karla';
-		--h4-font: 'Karla';
+		--h3-font: 'Karla', 'Inter';
+		--h4-font: 'Karla', 'Inter';
 		--default-font: 'Inter';
 		--font-text-theme: 'Inter'; /* obsidian app.css variable */
 		--keyheader-font: 'Open Sans'; /* Delius */
@@ -776,6 +850,7 @@ body {
 		:is(*, .markdown-rendered) ul h3 {margin-top: 0.2rem;}
 		/* margin for header in backlinks */
 		.embedded-backlinks .markdown-rendered ul h2 {margin-block: 0rem 0.3rem;}
+		.markdown-rendered li h6 {margin-top: 0; margin-bottom: 0;}
 
 		/* when collapsed */
 		/*
@@ -833,96 +908,73 @@ body {
 	*/
 
 
-/* ============= */
-/* TAGS settings */
+	/* === Tags / Hashtags === */
 
-	/* tag pill decoration */
-	/* included ":not(token) as codeblock html seems to put the inside a span with that class" */
-	/* !important added because default theme 0.16.x uses it */
-	.cm-s-obsidian span.cm-hashtag,
-	.tag:not(.token) {
-		color: #111; font-family: Inter !important;
-		font-size: 12px !important; /* 11px for 14px normal font, else 12px for 15px */
-		font-weight: normal; background-color: DarkSalmon; text-decoration: none;
-		background-image: none; /* to remove spell-error underline in hashtag */
-		/* display: inline-block; margin-bottom: 0.3em; /* this line added to make the tag float similar to h2 */
-	}
-	.cm-s-obsidian span.cm-hashtag-begin
-		{ padding: 0.1em 0.05em 0.1em 0.4em; border-radius: 0.5em 0 0 0.5em; }
-	.cm-s-obsidian span.cm-hashtag-end
-		{ padding: 0.1em 0.5em 0.1em 0.05em; border-radius: 0 0.5em 0.5em 0; background-color: DarkSalmon; }
-	/* tag pill padding */
-	.tag:not(.token)
-		{ padding: 0.1em 0.4em; border-radius: 0.5em; }
-	/* tag pill hover */
-	.tag:hover { color: #EEE; }
+		body {
+			--tag-size: 12px;				/* 11px for 14px normal font, else 12px for 15px */
+			--tag-color: #111;
+			--tag-background: DarkSalmon;
+			--tag-radius: 0.6em;
+			--tag-padding-y: 0.1em;
+			--tag-padding-x: 0.5em;
+			--tag-color-hover: #eee;
+		}
+		/* tag pill decoration */
+		/* included ":not(token) as codeblock html seems to put the inside a span with that class" */
+		/* !important added because default theme 0.16.x uses it */
+		.cm-s-obsidian span.cm-hashtag,
+		.tag:not(.token) {
+			font-family: var(--font-text) !important;
+			font-weight: normal;
+			background-image: none; /* to remove spell-error underline in hashtag */
+			/* display: inline-block; margin-bottom: 0.3em; /* this line added to make the tag float similar to h2 */
+		}
 
 
-/* ============= */
-/* INTERNAL LINK */
+	/* === INTERNAL LINK === */
 
-	.markdown-preview-view .internal-link { text-decoration: none; }
-	/*
-	.cm-s-obsidian span.cm-hmd-internal-link .cm-underline { text-decoration: none !important; }
-	*/
-
-
-/* =========== */
-/* BLOCK QUOTE */
-
-	/* blockquote in list - margin. Reading only */
-	ul li blockquote {
-		margin: 0.5em 0 !important;
-	}
+		.markdown-preview-view .internal-link { text-decoration: none; }
+		/*
+		.cm-s-obsidian span.cm-hmd-internal-link .cm-underline { text-decoration: none !important; }
+		*/
 
 
-/* ========== */
-/* CODE BLOCK */
+	/* === CODE BLOCK === */
 
-	/* code block only - scrollbar. Editing & Reading */
-	.HyperMD-codeblock, .markdown-preview-view pre code {
-		white-space: pre;
-	}
-	/* code block & inline code - font & padding. Editing & Reading */
-	.markdown-preview-view code,
-	.cm-s-obsidian .cm-inline-code {
-		font-size: 0.9em;
-		border-radius: var(--radius-s);
-		padding: 0.1em 0.25em;
-		font-family: var(--font-monospace);
-	}
-	/* remove radius and padding on the inline code when it is active (showing formatting) */
-	.cm-formatting-code.cm-inline-code + .cm-inline-code { border-radius: 0; padding-inline: 0; }
-	/* remove radius and padding on the formatting part - left and right */
-	.cm-formatting-code:not(.cm-inline-code + .cm-formatting-code) { border-radius: var(--radius-s) 0 0 var(--radius-s); padding-inline: 0.25em 0; }
-	.cm-inline-code + .cm-formatting-code { border-radius: 0 var(--radius-s) var(--radius-s) 0; padding-inline: 0 0.25em; }
+		/* code block only - scrollbar. Editing & Reading */
+		.HyperMD-codeblock, .markdown-preview-view pre code { white-space: pre; }
+		/* code block & inline code - font & padding. Editing & Reading */
+		.markdown-preview-view code,
+		.cm-s-obsidian .cm-inline-code { font-size: 0.9em; border-radius: var(--radius-s); padding: 0.1em 0.25em; font-family: var(--font-monospace); }
+		/* remove radius and padding on the inline code when it is active (showing formatting) */
+		.cm-formatting-code.cm-inline-code + .cm-inline-code { border-radius: 0; padding-inline: 0; }
+		/* remove radius and padding on the formatting part - left and right */
+		.cm-formatting-code:not(.cm-inline-code + .cm-formatting-code) { border-radius: var(--radius-s) 0 0 var(--radius-s); padding-inline: 0.25em 0; }
+		.cm-inline-code + .cm-formatting-code { border-radius: 0 var(--radius-s) var(--radius-s) 0; padding-inline: 0 0.25em; }
 
-	/* code block only - margin. Reading only */
-	.markdown-preview-view pre { margin: 0.1em 0 1em; }
-	.markdown-preview-view li pre { margin: 0.1em 0 0.1em; }
-
-/* ========== */
-/* MATH JAX */
-	mjx-container[jax="CHTML"][display="true"].MathJax {text-align:unset;}
-/*	.math-inline .TEX-I {font-family: Karla; font-weight: 600;} */
-
-/* =========================== */
-/* Other Typography Decorative */
-
-	/* bold / strong */
-	.theme-dark :is(.cm-s-obsidian .cm-strong, b, strong) {
-		color: White;
-	}
-	/* highlights */
-	.cm-s-obsidian span.cm-formatting-highlight,
-	.cm-s-obsidian span.cm-highlight,
-	.markdown-preview-view mark { border-radius: 0.2em; padding: 0 0.1em; }
-
-	.theme-dark .cm-s-obsidian span.cm-formatting-highlight,
-	.theme-dark .cm-s-obsidian span.cm-highlight,
-	.theme-dark .markdown-preview-view mark { color: var(--h4-color); }
+		/* code block only - margin. Reading only */
+		.markdown-preview-view pre { margin: 0.1em 0 1em; }
+		.markdown-preview-view li pre { margin: 0.1em 0 0.1em; }
 
 
+	/* === MATHJAX LATEX adjustment === */
+		/* align left for math-block in list */
+		body { --math-block-list-align: left; }
+		:is(.HyperMD-list-line, li) .math-block mjx-container[jax="CHTML"][display="true"] { text-align: var(--math-block-list-align); }
+
+
+	/* === Other Typography Decorative === */
+
+		/* bold / strong */
+		:is(.cm-s-obsidian .cm-strong, b, strong) { color: var(--h1-color); }
+		/* highlights */
+		.cm-s-obsidian span.cm-formatting-highlight,
+		.cm-s-obsidian span.cm-highlight,
+		.markdown-preview-view mark { border-radius: 0.2em; padding: 0 0.1em; }
+
+		.cm-s-obsidian span.cm-formatting-highlight,
+		.cm-s-obsidian span.cm-highlight,
+		.markdown-preview-view mark { color: var(--h1-color); }
 
 
 
@@ -941,10 +993,10 @@ body {
 	--list-guide-adj-mobile: 0px;
 	--list-guide-outliner-adj: 0px;
 }
-
-/* adjustment for SNW plugin -- follow exactly per app.css but remove the `.markdown-rendered` */
+	/* make the reading view indent same as editing view *//* not needed
 	ul, ol { padding-inline-start: var(--list-indent);}
-	.snw-ref-item-info.search-result-file-match:hover {background-color: var(--background-modifier-hover);}
+	*/
+
 
 /* == BULLETS UL OL */
 	/* -- Reading View Only. Adjust the distance between UL OL */
@@ -990,35 +1042,6 @@ body {
 	.markdown-rendered ul.has-list-bullet li.is-collapsed::marker { color: var(--list-marker-color-collapsed); }
 
 /* == Code Block Related == */
-
-	/* == PLUGIN RELATED ADJUSTMENT == */
-
-		/* Zoom plugin adjustment for my bullet spacing adjustment above */
-		.zoom-plugin-bls-zoom .cm-editor .cm-formatting-list-ul:hover:before,
-		.zoom-plugin-bls-zoom .cm-editor .list-bullet:hover:before {
-			margin-top: -0.05em !important; margin-left: -0.15em !important;
-		}
-
-	/* === Indentation Guide Plugin Adjustment === */
-
-		/* --- mgmeyer's Indentation Guides plugin --- */
-		/* adjustment for relationship width */
-		.ig-uncategorized .cm-line[style*="text-indent"]:not(.HyperMD-list-line) .ig-tab::before,
-		.ig-lists .HyperMD-list-line .ig-tab::before,
-		.ig-code .HyperMD-codeblock .ig-tab::before { width: 1px !important; }
-
-		/* --- Obsidian own Indentation guide feature */
-		body {
-			--indentation-guide-color: var(--background-modifier-border) !important;
-			--indentation-guide-color-active: var(--background-modifier-border-active);
-			--indentation-guide-active-color: var(--background-modifier-border-active) !important; /* for mgmeyer's plugin */
-		}
-		.markdown-rendered.show-indentation-guide li > ul::before, .markdown-rendered.show-indentation-guide li > ol::before {
-			left: calc(-14px + var(--list-guide-outliner-adj));
-		}
-
-		/* --- Adjustment for Outliner Plugin --- */
-		.outliner-plugin-list-lines-content-container { left: calc(22px + var(--list-guide-outliner-adj)); }
 
 
 
@@ -1461,6 +1484,23 @@ settings:
 		level: 1
 		collapsed: true
 	-
+		id: file-line-width
+		title: Adjust note/page max width
+		type: variable-text
+		default: 700px
+	-
+		id: lst-frontmatter-display
+		title: Hide Metadata Frontmatter
+		type: variable-select
+		default: none
+		options:
+			-
+				label: Show
+				value: block
+			-
+				label: Hide
+				value: none
+	-
 		id: list-embed-title
 		title: List Embed
 		description: Control max-width for all page/note by default. RLL must be **enabled**
@@ -1472,14 +1512,21 @@ settings:
 		title: Enable List Embed vault-wide
 		type: class-toggle
 		default: true
-
-
-
-
-
-
-
-
+	-
+		id: math-block-list-align
+		title: Alignment of Math Block in List
+		type: variable-select
+		default: left
+		options:
+			-
+				label: Left
+				value: left
+			-
+				label: Center
+				value: center
+			-
+				label: Right
+				value: right
 
 
 
