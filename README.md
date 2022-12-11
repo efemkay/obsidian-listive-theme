@@ -1,6 +1,33 @@
 # Listive
 > Outliner focused theme with differentiated header style and subtle interface for atomic notes with insight-based points
 
+![](https://img.shields.io/github/v/release/efemkay/obsidian-listive-theme)
+![](https://img.shields.io/github/release-date/efemkay/obsidian-listive-theme)
+![license: GPL-3.0 (shields.io)](https://img.shields.io/github/license/efemkay/obsidian-listive-theme)
+![](https://img.shields.io/github/downloads/efemkay/obsidian-listive-theme/total)
+
+<table >
+<tr>
+<td style="padding:0.5em 0; border:none;">Quick TOC:</td>
+</tr>
+<tr>
+<td style="padding:0.5em 1em 0.5em 0; border: none; border-right: 1px solid DarkSlateGray">
+    <a href="#guiding-principles">Guiding Principles</a>
+</td>
+<td style="padding:0 1em; border: none; border-right: 1px solid DarkSlateGray">
+    <a href="#features">Features</a>
+</td>
+<td style="padding:0 1em; border: none; border-right: 1px solid DarkSlateGray">
+    <a href="#companion-plugins">Companion Plugins</a>
+</td>
+<td style="padding:0 1em; border: none; border-right: 1px solid DarkSlateGray">
+    <a href="#credits">Credits</a>
+</td>
+<td style="padding:0 1em; border: none; border-right: 1px solid DarkSlateGray">
+    <a href="#support-me">Support Me</a>
+</td>
+</tr></table>
+
 ![Listive screenshot](Listive.jpg)
 
 ## Guiding Principles
@@ -14,22 +41,33 @@
     - Minimal colors used for UI, focusing on shades
 
 ## Features
+
+#### Differentiated Headers (customisable)
 - Custom font and spacing for Headers in lists vs in normal paragraph
     - By default, pairing H1/H2, H3/H4 and H5/H6
     - Custom spacing for Headers mainly for Reading View
-- Color Schemes
-- List Embed (inline "clean" block embed for lists blocks)
-    – made to work well in Live Preview (but still experimental)
-- Auxiliary Customisation
-    - Align left for Mathjax / Latex in Lists
-    - Floating Action Button, adopted from [Obsidian You theme](https://github.com/selfire1/obsidian-you-theme)
-    - (not yet ready) Mermaid
-    - (not yet ready) Multiple Table Design
-    - (not yet ready) Different background for Journal
+
+#### Color Schemes
+Currently there's only color scheme i.e. Base (grayscale) and Discord. You can change it via Style Settings
+
+#### List Embed for "clean" embed in lists
+Two options to use List Embed -- per embed basis or global/vault wide. For Live Preview use, it's still experimental, and you able to adjust the positioning via Style Settings.
+- For per embed basis, put `list-embed` in the alias part e.g. `![[Why I Use Obsidian|list-embed]]`
+- For vault wide, enable the "Enable List Embed vault-wide" option via Style Settings
+
+#### Custom Dataview Styling via Callout
+Use callout metadata `dv-list-nav` e.g. `[!blank-container|dv-list-nav]` to display dataview list in a button like style
+
+#### Auxiliary Customisation
+- Align left for Mathjax / Latex in Lists
+- Floating Action Button, adopted from [Obsidian You theme](https://github.com/selfire1/obsidian-you-theme)
+- (not yet ready) Mermaid
+- (not yet ready) Multiple Table Design
+- (not yet ready) Different background for Journal
 
 > This theme is still work in progress. There are more features I have in mind -- those will be updated/released in due time.
 
-## Companion plugins
+## Companion Plugins
 Listive works best with the following plugins installed to enable more complicated features and give more control to refine the look and feel.
 - **Contextual Typography** plugin for advanced layout features such as custom spacing for 1st para/list.
 - **Style Settings** plugin for refining the look and feel including choosing/creating custom color scheme.
