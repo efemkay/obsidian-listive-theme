@@ -1,7 +1,8 @@
-/* === Listive Theme - by Efemkay === *//* updated 28Nov2022 */
+/* === Listive Theme - v0.2.0 by Efemkay === *//* updated 11Dec2022 */
 
 @import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Karla&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend&display=swap');
 
 
 /* =============================================================================
@@ -697,8 +698,8 @@
 		.style-settings-heading[data-level="2"] .setting-item-name { color: var(--h4-color); }
 		.style-settings-container .setting-item:not([data-level]) {background-color: var(--background-secondary); }
 
-		.style-settings-container .setting-item {padding: 0.75em;}
-		.style-settings-heading:not(.is-collapsed) { margin-bottom: 16px; }
+		.style-settings-container .setting-item {padding: 0.5rem 0.75rem;}
+		.style-settings-heading:not(.is-collapsed) { margin-bottom: 0.75rem; }
 		.setting-item:last-child {margin-bottom: var(--size-4-3);}
 
 		/* adjust the bottom padding to avoid overflow */
@@ -1321,7 +1322,7 @@ settings:
 
 	-
 		id: typography-headers-title
-		title: Fonts - Headers
+		title: Typography - Headings / Headers
 		type: heading
 		level: 1
 		collapsed: true
@@ -1383,6 +1384,11 @@ settings:
 		type: variable-text
 		default: Karla
 	-
+		id: h3-size
+		title: H3 Font Size
+		type: variable-text
+		default: 1.36rem
+	-
 		id: h3-border-width
 		title: H3 Border Width
 		type: variable-text
@@ -1402,6 +1408,16 @@ settings:
 		level: 2
 		collapsed: false
 	-
+		id: h4-font
+		title: H4 Font
+		type: variable-text
+		default: Karla
+	-
+		id: h4-size
+		title: H4 Font Size
+		type: variable-text
+		default: 1.12rem
+	-
 		id: h4-color
 		title: H4 Color
 		type: variable-themed-color
@@ -1416,6 +1432,16 @@ settings:
 		level: 2
 		collapsed: false
 	-
+		id: h5-font
+		title: H5 Font
+		type: variable-text
+		default: Inter
+	-
+		id: h5-size
+		title: H5 Font Size
+		type: variable-text
+		default: 1.00rem
+	-
 		id: h5-color
 		title: H5 Color
 		type: variable-themed-color
@@ -1429,6 +1455,16 @@ settings:
 		type: heading
 		level: 2
 		collapsed: false
+	-
+		id: h6-font
+		title: H6 Font
+		type: variable-text
+		default: Inter
+	-
+		id: h6-size
+		title: H6 Font Size
+		type: variable-text
+		default: 1.00rem
 	-
 		id: h6-color
 		title: H6 Color
@@ -1483,6 +1519,13 @@ settings:
 		type: heading
 		level: 1
 		collapsed: true
+
+	-
+		id: features-general-title
+		title: General
+		type: heading
+		level: 2
+		collapsed: false
 	-
 		id: file-line-width
 		title: Adjust note/page max width
@@ -1501,18 +1544,6 @@ settings:
 				label: Hide
 				value: none
 	-
-		id: list-embed-title
-		title: List Embed
-		description: Control max-width for all page/note by default. RLL must be **enabled**
-		type: heading
-		level: 2
-		collapsed: false
-	-
-		id: list-embed-global
-		title: Enable List Embed vault-wide
-		type: class-toggle
-		default: true
-	-
 		id: math-block-list-align
 		title: Alignment of Math Block in List
 		type: variable-select
@@ -1527,6 +1558,20 @@ settings:
 			-
 				label: Right
 				value: right
+
+	-
+		id: list-embed-title
+		title: List Embed
+		description: Enable "seamless" embed when in list for all notes
+		type: heading
+		level: 2
+		collapsed: false
+	-
+		id: list-embed-global
+		title: Enable List Embed vault-wide
+		type: class-toggle
+		default: true
+
 
 
 
