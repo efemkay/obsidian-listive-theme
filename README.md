@@ -1,10 +1,7 @@
 # Listive
 > Outliner focused theme with differentiated header style and subtle interface for atomic notes with insight-based points
 
-![](https://img.shields.io/github/v/release/efemkay/obsidian-listive-theme)
-![](https://img.shields.io/github/release-date/efemkay/obsidian-listive-theme)
-![license: GPL-3.0 (shields.io)](https://img.shields.io/github/license/efemkay/obsidian-listive-theme)
-![](https://img.shields.io/github/downloads/efemkay/obsidian-listive-theme/total)
+![](https://img.shields.io/github/v/release/efemkay/obsidian-listive-theme) ![](https://img.shields.io/github/release-date/efemkay/obsidian-listive-theme) ![](https://img.shields.io/github/license/efemkay/obsidian-listive-theme) ![](https://img.shields.io/github/downloads/efemkay/obsidian-listive-theme/total)
 
 <table >
 <tr>
@@ -59,7 +56,11 @@ Two options to use List Embed -- per embed basis or global/vault wide. For Live 
 Use callout metadata `dv-list-nav` e.g. `[!blank-container|dv-list-nav]` to display dataview list in a button like style
 
 #### Auxiliary Customisation
-- Align left for Mathjax / Latex in Lists
+- List bullet styling options – default (disc only), alternating disc-circle, and disc-circle-square. Change via Style Settings
+- Callout styling options – icon-on-top-right (default), and "standard". Change via Style Settings
+- `no-title` callout-metadata option (e.g. `> [!quote|no-title]`) for callout without title. Styling similar to icon-on-top-right style
+- Frontmatter compact styling. Change via Style Settings to get back to “standard” styling
+- Alignment for Mathjax / Latex in Lists – left (default), center, and right.
 - Floating Action Button, adopted from [Obsidian You theme](https://github.com/selfire1/obsidian-you-theme)
 - (not yet ready) Mermaid
 - (not yet ready) Multiple Table Design

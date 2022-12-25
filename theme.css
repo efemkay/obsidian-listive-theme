@@ -1,9 +1,16 @@
-/* === Listive Theme - v0.2.0 by Efemkay === *//* updated 11Dec2022 */
+/* === Listive Theme - v0.3.0 by Efemkay === *//* updated 25Dec2022 */
 
 @import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Karla&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lexend&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,400;0,600;1,400;1,600&display=swap');
+/* serif fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 /* =============================================================================
 	Section for WORKSPACE / GENERAL UI
@@ -121,8 +128,8 @@
 
 
 /* =============================================================================
-	Section for DEFAULTS / BODY
-	- workspace color themes
+	Section for Non-Components Defaults
+	- base colors and color schemes
 ============================================================================= */
 
 	/* setting up variables for theme */
@@ -258,6 +265,8 @@
 		--background-accent: hsl(300, 20%, 15%);
 		--background-accent-alt: hsl(0, 0%, 20%);
 
+		--tag-background: DarkSalmon;
+
 		--color-base-100: hsl(0, 0%, 78%); /* original dark-theme base-100 is hsl(0, 0%, 85%), for font color */
 
 		/* my custom variables */
@@ -287,9 +296,195 @@
 	/*	.modal.mod-settings .vertical-tab-header { border-right-width: 0;}
 
 
+
+
 /* =============================================================================
-	Section for Content Core Customisation
+	(11) Section for Typography (including Heading or Header)
+	- header color theme, font type and style
+	- header spacing and margins (including those in ul/ol)
+	- tags pill
+	- internal link formatting
+==============================================================================*/
+
+	body {
+		--h1-font: Courgette;
+		--h2-font: Courgette;
+		--h3-font: 'Karla', 'Inter';
+		--h4-font: 'Karla', 'Inter';
+		--default-font: 'Inter';
+		--font-text-theme: 'Inter'; /* obsidian app.css variable */
+		--keyheader-font: 'Open Sans'; /* Delius */
+		/* these are obsidian app.css variables */
+
+		--h1-size: 1.60rem;
+		--h2-size: 1.48rem;
+		--h3-size: 1.36rem;
+		--h4-size: 1.12rem; /* if using Delius, 1.08rem */
+		--h5-size: 1.00rem;
+		--h6-size: 1.00rem;
+
+		--h1-weight: 600;
+		--h2-weight: 600;
+		--h3-weight: 600;
+		--h4-weight: 600;
+		--h5-weight: 600;
+		--h6-weight: 600;
+
+		--h2-line-height: 1.1em;
+		--h3-line-height: 1.2em;
+		--h4-line-height: 1.25em;
+		--h5-line-height: 1.25em;
+
+		/* my own custom variables */
+		--h1-border-width: 1px;
+		--h2-border-width: 1px;
+		--h3-border-width: 0px;
+	}
+
+	.theme-light {
+		--h1-color: #224244; /* #bccad6 #DDD */
+		--h1-color: hsl(217, 22%, 30%);
+		--h2-color: #4e687e; /* shade of #55A6AD. #8d9db6 #AAA 00bdbd */
+		--h2-color: hsl(217, 22%, 40%);
+		--h3-color: #8d9db6; /* #667292 #2DC1C1 00a3a3 */
+		--h3-color: hsl(217, 22%, 50%);
+		--h4-color: #8e6d0b; /* #fbefcc AntiqueWhite */
+		--h4-color: hsl(45, 45%, 40%);
+		--h5-color: #8f410a; /* #f9ccac */
+		--h5-color: hsl(45, 45%, 30%);
+		--h6-color: #8c310d; /* #f4a688 */
+		--h6-color: hsl(45, 45%, 20%);
+		--text-selection: DarkGray;
+	}
+	.theme-dark {
+		/* my custom variables */
+		/* using https://color.adobe.com/create/color-wheel, Complementary (with #F9CCAC as Base)
+		/* prior alternatives using sky palettes and sand palettes
+		*/
+		--h1-color: #ddedee; /* #bccad6 #DDD */
+		--h1-color: hsl(217, 22%, 90%);
+		--h2-color: #bccad6; /* shade of #55A6AD. #8d9db6 #AAA 00bdbd */
+		--h2-color: hsl(217, 22%, 80%);
+		--h3-color: #8d9db6; /* #667292 #2DC1C1 00a3a3 */
+		--h3-color: hsl(217, 22%, 70%);
+		--h4-color: #fbefcc; /* #fbefcc AntiqueWhite */
+		--h4-color: hsl(45, 45%, 85%);
+		--h5-color: #f9ccac; /* #f9ccac */
+		--h5-color: hsl(45, 45%, 75%);
+		--h6-color: #f4a688; /* #f4a688 */
+		--h6-color: hsl(45, 45%, 65%);
+		--text-selection: #3333ff;
+	}
+
+
+	/* === Margin, Padding and Line Height === */
+
+		/* - Margin & Padding - Editing View - Heading NOT in bullet */
+		.cm-s-obsidian :is(.HyperMD-header-2, .HyperMD-header-3).cm-line { padding-block: 0.6em 0.3em;}
+
+		/* - Margin & Padding - Reading View */
+		.markdown-rendered h1, .markdown-rendered h2 { padding-bottom: 0.1em; } /* for distancing the border bottom */
+		:is(*, .markdown-rendered) :not(li) :is(h1, h2, h3) { margin-block: 1.4rem 0.3rem;}
+		.markdown-rendered :not(li) :is(h4, h5, h6) { margin-bottom: 0.1rem; }
+		/* margin for headers in lists */
+		.markdown-rendered ul h1,
+		.markdown-rendered ul h2 {margin-top: 0.4rem;}
+		:is(*, .markdown-rendered) ul h3 {margin-top: 0.2rem;}
+		/* margin for header in backlinks */
+		.embedded-backlinks .markdown-rendered ul h2 {margin-block: 0rem 0.3rem;}
+		.markdown-rendered li h6 {margin-top: 0; margin-bottom: 0;}
+
+		/* when collapsed */
+		/*
+		:is([class^="el-h"].is-collapsed, [class^="el-h"].is-collapsed + [class^="el-h"]) :is(h1,h2,h3) { margin-top: 0.4em; }
+		*/
+		:is([class^="el-h"].is-collapsed + [class^="el-h"]) :is(h1,h2,h3) { margin-top: 0.4em;}
+		:is([class^="el-h"].is-collapsed) :is(h2) { margin-bottom: 0.8rem;}
+		:is(li.is-collapsed + li.is-collapsed, li.is-collapsed + li) h3 { margin-top: 0; }
+
+		.HyperMD-header.HyperMD-header-2 + .HyperMD-header.HyperMD-header-2 {padding-top: 0.4em;}
+		.HyperMD-header.HyperMD-header-3 + .HyperMD-header.HyperMD-header-3 {padding-top: 0.3em;}
+
+
+		/* margin for ul after headers */
+		[class^="el-h"] + .el-ul ul {margin-top: 0;}
+
+
+		/* - Line Height & Font Weight - Editing View */
+		.cm-s-obsidian .CodeMirror-line .cm-header,
+		.cm-s-obsidian .cm-line .HyperMD-header,
+		.cm-s-obsidian .cm-header { line-height: 1.3em; }
+
+		/* --- Heading. Editing View */
+		/* "top padding" for editor's h2 & h3 but does not apply to bulletted header */
+		/*
+		.cm-s-obsidian .HyperMD-header-2::before,
+		.cm-s-obsidian .HyperMD-header-3::before { display: block; content: ""; height: 0.5rem; }
+		*/
+
+
+	/* === Border Decoration === */
+
+		/* -- for Heading NOT in bullet, use ::after so that there's padding below the bottom border */
+		.cm-s-obsidian .HyperMD-header-1::after,
+		.cm-s-obsidian .HyperMD-header-2::after,
+		.cm-s-obsidian .HyperMD-header-3::after
+			{ display: block; content: ""; }
+
+		/* create border-bottom for headers not in lists */
+		.cm-s-obsidian .HyperMD-list-line .cm-header-1, .markdown-rendered h1,
+		.cm-s-obsidian .HyperMD-header-1::after { border-bottom: var(--h1-border-width) solid var(--h1-color); }
+		.cm-s-obsidian .HyperMD-list-line .cm-header-2, .markdown-rendered h2,
+		.cm-s-obsidian .HyperMD-header-2::after { border-bottom: var(--h2-border-width) solid var(--h2-color); }
+		.cm-s-obsidian .HyperMD-list-line .cm-header-3, .markdown-rendered h3,
+		.cm-s-obsidian .HyperMD-header-3::after { border-bottom: var(--h3-border-width) solid var(--h3-color); }
+
+		/* this was testing snippet, didn't work well because .cm-header-x is a span level class
+		   - border that i put on block ::after won't be continuous when i have internal links in between the heading
+		*//*
+		.cm-s-obsidian .cm-header-1::after { display: block; content: ""; border-bottom: 1px solid var(--h1-color); }
+		.cm-s-obsidian .cm-header-2::after { display: block; content: ""; border-bottom: 1px solid var(--h2-color); }
+
+		.cm-s-obsidian .cm-header-2:not(.cm-inline-code):not(.cm-formatting):not(.cm-hmd-internal-link):not(.cm-formatting-link)::after { display: block; content:""; border-bottom: 1px solid var(--h2-color); }
+		*/
+
+
+	/* === Tags / Hashtags === */
+
+		body {
+			--tag-size: 12px;				/* 11px for 14px normal font, else 12px for 15px */
+			--tag-color: #111;
+			--tag-background: DarkSalmon;
+			--tag-radius: 0.6em;
+			--tag-padding-y: 0.1em;
+			--tag-padding-x: 0.5em;
+			--tag-color-hover: #eee;
+		}
+		.HyperMD-list-line .cm-hashtag { font-size: var(--tag-size); } /* to override 1.1.x header setting trumps .cm-hastag */
+		/* tag pill decoration */
+		/* included ":not(token) as codeblock html seems to put the inside a span with that class" */
+		/* !important added because default theme 0.16.x uses it */
+		.cm-s-obsidian span.cm-hashtag,
+		.tag:not(.token) {color: var(--tag-color); font-family: var(--font-text) !important; font-weight: normal;
+			background-image: none; /* to remove spell-error underline in hashtag */
+			/* display: inline-block; margin-bottom: 0.3em; /* this line added to make the tag float similar to h2 */
+		}
+
+
+	/* === INTERNAL LINK === */
+
+		.markdown-preview-view .internal-link { text-decoration: none; }
+		/*
+		.cm-s-obsidian span.cm-hmd-internal-link .cm-underline { text-decoration: none !important; }
+		*/
+
+
+
+
+/* =============================================================================
+	(12) Section for Content Core Customisation
 	- line spacing, default margins/paddings (not for headers/typography)
+	- Special features not direct to Markdown components (e.g. List Embed)
 ============================================================================= */
 
 	/* === General Line Spacing, Margin & Padding === */
@@ -356,10 +551,14 @@
 
 		/* embeds in popover view */
 		.popover.hover-popover { width: 550px; min-height: 400px; border: 1px solid Gray; }
-		.popover.hover-popover .markdown-embed { height: 390px; }
+		/*.popover.hover-popover .markdown-embed { height: 390px; }*/
 
 		/* adjust the padding for popover */
 		.popover.hover-popover > .markdown-embed > .markdown-embed-content > .markdown-preview-view { --file-margins: var(--size-4-2) var(--size-4-6); }
+
+		/* adjustment needed post v1.1.x, only for markdown-embed */
+		.markdown-source-view.mod-cm6 .internal-embed.markdown-embed.inline-embed .task-list-item-checkbox {margin-left: calc(var(--checkbox-size) * -1.5);}
+		.markdown-source-view.mod-cm6 .internal-embed.markdown-embed.inline-embed .markdown-rendered .list-bullet {margin-left: -1em;}
 
 
 	/* === Embed -- List Embed === */
@@ -369,19 +568,34 @@
 		.HyperMD-list-line .internal-embed.is-loaded {display: inline-grid;}
 
 		/* --- Clean Embed in Lists (on by default) --- */
-		.list-embed-global :is(.HyperMD-list-line, ul) .internal-embed.is-loaded .markdown-embed { margin: 0 0 0 calc(-1.70em + var(--list-embed-adj)); padding: 0; border: none; top: 0; background-color: ;}
-		.list-embed-global .HyperMD-list-line .internal-embed.is-loaded .markdown-embed { max-width: 600px;}
-		.list-embed-global ul .internal-embed.is-loaded .markdown-embed.markdown-embed { margin-left: calc(-1.6em + var(--list-embed-adj)); }
-		.list-embed-global :is(.HyperMD-list-line, ul) .internal-embed.is-loaded .markdown-embed ul:first-of-type { margin-block: 0;}
+		.list-embed-global :is(.HyperMD-list-line, ul) .internal-embed.is-loaded.markdown-embed { margin: 0 0 0 calc(-1.70em + var(--list-embed-adj)) !important; padding: 0; border: none; top: 0; background-color: ;}
+		.list-embed-global :is(.HyperMD-list-line, ul) .internal-embed.is-loaded.markdown-embed ul:first-of-type { margin-block: 0;}
+		.list-embed-global :is(.HyperMD-list-line, ul) .internal-embed.is-loaded.markdown-embed .markdown-embed-title {display: none;}
+		.list-embed-global .HyperMD-list-line .internal-embed.is-loaded.markdown-embed { width: calc(99%);}
+		.list-embed-global ul .internal-embed.is-loaded.markdown-embed.markdown-embed { margin-left: calc(-1.60em + var(--list-embed-adj)); }
+		.list-embed-global .HyperMD-list-line .markdown-embed .markdown-preview-view { padding-bottom: 0; }
 
 		/* --- Clean Embed in Lists (specify in alias/alt) --- */
-		/* remove margin and padding */
-		.HyperMD-list-line [alt*="list-embed"].internal-embed .markdown-embed { margin: 0 0 0 -1.7em; padding: 0; border: none; top: 0; }
-		.HyperMD-list-line .internal-embed .markdown-embed ul:first-of-type { margin-block: 0;}
-		li [alt*="list-embed"].internal-embed .markdown-embed { margin: 0 0 0 -1.6em; padding: 0; border: none; height: auto;}
+		:is(.HyperMD-list-line, li) [alt*="list-embed"].internal-embed.markdown-embed { margin: 0 0 0 calc(-1.70em + var(--list-embed-adj)) !important; padding: 0; border: none; top: 0; }
+		:is(.HyperMD-list-line, li) [alt*="list-embed"].internal-embed.markdown-embed ul:first-of-type { margin-block: 0;}
+		:is(.HyperMD-list-line, li) [alt*="list-embed"].internal-embed.markdown-embed .markdown-embed-title {display: none;}
+		.HyperMD-list-line [alt*="list-embed"].internal-embed.is-loaded.markdown-embed { width: 99%;}
+		li [alt*="list-embed"].internal-embed.is-loaded.markdown-embed.markdown-embed { margin-left: calc(-1.60em + var(--list-embed-adj)); }
+		.HyperMD-list-line [alt*="list-embed"].markdown-embed .markdown-preview-view { padding-bottom: 0; }
+
+		/* --- Clean Inline Embed in Lists (specify in alias/alt) --- */
+		:is(.HyperMD-list-line, li) [alt*="inline-embed"].internal-embed.markdown-embed { margin: 0 0 0 0; padding: 0; border: none; top: 0; }
+		:is(.HyperMD-list-line, li) [alt*="inline-embed"].internal-embed.markdown-embed p:first-of-type { margin-block: 0;}
+		:is(.HyperMD-list-line, li) [alt*="inline-embed"].internal-embed.markdown-embed .markdown-embed-title {display: none;}
+		.HyperMD-list-line [alt*="inline-embed"].internal-embed.is-loaded.markdown-embed { max-width: 99%;}
+		.HyperMD-list-line [alt*="inline-embed"].markdown-embed .markdown-preview-view { padding: 0; }
+		.HyperMD-list-line [alt*="inline-embed"].markdown-embed .markdown-preview-view p { text-decoration: underline dotted darkgray;}
+
+		/* special adjustment - padding bottom in LP */
+
 		/* hide the link icon and show when hover */
-		:is(.list-embed-global, [alt*="list-embed"]) :is(.file-embed-link svg, .markdown-embed-link) svg { opacity: 0.2; }
-		:is(.list-embed-global, [alt*="list-embed"]) :is(.markdown-embed:hover .file-embed-link svg, .markdown-embed:hover .markdown-embed-link) svg { opacity: 1; }
+		:is(.list-embed-global, [alt*="list-embed"], [alt*="inline-embed"]) :is(.file-embed-link svg, .markdown-embed-link) svg { opacity: 0.2; }
+		:is(.list-embed-global, [alt*="list-embed"], [alt*="inline-embed"]) :is(.markdown-embed:hover .file-embed-link svg, .markdown-embed:hover .markdown-embed-link) svg { opacity: 1; }
 		/* give different background color when hover */
 		:is(.list-embed-global :not(.popover), [alt*="list-embed"].internal-embed) :is(.markdown-embed, .file-embed) { background-color: var(--background-primary); }
 		:is(.list-embed-global :not(.popover), [alt*="list-embed"].internal-embed) :is(.markdown-embed:hover, .file-embed:hover) { background-color: var(--background-secondary); }
@@ -398,6 +612,176 @@
 
 	/* make it accommodate two lines */
 	.status-bar { padding-top: 0.1em; padding-bottom: 0.1em; line-height: 1em; max-height: unset; }
+
+
+
+/* =============================================================================
+	(13) Section for Markdown (Basic + Extended) Components Customisation
+	- blockquote, callout, codeblock, graph view, mermaid, table
+============================================================================= */
+
+
+	/* === BLOCK QUOTE / BLOCKQUOTE === */
+		/*	background-color: #622569; /* W3S Flower Palettes */
+		body {
+			--blockquote-border-thickness: var(--size-4-1);
+			--blockquote-background-color: var(--background-secondary);
+		}
+		/* add border radius and adjust padding but only for reading view */
+		.markdown-preview-view blockquote { border-radius: 2px 0 0 2px; }
+		.markdown-preview-view blockquote { padding-left: var(--size-4-4); padding-block: var(--size-4-2); }
+		/* blockquote in list - margin. Reading only */
+		.markdown-rendered ul li blockquote { margin: 0; padding-left: var(--size-4-3); }
+
+		/* make code block in list padding more natural. too experimental, need to wait for :has support *//*
+		.HyperMD-codeblock-begin.HyperMD-list-line.HyperMD-list-line-nobullet span.ig-tab::after {content: ""; margin-left: 5px;}
+
+		.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-codeblock + .HyperMD-codeblock .ig-tab::after,
+		.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-codeblock + .HyperMD-codeblock + .HyperMD-codeblock .ig-tab::after,
+		.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-codeblock + .HyperMD-codeblock + .HyperMD-codeblock + .HyperMD-codeblock .ig-tab::after,
+		.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-codeblock + .HyperMD-codeblock + .HyperMD-codeblock + .HyperMD-codeblock + .HyperMD-codeblock .ig-tab::after,
+		.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-codeblock + .HyperMD-codeblock + .HyperMD-codeblock + .HyperMD-codeblock + .HyperMD-codeblock + .HyperMD-codeblock .ig-tab::after
+			{ content: ""; margin-left: -4px;}
+
+		.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-codeblock,
+		.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-codeblock + .HyperMD-codeblock,
+		.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-codeblock + .HyperMD-codeblock + .HyperMD-codeblock,
+		.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-codeblock + .HyperMD-codeblock + .HyperMD-codeblock + .HyperMD-codeblock,
+		.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-codeblock + .HyperMD-codeblock + .HyperMD-codeblock + .HyperMD-codeblock + .HyperMD-codeblock,
+		.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-codeblock + .HyperMD-codeblock + .HyperMD-codeblock + .HyperMD-codeblock + .HyperMD-codeblock  + .HyperMD-codeblock
+			{ padding-left: var(--size-4-1);}
+
+
+	/* === CALLOUT BLOCKS === */
+		/* General adjustments (on paddings and margins)
+		   - added callout padding on the right (12px to 16px)
+		   - define callout content padding, initially 0 */
+		body {
+			--callout-content-padding: 10px 0 5px 0; /* i remove first, */
+			--callout-padding: var(--size-4-4) var(--size-4-4) var(--size-4-3) var(--size-4-5); /* give additional padding on the right side */
+		}
+		.callout .callout-content > *:first-of-type {margin-top: 0;}
+		.callout ul:last-of-type {margin-bottom: 0;}
+
+		/* Change icons for default "Note" callout and others */
+		.callout { --callout-icon: lucide-edit-3; }
+		.callout[data-callout="abstract"] { --callout-icon: lucide-file-text; }
+		.callout[data-callout="todo"] { --callout-icon: lucide-check-circle; }
+		.callout[data-callout="attention"] { --callout-icon: lucide-alert-octagon; }
+		.callout[data-callout="hint"] { --callout-icon: lucide-lightbulb; }
+		.callout[data-callout="important"] { --callout-icon: lucide-chevrons-up; }
+		.callout[data-callout="missing"] { --callout-icon: lucide-octagon; }
+
+		/* Default style: "callout-style-icon-right" i.e. icon on the top right */
+		body:not(.callout-style-original) .callout { position: relative; }
+		body:not(.callout-style-original) .callout > .callout-title > .callout-icon { --icon-size: 48px; opacity: 0.3; position: absolute; top: -9px; right: -8px; }
+
+		/* No Title Callout still default to "callout-style-icon-right" even if "callout-style-orignal" selected */
+		.callout[data-callout-metadata*="no-title"] { position: relative; }
+		.callout[data-callout-metadata*="no-title"] > .callout-title > .callout-icon { --icon-size: 48px; opacity: 0.3; position: absolute; top: -9px; right: -8px;}
+		.callout[data-callout-metadata*="no-title"] > .callout-title > .callout-title-inner { display: none; }
+		.callout[data-callout-metadata*="no-title"] > .callout-content { padding-top: 0; padding-right: 2em;}
+
+	/* === Codeblock / Code block === */
+		/* put border but not for yaml */
+		.markdown-rendered pre:not(.frontmatter) { border: 1px solid var(--background-secondary); }
+
+		/* Custom scrollbar, padding and rounded corner (border radius) for Editing & Reading view */
+		.HyperMD-codeblock, .markdown-preview-view pre code { white-space: pre; }
+		/* code block & inline code - font & padding. Editing & Reading */
+		.markdown-preview-view code,
+		.cm-s-obsidian .cm-inline-code { font-size: 0.9em; border-radius: var(--radius-s); padding: 0.1em 0.25em; font-family: var(--font-monospace); }
+		/* remove radius and padding on the inline code when it is active (showing formatting) */
+		.cm-formatting-code.cm-inline-code + .cm-inline-code { border-radius: 0; padding-inline: 0; }
+		/* remove radius and padding on the formatting part - left and right */
+		.cm-formatting-code:not(.cm-inline-code + .cm-formatting-code) { border-radius: var(--radius-s) 0 0 var(--radius-s); padding-inline: 0.25em 0; }
+		.cm-inline-code + .cm-formatting-code { border-radius: 0 var(--radius-s) var(--radius-s) 0; padding-inline: 0 0.25em; }
+
+		/* code block only - margin. Reading only */
+		.markdown-preview-view pre { margin: 0.1em 0 1em; }
+		.markdown-preview-view li pre { margin: 0.1em 0 0.1em; }
+
+	/* === Code Comment === */
+		.HyperMD-list-line .cm-comment {color: var(--code-comment); font-weight: normal; font-family: var(--font-text); font-size: var(--font-text-size);}
+
+	/* === Graph View Mods ===*/
+		/* to style the new nodes in the 0.9.1+ */
+		.theme-light .graph-view.color-arrow { color: #5cc863; }
+		.theme-light .graph-view.color-fill-tag { color: #440154; }
+		.theme-light .graph-view.color-fill-attachment { color: #277f8e; }
+		.theme-light .graph-view.color-circle { color: var(--text-normal); }
+		.theme-light .graph-view.color-text { color: var(--text-normal); }
+		.theme-light .graph-view.color-fill-highlight { color: var(--interactive-accent); }
+		.theme-light .graph-view.color-line-highlight { color: rgb(var(--interactive-accent-rgb)); }
+
+		.theme-dark .graph-view.color-fill-unresolved {	/* color: #fde725; */ }
+		.theme-dark .graph-view.color-fill { color: DimGray; }
+		.theme-dark .graph-view.color-line { color: DarkSlateGray; /*  color: var(--background-modifier-border); */ }
+
+
+	/* === List Bullet Style === */
+
+		body {
+		 --list-bullet-size: 0.3rem;
+		}
+
+		/* === Obsidian v1.x.x Reading View List Bullet === */
+		.markdown-rendered .list-bullet:after { visibility: hidden; }
+		.markdown-rendered ul.has-list-bullet { list-style-type: unset; }
+		/* further fix because default theme make the li::marker color transparent */
+		.markdown-rendered ul.has-list-bullet li::marker { color: var(--list-marker-color) }
+		.markdown-rendered ul.has-list-bullet li.is-collapsed::marker { color: var(--list-marker-color-collapsed); }
+
+		/* disc - circle - square */
+		.list-d-c-s .cm-list-1 .list-bullet::after { }
+		.list-d-c-s .cm-list-2 .list-bullet::after { width: calc(0.3rem - 1px); height: calc(0.3rem - 1px); outline: 1px solid; background-color: transparent; }
+		.list-d-c-s .cm-list-3 .list-bullet::after { border-radius: 0%; }
+
+		.list-d-c-s .markdown-rendered ul .list-bullet::after,
+		.list-d-c-s .markdown-rendered ul ul ul ul .list-bullet::after,
+		.list-d-c-s .markdown-rendered ul ul ul ul ul ul ul .list-bullet::after { width: var(--list-bullet-size); height: var(--list-bullet-size); outline: none; background-color: var(--list-marker-color); border-radius: var(--list-bullet-radius); }
+		.list-d-c-s .markdown-rendered ul ul .list-bullet::after,
+		.list-d-c-s .markdown-rendered ul ul ul ul ul .list-bullet::after,
+		.list-d-c-s .markdown-rendered ul ul ul ul ul ul ul ul .list-bullet::after { width: calc(0.3rem - 1px); height: calc(0.3rem - 1px); outline: 1px solid; background-color: transparent; border-radius: var(--list-bullet-radius); }
+		.list-d-c-s .markdown-rendered ul ul ul .list-bullet::after,
+		.list-d-c-s .markdown-rendered ul ul ul ul ul ul .list-bullet::after,
+		.list-d-c-s .markdown-rendered ul ul ul ul ul ul ul ul ul .list-bullet::after { width: var(--list-bullet-size); height: var(--list-bullet-size); outline: none; background-color: var(--list-marker-color); border-radius: 0%; }
+
+
+		.list-d-c-s .markdown-rendered ul.has-list-bullet,
+		.list-d-c-s .markdown-rendered ul ul ul ul.has-list-bullet,
+		.list-d-c-s .markdown-rendered ul ul ul ul ul ul ul.has-list-bullet { list-style-type: disc;}
+		.list-d-c-s .markdown-rendered ul ul.has-list-bullet,
+		.list-d-c-s .markdown-rendered ul ul ul ul ul.has-list-bullet,
+		.list-d-c-s .markdown-rendered ul ul ul ul ul ul ul ul.has-list-bullet { list-style-type: circle;}
+		.list-d-c-s .markdown-rendered ul ul ul.has-list-bullet,
+		.list-d-c-s .markdown-rendered ul ul ul ul ul ul.has-list-bullet,
+		.list-d-c-s .markdown-rendered ul ul ul ul ul ul ul ul ul.has-list-bullet { list-style-type: square;}
+
+		/* disc - circle */
+		.list-d-c-d .HyperMD-list-line-1 .cm-formatting-list-ul .list-bullet::after { }
+		.list-d-c-d :is(.HyperMD-list-line-2, .HyperMD-list-line-4, .HyperMD-list-line-6, .HyperMD-list-line-8) .cm-formatting-list-ul .list-bullet::after { width: calc(0.3rem - 1px); height: calc(0.3rem - 1px); outline: 1px solid; background-color: transparent; }
+
+		.list-d-c-d .markdown-rendered ul.has-list-bullet,
+		.list-d-c-d .markdown-rendered ul ul ul.has-list-bullet,
+		.list-d-c-d .markdown-rendered ul ul ul ul ul.has-list-bullet,
+		.list-d-c-d .markdown-rendered ul ul ul ul ul ul ul.has-list-bullet { list-style-type: disc;}
+		.list-d-c-d .markdown-rendered ul ul.has-list-bullet,
+		.list-d-c-d .markdown-rendered ul ul ul ul.has-list-bullet,
+		.list-d-c-d .markdown-rendered ul ul ul ul ul ul.has-list-bullet,
+		.list-d-c-d .markdown-rendered ul ul ul ul ul ul ul ul.has-list-bullet { list-style-type: circle;}
+
+
+	/* === Mermaid related === */
+		/* Title customisation */
+		.mermaid .titleText {font-family: var(--h2-font) !important;}
+
+		/* SVG max-width 100% and zoom on click */
+		.view-content :is(.cm-editor, .markdown-preview-view) .mermaid svg
+			{ max-width: 100%; cursor: zoom-in; height: 100% }
+		body:not(.is-mobile) .view-content :is(.cm-editor,.markdown-preview-view) .mermaid svg:active {
+			cursor: zoom-out; display: block; max-height: calc(100% + 1px); max-width: calc(100% - 20px); height: calc(100% + 1px); width: 100%; object-fit: contain;
+			margin: -0.5px auto 0; padding: 0; text-align: center; z-index: 100; position: fixed; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.8); }
 
 
 	/* === TABLE formatting === */
@@ -423,163 +807,109 @@
 
 
 
-	/* === CODE BlOCK === */
-		/* put border but not for yaml */
-		.markdown-rendered pre:not(.frontmatter) { border: 1px solid var(--background-secondary); }
-
-
-	/* === CALLOUT BLOCKS === */
-		/* - added callout padding on the right (12px to 16px)
-		   - define callout content padding, initially 0 */
-		body {
-			--callout-content-padding: 10px 0 5px 0; /* i remove first, */
-			--callout-padding: var(--size-4-3) var(--size-4-4) var(--size-4-3) var(--size-4-6); /* give additional padding on the right side */
-		}
-		/*.callout ul:first-child {margin-left: 0.3rem;}*/
-		.callout ul:first-of-type {margin-top: 0;}
-		.callout ul:last-of-type {margin-bottom: 0;}
-
-
-	/* === BLOCK QUOTE / BLOCKQUOTE === */
-		/*	background-color: #622569; /* W3S Flower Palettes */
-		body {
-			--blockquote-border-thickness: var(--size-4-1);
-			--blockquote-background-color: var(--background-secondary);
-		}
-		/* add border radius and adjust padding but only for reading view */
-		.markdown-preview-view blockquote { border-radius: 2px 0 0 2px; }
-		.markdown-preview-view blockquote { padding-left: var(--size-4-4); padding-block: var(--size-4-2); }
-		/* blockquote in list - margin. Reading only */
-		.markdown-rendered ul li blockquote { margin: 0; padding-left: var(--size-4-3); }
-
-
-	/* === Graph View Mods ===*/
-		/* to style the new nodes in the 0.9.1+ */
-		.theme-light .graph-view.color-arrow { color: #5cc863; }
-		.theme-light .graph-view.color-fill-tag { color: #440154; }
-		.theme-light .graph-view.color-fill-attachment { color: #277f8e; }
-		.theme-light .graph-view.color-circle { color: var(--text-normal); }
-		.theme-light .graph-view.color-text { color: var(--text-normal); }
-		.theme-light .graph-view.color-fill-highlight { color: var(--interactive-accent); }
-		.theme-light .graph-view.color-line-highlight { color: rgb(var(--interactive-accent-rgb)); }
-
-		.theme-dark .graph-view.color-fill-unresolved {	/* color: #fde725; */ }
-		.theme-dark .graph-view.color-fill { color: DimGray; }
-		.theme-dark .graph-view.color-line { color: DarkSlateGray; /*  color: var(--background-modifier-border); */ }
-
-		/* === Mermaid related === */
-		/* title */
-		.mermaid .titleText {font-family: var(--h2-font) !important;}
-
-
 /* =============================================================================
-	SECTION for EDGE CASES / MINOR TWEAKS
+	(21) Section for Edge Cases / Tweaks
 	- datavew dv-card / dv-list-nav
 ============================================================================= */
 
 
-
-/* === adjust margin for ## Review section === */
-	div[class*="flashcards"] ~ div.el-h5 + div.el-p p { margin-block: 0.5em 0; }
-	/* remove top margin for ul for the answers */
-	div[class*="flashcards"] ~ .el-h5 + .el-p + .el-div .callout ul:first-child { margin-top: 0.2em; }
-	div[class*="flashcards"] ~ .el-h5 + .el-p + .el-ul ul { margin-top: 0.2em; }
-
-/* === Nav sidebar Nav Icon for search === */
-	/* using .mod-left-split to target only for the side bar */
-	.mod-left-split .nav-action-button { margin-inline: 1px; }
-	.mod-left-split .nav-header { padding-inline: 10px; }
+	/* === Core Plugin: Search sidebar nav icon margin/padding === */
+		/* using .mod-left-split to target only for the side bar */
+		.mod-left-split .nav-action-button { margin-inline: 1px; }
+		.mod-left-split .nav-header { padding-inline: 10px; }
 
 
-/* === OTHERS / MISC === */
-	/* --- paragraph */
-	/* adjusting for a ul, ol after paragraph */
-	p { margin-block-end: 0.5em; }
-	/* adjusting for paragraph inside ul/ol li */
-	li p { margin-block: 0; }
-	/* adjusting for a p immediately after a h3 or h4 */
-	div.el-h3 + div.el-p > p,
-	div.el-h4 + div.el-p > p { margin-block-start: 0.6em; }
-
-/* === Mod for Spaced Repitition === */
-	.el-h6 + .el-p p {
-		margin-top: 0;
-	}
+	/* === OTHERS / MISC === */
+		/* --- paragraph */
+		/* adjusting for a ul, ol after paragraph */
+		p { margin-block-end: 0.5em; }
+		/* adjusting for paragraph inside ul/ol li */
+		li p { margin-block: 0; }
+		/* adjusting for a p immediately after a h3 or h4 */
+		div.el-h3 + div.el-p > p,
+		div.el-h4 + div.el-p > p { margin-block-start: 0.6em; }
 
 
-/* === Mod for escape char === */
-	.cm-line:not(.cm-active) > span.cm-hmd-escape-backslash { display: none; }
-	.cm-s-obsidian span.cm-hmd-escape-char { color: #808080; }
-
-
-/* === Hider -- to hide things === */
-	/* hide frontmatter, yaml */
-	body { --lst-frontmatter-display: none; }
-	.frontmatter-container { display: var(--lst-frontmatter-display); }
+	/* === Mod for escape char === */
+		.cm-line:not(.cm-active) > span.cm-hmd-escape-backslash { display: none; }
+		.cm-s-obsidian span.cm-hmd-escape-char { color: #808080; }
 
 
 
+	/* === Metadata Frontmatter / YAML === */
+		:is(.lst-fm-compact, .lst-fm-std) .frontmatter-container .frontmatter-container-header:hover {color: var(--text-muted);}
+
+		body:is(.lst-fm-compact,*) .frontmatter-container { position: relative; display: flex; flex-wrap: wrap; font-size: 0.8rem; background-color: var(--code-background); border-radius: var(--size-4-1); padding: var(--size-4-1) var(--size-4-2);}
+		body:is(.lst-fm-compact,*) .frontmatter-container.is-collapsed {padding: 0;}
+		body:is(.lst-fm-compact,*) .frontmatter-container .frontmatter-container-header { position: absolute; right: 3px; top: -0.2rem; border-bottom-width: 0px; color: var(--text-faint); margin: 0; padding: 0; }
+		body:is(.lst-fm-compact,*) .frontmatter-container .frontmatter-section,
+		body:is(.lst-fm-compact,*) .frontmatter-container .frontmatter-section:last-child {margin-bottom: 0; margin-right: 12px; }
+		body:is(.lst-fm-compact,*) .frontmatter-container .frontmatter-section-label {font-family: var(--font-monospace); font-size: 0.8rem; flex: 0 1 max-content; color: var(--text-faint);}
+
+		body.lst-fm-std .frontmatter-container { display: block; font-size: 0.8rem; background-color: var(--background-modifier-backlinks); border-radius: var(--size-4-1); padding: var(--size-4-1) var(--size-4-2);}
+		body.lst-fm-std .frontmatter-container .frontmatter-container-header { position: relative; border-bottom-width: 1px; color: var(--text-faint); margin: 0; padding: 0; }
+		body.lst-fm-std .frontmatter-container .frontmatter-section,
+		body.lst-fm-std .frontmatter-container .frontmatter-section:last-child {margin-bottom: 0; margin-right: 12px; }
+		body.lst-fm-std .frontmatter-container .frontmatter-section-label {font-family: var(--font-monospace); font-size: 0.8rem; flex: 0 1 4em; color: var(--text-faint);}
+		body.lst-fm-std .frontmatter-container.is-collapsed .frontmatter-container-header { border-bottom-width: 0px;}
 
 
 
+	/* === Custom Layout / Special Cards === */
+		/* -- MCL Grid, alpha */
+		.tag-mclgrid ul:first-child
+			{ display: grid; grid-template-columns: repeat(auto-fit,minmax(12rem,1fr)); padding-left: 0;}
+		.tag-mclgrid ul ul:not(ul ul ul) { padding-left: 0.1em; }
+		.tag-mclgrid ul::before {display: none;}
+		.tag-mclgrid li {list-style: none;}
+		.tag-mclgrid li li li {list-style: circle;}
+		.tag-mclgrid ul:not(ul ul) > li
+			{ margin-inline: 0.2em; margin-bottom: 0.3em; padding: 0.3em 0.5em; outline: 0px solid var(--background-secondary-alt); border-radius: 0.5em; background-color: var(--background-secondary); }
+		.tag-mclgrid ul:not(ul ul) > li img {width: 100%;}
+		.tag-mclgrid ul img {margin: 0; float: none;}
+		div[class*="mcl"] a[href*="#mcl"] {display: none;}
+		span[class*="mcl"]	{background-color: var(--background-secondary) !important; color: gray !important;}
 
-/* === Custom Layout / Special Cards === */
-	/* -- MCL Grid, alpha */
-	.tag-mclgrid ul:first-child
-		{ display: grid; grid-template-columns: repeat(auto-fit,minmax(12rem,1fr)); padding-left: 0;}
-	.tag-mclgrid ul ul:not(ul ul ul) { padding-left: 0.1em; }
-	.tag-mclgrid ul::before {display: none;}
-	.tag-mclgrid li {list-style: none;}
-	.tag-mclgrid li li li {list-style: circle;}
-	.tag-mclgrid ul:not(ul ul) > li
-		{ margin-inline: 0.2em; margin-bottom: 0.3em; padding: 0.3em 0.5em; outline: 0px solid var(--background-secondary-alt); border-radius: 0.5em; background-color: var(--background-secondary); }
-	.tag-mclgrid ul:not(ul ul) > li img {width: 100%;}
-	.tag-mclgrid ul img {margin: 0; float: none;}
-	div[class*="mcl"] a[href*="#mcl"] {display: none;}
-	span[class*="mcl"]	{background-color: var(--background-secondary) !important; color: gray !important;}
+		/* -- hide the headings */
+		.markdown-embed-heading div[data-tag-name*="h"] {display: none;}
 
-	/* -- hide the headings */
-	.markdown-embed-heading div[data-tag-name*="h"] {display: none;}
+		/* -- testing Timeline in lists */
+		    .tag-mcltimeline > ul > li {padding-bottom: 0.5em; }
+		    .tag-mcltimeline > ul > li > *:not(ul) { text-align: center; align-self: baseline; }
+		    .tag-mcltimeline > ul > li {
+		        display: grid;
+		        grid-template-columns: 0 3fr 7fr;
+		        grid-template-rows: auto;
+		        grid-template-areas:
+		            "indicator timeline details"
+		            "indicator . details";
+		        grid-column-gap: 1em;
 
-	/* -- testing Timeline in lists */
-	    .tag-mcltimeline > ul > li {padding-bottom: 0.5em; }
-	    .tag-mcltimeline > ul > li > *:not(ul) { text-align: center; align-self: baseline; }
-	    .tag-mcltimeline > ul > li {
-	        display: grid;
-	        grid-template-columns: 0 3fr 7fr;
-	        grid-template-rows: auto;
-	        grid-template-areas:
-	            "indicator timeline details"
-	            "indicator . details";
-	        grid-column-gap: 1em;
+		        border-radius: 1em;
+		        margin-bottom: 0.5em;
+		        text-align: center;
 
-	        border-radius: 1em;
-	        margin-bottom: 0.5em;
-	        text-align: center;
-
-	    }
-	    .tag-mcltimeline > ul > li > ul { grid-area: details; text-align: left; padding-right: 1em; }
-		/* squeezed the bullet/indicator in the indicator area with 0 width */
-		.tag-mcltimeline > ul > li > .list-bullet { grid-area: indicator; }
-		.tag-mcltimeline > ul > li > .collapse-indicator { grid-area: indicator; }
+		    }
+		    .tag-mcltimeline > ul > li > ul { grid-area: details; text-align: left; padding-right: 1em; }
+			/* squeezed the bullet/indicator in the indicator area with 0 width */
+			.tag-mcltimeline > ul > li > .list-bullet { grid-area: indicator; }
+			.tag-mcltimeline > ul > li > .collapse-indicator { grid-area: indicator; }
 
 
-/* === image modifier === */
-	.workspace-leaf-content :is(.HyperMD-list-line,ul)  img:not([width])
-		{max-width: 300px;}
-	/* to ensure image with transparency have some background color, specify "bgcolor" in alt text */
-	img[alt*="bgcolor"] { background-color: var(--h2-color); }
+	/* === image modifier === */
+		.workspace-leaf-content :is(.HyperMD-list-line,ul)  img:not([width]) { max-width: 300px; }
+		/* to ensure image with transparency have some background color, specify "bgcolor" in alt text */
+		img[alt*="bgcolor"] { background-color: var(--h2-color); }
 
-/* === special formatting for path/steps ===*/
-	span.path, span.option, span.selection
-		{ background-color: DarkSlateGray; border-radius: 0.2em; padding-inline: 0.2em; font-weight: 600; font-family: var(--font-monospace); }
+	/* === special formatting for path/steps ===*/
+		span.path, span.option, span.selection { background-color: DarkSlateGray; border-radius: 0.2em; padding-inline: 0.2em; font-weight: 600; font-family: var(--font-monospace); }
 
-	/* === Mod for mobile heading indent multiline === */
-	/* to fix second/third line for headings not aligned with the first line */
-		.is-mobile .heading-collapse-indicator.collapse-indicator.collapse-icon {
-			padding-left: 8px;
-			padding-right: 4px;
-		}
+		/* === Mod for mobile heading indent multiline === */
+		/* to fix second/third line for headings not aligned with the first line */
+			.is-mobile .heading-collapse-indicator.collapse-indicator.collapse-icon {
+				padding-left: 8px;
+				padding-right: 4px;
+			}
 
 	/* === Mod for float image in lists === */
 		.tag-mcllist-float-img ul img {float: right; margin-left: 0.5em;}
@@ -603,7 +933,7 @@
 
 
 /* =============================================================================
-	SECTION for MODS FOR MOBILE
+	(22) Section for Mobile Only Features
 	- FAB
 ============================================================================= */
 
@@ -634,7 +964,7 @@
 
 
 /* =============================================================================
-	SECTION for Plugins Support/Adjustment
+	(31) Section for Plugins Support / Adjustment
 	- Outliner and Zoom
 	- Indentation Guide and Style Settings
 	- Query Control and SNW
@@ -658,6 +988,23 @@
 		}
 
 
+	/* === Plugin: Indentation Guide (mgmeyer) === */
+
+		/* adjustment for relationship width */
+		.ig-uncategorized .cm-line[style*="text-indent"]:not(.HyperMD-list-line) .ig-tab::before,
+		.ig-lists .HyperMD-list-line .ig-tab::before,
+		.ig-code .HyperMD-codeblock .ig-tab::before { width: 1px !important; }
+
+		/* --- Obsidian own Indentation guide feature */
+		body {
+			--indentation-guide-color: var(--background-modifier-border) !important;
+			--indentation-guide-color-active: var(--background-modifier-border-active);
+			--indentation-guide-active-color: var(--background-modifier-border-active) !important; /* for mgmeyer's plugin */
+		}
+		.markdown-rendered.show-indentation-guide li > ul::before, .markdown-rendered.show-indentation-guide li > ol::before
+			{ left: calc(-14px + var(--list-guide-outliner-adj)); }
+
+
 	/* === Plugin: Obsidian Charts === */
 		.block-language-chart { margin-left: 0 !important; }
 		.hidden-offset { --chart-color-1: #333; --chart-color-2: blue; }
@@ -673,10 +1020,50 @@
 		.omnisearch-modal .modal-title {padding: 1em 1em 0;}
 
 
+	/* === Plugin: Outliner and Zoom === */
+
+		/* Zoom plugin adjustment for my bullet spacing adjustment above */
+		.zoom-plugin-bls-zoom .cm-editor .cm-formatting-list-ul:hover:before,
+		.zoom-plugin-bls-zoom .cm-editor .list-bullet:hover:before
+			{ margin-top: -0.05em !important; margin-left: -0.15em !important; }
+		/* --- Adjustment for Outliner Plugin --- */
+		.outliner-plugin-list-lines-content-container { left: calc(22px + var(--list-guide-outliner-adj)); }
+
+
 	/* === Plugin: Spaced Repitition === */
+		/* prettify the review modal dialog box */
 		.sr-modal-content .tree-item-flair-outer { flex-basis: 80px; }
 		.sr-modal-content .tree-item-flair-outer > span { width: 100%; display: flex; }
 		.sr-modal-content .tree-item-flair-outer > span > span { flex: 1 1 auto; text-align: center; padding-block: 0.1em; }
+
+		/* adjust margin for ## Review section (#flashcards) */
+		div[class*="flashcards"] ~ :is(.el-h5, .el-h6) + div.el-p p { margin-block: 0.4em 0; }
+		/* remove top margin for ul for the answers */
+		div[class*="flashcards"] ~ .el-h5 + .el-p + .el-div .callout ul:first-child { margin-top: 0.2em; }
+		div[class*="flashcards"] ~ .el-h5 + .el-p + .el-ul ul { margin-top: 0.2em; }
+
+
+	/* === Plugin: Strange New Word (SNW) === */
+
+		/* adjustment for SNW plugin -- follow exactly per app.css but remove the `.markdown-rendered` */
+		.snw-ref-item-info.search-result-file-match:hover {background-color: var(--background-modifier-hover);}
+
+		/* SNW block reference counter - adjustment for List Embed compatibility */
+		[alt*="list-embed"] ~ .snw-reference.snw-embed.snw-embed { position: absolute; right: 2.5em; top: 0.5em; }
+		.list-embed-global :is(.HyperMD-list-line, ul) .internal-embed.is-loaded ~ .snw-reference.snw-embed.snw-embed { position: absolute; right: 2.5em; top: 0.5em; }
+
+		/* Hide SNW reference counter inside embedded notes (that maybe recursive in nature) */
+		[alt*="list-embed"] .markdown-preview-section > div > ul > li > .snw-reference.snw-block-preview,
+		.list-embed-global :is(.HyperMD-list-line, ul) .internal-embed.is-loaded .markdown-preview-section > div > ul > li > .snw-reference.snw-block-preview { display: none;}
+
+
+
+		ul li {position: relative;}
+		li .snw-reference.snw-block-preview { position:absolute; top: 1em; right: 0; }
+		.snw-reference.snw-embed + br {display: none;}
+
+		/* make the numbers not bold */
+		.snw-reference {font-weight: normal;}
 
 
 	/* === Plugin: Style Settings === */
@@ -686,7 +1073,7 @@
 		.view-content .style-settings-container[data-level="2"] {padding-left: 1rem; margin-left: 0; }
 		/* adjust the padding left */
 		.style-settings-container[data-level="0"] {margin-left: 0.3rem; margin-bottom: 1em;}
-		.style-settings-heading[data-level] + .style-settings-container {padding-left: 1.5rem;}
+		.style-settings-heading[data-level] + .style-settings-container {padding-left: 1.2rem;}
 		/* */
 		.style-settings-heading[data-level="0"]:not(.is-collapsed) { margin-bottom: 1em;}
 		/* adjust padding for collapse icon only for first header */
@@ -705,257 +1092,13 @@
 		/* adjust the bottom padding to avoid overflow */
 		.workspace-leaf-content[data-type="style-settings"] > .view-content {padding-bottom: 2rem;}
 
-	/* === Plugin: Strange New Word (SNW) === */
-
-		/* adjustment for SNW plugin -- follow exactly per app.css but remove the `.markdown-rendered` */
-		.snw-ref-item-info.search-result-file-match:hover {background-color: var(--background-modifier-hover);}
-
-		/* SNW block reference counter - adjustment for List Embed compatibility */
-		[alt*="list-embed"] ~ .snw-reference.snw-embed.snw-embed { position: absolute; right: 2.5em; top: 0.5em; }
-		.list-embed-global :is(.HyperMD-list-line, ul) .internal-embed.is-loaded ~ .snw-reference.snw-embed.snw-embed { position: absolute; right: 2.5em; top: 0.5em; }
-
-		ul li {position: relative;}
-		li .snw-reference.snw-block-preview { position:absolute; top: 1em; right: 0; }
-		.snw-reference.snw-embed + br {display: none;}
-
-		/* make the numbers not bold */
-		.snw-reference {font-weight: normal;}
 
 
-	/* === Plugin: Outliner and Zoom === */
-
-		/* Zoom plugin adjustment for my bullet spacing adjustment above */
-		.zoom-plugin-bls-zoom .cm-editor .cm-formatting-list-ul:hover:before,
-		.zoom-plugin-bls-zoom .cm-editor .list-bullet:hover:before
-			{ margin-top: -0.05em !important; margin-left: -0.15em !important; }
-		/* --- Adjustment for Outliner Plugin --- */
-		.outliner-plugin-list-lines-content-container { left: calc(22px + var(--list-guide-outliner-adj)); }
 
 
-	/* === mgmeyer Indentation Guide Plugin Adjustment === */
 
-		/* adjustment for relationship width */
-		.ig-uncategorized .cm-line[style*="text-indent"]:not(.HyperMD-list-line) .ig-tab::before,
-		.ig-lists .HyperMD-list-line .ig-tab::before,
-		.ig-code .HyperMD-codeblock .ig-tab::before { width: 1px !important; }
-
-		/* --- Obsidian own Indentation guide feature */
-		body {
-			--indentation-guide-color: var(--background-modifier-border) !important;
-			--indentation-guide-color-active: var(--background-modifier-border-active);
-			--indentation-guide-active-color: var(--background-modifier-border-active) !important; /* for mgmeyer's plugin */
-		}
-		.markdown-rendered.show-indentation-guide li > ul::before, .markdown-rendered.show-indentation-guide li > ol::before
-			{ left: calc(-14px + var(--list-guide-outliner-adj)); }
-
-
-/*
-	This snippets contain css code for typography formatting. This includes the following
-	- tags pill
-	- inline code & code block formatting
-	- internal link formatting
-	- blockquote
-*/
-
-
-/* =============================================================================
-	Section for Typography (including Heading or Header)
-	- header color theme, font type and style
-	- header spacing and margins (including those in ul/ol)
-	- code block, mathjax/latex
-==============================================================================*/
-
-	.theme-light {
-		--h1-color: #224244; /* #bccad6 #DDD */
-		--h1-color: hsl(217, 22%, 30%);
-		--h2-color: #4e687e; /* shade of #55A6AD. #8d9db6 #AAA 00bdbd */
-		--h2-color: hsl(217, 22%, 40%);
-		--h3-color: #8d9db6; /* #667292 #2DC1C1 00a3a3 */
-		--h3-color: hsl(217, 22%, 50%);
-		--h4-color: #8e6d0b; /* #fbefcc AntiqueWhite */
-		--h4-color: hsl(45, 45%, 40%);
-		--h5-color: #8f410a; /* #f9ccac */
-		--h5-color: hsl(45, 45%, 30%);
-		--h6-color: #8c310d; /* #f4a688 */
-		--h6-color: hsl(45, 45%, 20%);
-		--text-selection: DarkGray;
-	}
-	.theme-dark {
-		/* my custom variables */
-		/* using https://color.adobe.com/create/color-wheel, Complementary (with #F9CCAC as Base)
-		/* prior alternatives using sky palettes and sand palettes
-		*/
-		--h1-color: #ddedee; /* #bccad6 #DDD */
-		--h1-color: hsl(217, 22%, 90%);
-		--h2-color: #bccad6; /* shade of #55A6AD. #8d9db6 #AAA 00bdbd */
-		--h2-color: hsl(217, 22%, 80%);
-		--h3-color: #8d9db6; /* #667292 #2DC1C1 00a3a3 */
-		--h3-color: hsl(217, 22%, 70%);
-		--h4-color: #fbefcc; /* #fbefcc AntiqueWhite */
-		--h4-color: hsl(45, 45%, 85%);
-		--h5-color: #f9ccac; /* #f9ccac */
-		--h5-color: hsl(45, 45%, 75%);
-		--h6-color: #f4a688; /* #f4a688 */
-		--h6-color: hsl(45, 45%, 65%);
-		--text-selection: #3333ff;
-	}
-
-	body {
-		--h1-font: Courgette;
-		--h2-font: Courgette;
-		--h3-font: 'Karla', 'Inter';
-		--h4-font: 'Karla', 'Inter';
-		--default-font: 'Inter';
-		--font-text-theme: 'Inter'; /* obsidian app.css variable */
-		--keyheader-font: 'Open Sans'; /* Delius */
-		/* these are obsidian app.css variables */
-
-		--h1-size: 1.60rem;
-		--h2-size: 1.48rem;
-		--h3-size: 1.36rem;
-		--h4-size: 1.12rem; /* if using Delius, 1.08rem */
-		--h5-size: 1.00rem;
-		--h6-size: 1.00rem;
-
-		--h1-weight: 600;
-		--h2-weight: 600;
-		--h3-weight: 600;
-		--h4-weight: 600;
-		--h5-weight: 600;
-		--h6-weight: 600;
-
-		--h2-line-height: 1.1em;
-		--h3-line-height: 1.2em;
-		--h4-line-height: 1.25em;
-		--h5-line-height: 1.25em;
-
-		/* my own custom variables */
-		--h1-border-width: 1px;
-		--h2-border-width: 1px;
-		--h3-border-width: 0px;
-	}
-
-
-	/* === Margin and Padding === */
-
-		/* - Margin & Padding - Editing View - Heading NOT in bullet */
-		.cm-s-obsidian :is(.HyperMD-header-2, .HyperMD-header-3).cm-line { padding-block: 0.6em 0.3em;}
-
-		/* - Margin & Padding - Reading View */
-		.markdown-rendered h1, .markdown-rendered h2 { padding-bottom: 0.1em; } /* for distancing the border bottom */
-		:is(*, .markdown-rendered) :not(li) :is(h1, h2, h3) { margin-block: 1.4rem 0.3rem;}
-		.markdown-rendered :not(li) :is(h4, h5, h6) { margin-bottom: 0.1rem; }
-		/* margin for headers in lists */
-		.markdown-rendered ul h1,
-		.markdown-rendered ul h2 {margin-top: 0.4rem;}
-		:is(*, .markdown-rendered) ul h3 {margin-top: 0.2rem;}
-		/* margin for header in backlinks */
-		.embedded-backlinks .markdown-rendered ul h2 {margin-block: 0rem 0.3rem;}
-		.markdown-rendered li h6 {margin-top: 0; margin-bottom: 0;}
-
-		/* when collapsed */
-		/*
-		:is([class^="el-h"].is-collapsed, [class^="el-h"].is-collapsed + [class^="el-h"]) :is(h1,h2,h3) { margin-top: 0.4em; }
-		*/
-		:is([class^="el-h"].is-collapsed + [class^="el-h"]) :is(h1,h2,h3) { margin-top: 0.4em;}
-		:is([class^="el-h"].is-collapsed) :is(h2) { margin-bottom: 0.8rem;}
-		:is(li.is-collapsed + li.is-collapsed, li.is-collapsed + li) h3 { margin-top: 0; }
-
-		.HyperMD-header.HyperMD-header-2 + .HyperMD-header.HyperMD-header-2 {padding-top: 0.4em;}
-		.HyperMD-header.HyperMD-header-3 + .HyperMD-header.HyperMD-header-3 {padding-top: 0.3em;}
-
-
-		/* margin for ul after headers */
-		[class^="el-h"] + .el-ul ul {margin-top: 0;}
-
-
-	/* - Line Height & Font Weight - Editing View */
-	.cm-s-obsidian .CodeMirror-line .cm-header,
-	.cm-s-obsidian .cm-line .HyperMD-header,
-	.cm-s-obsidian .cm-header { line-height: 1.3em; }
-
-	/* --- Heading. Editing View */
-	/* "top padding" for editor's h2 & h3 but does not apply to bulletted header */
-	/*
-	.cm-s-obsidian .HyperMD-header-2::before,
-	.cm-s-obsidian .HyperMD-header-3::before { display: block; content: ""; height: 0.5rem; }
-	*/
-
-
-	/* === Border Decoration === */
-
-		/* -- for Heading NOT in bullet, use ::after so that there's padding below the bottom border */
-		.cm-s-obsidian .HyperMD-header-1::after,
-		.cm-s-obsidian .HyperMD-header-2::after,
-		.cm-s-obsidian .HyperMD-header-3::after
-			{ display: block; content: ""; }
-
-		/* create border-bottom for headers not in lists */
-		.cm-s-obsidian .HyperMD-list-line .cm-header-1, .markdown-rendered h1,
-		.cm-s-obsidian .HyperMD-header-1::after { border-bottom: var(--h1-border-width) solid var(--h1-color); }
-		.cm-s-obsidian .HyperMD-list-line .cm-header-2, .markdown-rendered h2,
-		.cm-s-obsidian .HyperMD-header-2::after { border-bottom: var(--h2-border-width) solid var(--h2-color); }
-		.cm-s-obsidian .HyperMD-list-line .cm-header-3, .markdown-rendered h3,
-		.cm-s-obsidian .HyperMD-header-3::after { border-bottom: var(--h3-border-width) solid var(--h3-color); }
-
-
-	/* this was testing snippet, didn't work well because .cm-header-x is a span level class
-	   - border that i put on block ::after won't be continuous when i have internal links in between the heading
-	*//*
-	.cm-s-obsidian .cm-header-1::after { display: block; content: ""; border-bottom: 1px solid var(--h1-color); }
-	.cm-s-obsidian .cm-header-2::after { display: block; content: ""; border-bottom: 1px solid var(--h2-color); }
-
-	.cm-s-obsidian .cm-header-2:not(.cm-inline-code):not(.cm-formatting):not(.cm-hmd-internal-link):not(.cm-formatting-link)::after { display: block; content:""; border-bottom: 1px solid var(--h2-color); }
-	*/
-
-
-	/* === Tags / Hashtags === */
-
-		body {
-			--tag-size: 12px;				/* 11px for 14px normal font, else 12px for 15px */
-			--tag-color: #111;
-			--tag-background: DarkSalmon;
-			--tag-radius: 0.6em;
-			--tag-padding-y: 0.1em;
-			--tag-padding-x: 0.5em;
-			--tag-color-hover: #eee;
-		}
-		/* tag pill decoration */
-		/* included ":not(token) as codeblock html seems to put the inside a span with that class" */
-		/* !important added because default theme 0.16.x uses it */
-		.cm-s-obsidian span.cm-hashtag,
-		.tag:not(.token) {
-			font-family: var(--font-text) !important;
-			font-weight: normal;
-			background-image: none; /* to remove spell-error underline in hashtag */
-			/* display: inline-block; margin-bottom: 0.3em; /* this line added to make the tag float similar to h2 */
-		}
-
-
-	/* === INTERNAL LINK === */
-
-		.markdown-preview-view .internal-link { text-decoration: none; }
-		/*
-		.cm-s-obsidian span.cm-hmd-internal-link .cm-underline { text-decoration: none !important; }
-		*/
-
-
-	/* === CODE BLOCK === */
-
-		/* code block only - scrollbar. Editing & Reading */
-		.HyperMD-codeblock, .markdown-preview-view pre code { white-space: pre; }
-		/* code block & inline code - font & padding. Editing & Reading */
-		.markdown-preview-view code,
-		.cm-s-obsidian .cm-inline-code { font-size: 0.9em; border-radius: var(--radius-s); padding: 0.1em 0.25em; font-family: var(--font-monospace); }
-		/* remove radius and padding on the inline code when it is active (showing formatting) */
-		.cm-formatting-code.cm-inline-code + .cm-inline-code { border-radius: 0; padding-inline: 0; }
-		/* remove radius and padding on the formatting part - left and right */
-		.cm-formatting-code:not(.cm-inline-code + .cm-formatting-code) { border-radius: var(--radius-s) 0 0 var(--radius-s); padding-inline: 0.25em 0; }
-		.cm-inline-code + .cm-formatting-code { border-radius: 0 var(--radius-s) var(--radius-s) 0; padding-inline: 0 0.25em; }
-
-		/* code block only - margin. Reading only */
-		.markdown-preview-view pre { margin: 0.1em 0 1em; }
-		.markdown-preview-view li pre { margin: 0.1em 0 0.1em; }
+/* ========================================================================== */
+/* ========================================================================== */
 
 
 	/* === MATHJAX LATEX adjustment === */
@@ -1034,13 +1177,6 @@ body {
 	:is(h2[data-heading^="Journal"], h3[data-heading^="on "]) + ul ul ul ul::before { left: calc(-13px + var(--list-guide-adj) - 4px); }
 	.show-indentation-guide :is(h2[data-heading^="Journal"], h3[data-heading^="on "]) + ul ul::before { left: calc(-15px + var(--list-guide-adj) - 3px); }
 
-/* === Adjustment for v0.16.x === */
-	.markdown-rendered .list-bullet:after { visibility: hidden; }
-	.markdown-rendered ul.has-list-bullet { list-style-type: unset; }
-
-	/* further fix because default theme make the li::marker color transparent */
-	.markdown-rendered ul.has-list-bullet li::marker { color: var(--list-marker-color) }
-	.markdown-rendered ul.has-list-bullet li.is-collapsed::marker { color: var(--list-marker-color-collapsed); }
 
 /* == Code Block Related == */
 
@@ -1261,24 +1397,8 @@ body {
 
 
 
-/* === Mermaid SVG max-width 100% and zoom on click  === */
-
-	.view-content :is(.cm-editor, .markdown-preview-view) .mermaid svg
-		{ max-width: 100%; cursor: zoom-in; height: 100%}
-
-	body:not(.is-mobile) .view-content :is(.cm-editor,.markdown-preview-view) .mermaid svg:active {
-		cursor: zoom-out;
-		display: block;
-		max-height: calc(100% + 1px); max-width: calc(100% - 20px); height: calc(100% + 1px); width: 100%;
-		object-fit: contain;
-		margin: -0.5px auto 0; padding: 0;
-		text-align: center;
-		z-index: 100;
-		position: fixed;
-		left: 0; right: 0; bottom: 0;
-		background: rgba(0,0,0,0.8);
-	}
-
+/* ========================================================================== */
+/* ========================================================================== */
 
 
 /* @settings
@@ -1299,7 +1419,7 @@ settings:
         description: Variations on a theme
         type: class-select
         allowEmpty: false
-        default: color-scheme-base
+        default: color-scheme-discord
         options:
         	-
 				label: Base
@@ -1331,7 +1451,7 @@ settings:
 		title: H1
 		type: heading
 		level: 2
-		collapsed: false
+		collapsed: true
 	-
 		id: h1-font
 		title: H1 Font
@@ -1354,7 +1474,7 @@ settings:
 		title: H2
 		type: heading
 		level: 2
-		collapsed: false
+		collapsed: true
 	-
 		id: h2-font
 		title: H2 Font
@@ -1377,7 +1497,7 @@ settings:
 		title: H3
 		type: heading
 		level: 2
-		collapsed: false
+		collapsed: true
 	-
 		id: h3-font
 		title: H3 Font
@@ -1406,7 +1526,7 @@ settings:
 		title: H4
 		type: heading
 		level: 2
-		collapsed: false
+		collapsed: true
 	-
 		id: h4-font
 		title: H4 Font
@@ -1430,7 +1550,7 @@ settings:
 		title: H5
 		type: heading
 		level: 2
-		collapsed: false
+		collapsed: true
 	-
 		id: h5-font
 		title: H5 Font
@@ -1454,7 +1574,7 @@ settings:
 		title: H6
 		type: heading
 		level: 2
-		collapsed: false
+		collapsed: true
 	-
 		id: h6-font
 		title: H6 Font
@@ -1479,10 +1599,16 @@ settings:
 
 	-
 		id: listive-outliner-title
-		title: Outliner and Bullets
-		description: indentation guide, list embed, etc.
+		title: Outliner and List Customisation
+		description: indentation guide, list embed, list style, etc.
 		type: heading
 		level: 1
+		collapsed: true
+	-
+		id: lst-ig-adj-title
+		title: Relationship line adjustment
+		type: heading
+		level: 2
 		collapsed: true
 	-
 		id: is-css-guide
@@ -1508,8 +1634,42 @@ settings:
 		type: variable-text
 		default: 0px
 
+	-
+		id: list-style-title
+		title: List Bullet Style
+		type: heading
+		level: 2
+		collapsed: true
+	-
+		id: list-style
+        title: List Bullet Style
+        description: Variations on a theme
+        type: class-select
+        allowEmpty: false
+        default: list-d-c-d
+        options:
+			-
+				label: Disc-Disc
+				value: list-d-d-d
+			-
+				label: Disc-Circle
+				value: list-d-c-d
+        	-
+				label: Disc-Circle-Square
+				value: list-d-c-s
 
-
+	-
+		id: list-embed-title
+		title: List Embed
+		description: Enable "seamless" embed when in list for all notes
+		type: heading
+		level: 2
+		collapsed: true
+	-
+		id: list-embed-global
+		title: Enable List Embed vault-wide
+		type: class-toggle
+		default: true
 
 
 	-
@@ -1531,18 +1691,53 @@ settings:
 		title: Adjust note/page max width
 		type: variable-text
 		default: 700px
+
 	-
-		id: lst-frontmatter-display
-		title: Hide Metadata Frontmatter
-		type: variable-select
-		default: none
-		options:
+		id: callout-title
+		title: Callout
+		type: heading
+		level: 2
+		collapsed: true
+	-
+		id: callout-style
+        title: Callout Style
+        type: class-select
+        allowEmpty: false
+        default: callout-style-icon-right
+        options:
+        	-
+				label: Original
+            	value: callout-style-original
 			-
-				label: Show
-				value: block
+				label: Icon Top Right
+				value: callout-style-icon-right
+
+	-
+		id: frontmatter-title
+		title: Frontmatter
+		type: heading
+		level: 2
+		collapsed: true
+	-
+		id: frontmatter-style
+        title: Frontmatter Style
+        type: class-select
+        allowEmpty: false
+        default: lst-fm-compact
+        options:
+        	-
+				label: Compact
+            	value: lst-fm-compact
 			-
-				label: Hide
-				value: none
+				label: Standard
+				value: lst-fm-std
+
+	-
+		id: lst-mathblock-title
+		title: Math block / Latex
+		type: heading
+		level: 2
+		collapsed: true
 	-
 		id: math-block-list-align
 		title: Alignment of Math Block in List
@@ -1559,20 +1754,34 @@ settings:
 				label: Right
 				value: right
 
+
+    -
+        id: about-listive-title
+        title: About Listive
+        description: Documentation and support for the theme
+        type: heading
+        level: 1
+        collapsed: false
 	-
-		id: list-embed-title
-		title: List Embed
-		description: Enable "seamless" embed when in list for all notes
-		type: heading
-		level: 2
-		collapsed: false
+        id: lst-docs
+        title: Documentation for Listive
+        description: https://github.com/efemkay/obsidian-listive-theme
+        type: heading
+        level: 2
+        collapsed: true
 	-
-		id: list-embed-global
-		title: Enable List Embed vault-wide
-		type: class-toggle
-		default: true
-
-
-
+        id: lst-support-donate
+        title: Support Listive Development @ Ko-Fi
+        description: https://ko-fi.com/efemkay
+        type: heading
+        level: 2
+        collapsed: true
+    -
+        id: lst-support-repo
+        title: Star the project or submit issue
+        description: https://github.com/efemkay/obsidian-listive-theme
+        type: heading
+        level: 2
+        collapsed: true
 
 */
