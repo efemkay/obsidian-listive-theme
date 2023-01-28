@@ -1,11 +1,12 @@
 # Listive
 > Outliner focused theme with differentiated header style and subtle interface for atomic notes with insight-based points
 
-%% updated for v0.4.0 (draft) %%
+<!-- updated for v0.4.0 (draft) -->
 
 ![](https://img.shields.io/github/v/release/efemkay/obsidian-listive-theme) ![](https://img.shields.io/github/release-date/efemkay/obsidian-listive-theme) ![](https://img.shields.io/github/license/efemkay/obsidian-listive-theme)
 
-%%
+
+<!-- old TOC
 <table >
 	<tr>
 		<td align="center" colspan="5" style="padding:0.5em 0; border:none; ">Quick TOC:</td>
@@ -28,7 +29,7 @@
 		</td>
 	</tr>
 </table>
-%%
+-->
 
 ![Listive screenshot](Listive.jpg)
 
