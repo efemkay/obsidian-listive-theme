@@ -85,9 +85,12 @@ Anyway, you might benefit more using this theme together with [Modular CSS Layou
 	- “Compact” styling as default (Reading View only). Revert-able to original via Style Settings
 - Alignment for Mathjax / Latex in Lists – left (default), center, and right.
 - Floating Action Button, adopted from [Obsidian You theme](https://github.com/selfire1/obsidian-you-theme)
-- (not yet ready) Mermaid
-- (not yet ready) Multiple Table Design
-- (not yet ready) Different background for Journal
+
+### Planned Features
+- [ ] Mermaid custom styling (especially Gantt chart)
+- [ ] Multiple Table Design (alternate rows styling and perhaps first column)
+- [ ] Different background for Journal (to have custom background in Reading View for section with specific header text)
+- [ ] Adjustable position for FAB
 
 > This theme is still work in progress. There are more features I have in mind -- those will be updated/released in due time.
 
