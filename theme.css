@@ -1,4 +1,4 @@
-/* === Listive Theme - v0.3.0 by Efemkay === *//* updated 25Dec2022 */
+/* === Listive Theme - v0.4.0 by Efemkay === *//* updated 29Jan2023 */
 
 @import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Karla&display=swap');
@@ -13,7 +13,7 @@
 @import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 /* =============================================================================
-	Section for WORKSPACE / GENERAL UI
+	Section for (01.) Workspace / General UI
 	- non-color Workspace / UI design
 ============================================================================= */
 
@@ -44,30 +44,31 @@
 			/* my own custom variables */
 			--background-active-line: var(--background-accent-alt);
 	    }
+
+		/* adjustment to dim text color but retain background color when in focused vs not focused.
+			cannot simply use variable adjustment in body.is-focused as some don't have a variation of the variables
+			- set the sidebar tabs background same as titlebar
+			- set the ribbon bar (when expanded) to be same as background-primary
+			- setting the background when app is not on focus
+		*/
 		body.is-focused {
 		}
-
-	    /* set the sidebar tabs background same as titlebar */
 	    .workspace-tabs .workspace-leaf { background-color: var(--titlebar-background-focused); }
-
-	    /* set the ribbon bar (when expanded) to be same as background-primary */
 	    body.is-focused .workspace-ribbon.mod-left:not(.is-collapsed) { --titlebar-background: var(--background-primary); }
-
-	    /* setting the background when app is not on focus */
-/*	    body:not(.is-focused) { --tab-container-background: var(--titlebar-background); }
-	    body:not(.is-focused) .workspace-ribbon.mod-left.is-collapsed { --ribbon-background-collapsed: var(--background-secondary); }
-	    body:not(.is-focused) .workspace-tabs .workspace-leaf { background-color: var(--titlebar-background); }
-*/	    body:not(.is-focused) .clickable-icon { color: var(--tab-text-color); }
+	    body:not(.is-focused) .clickable-icon { color: var(--tab-text-color); }
 
 	    /* set the ribbon sidebar background color, include sidebar-toggle */
 	    .workspace-ribbon.mod-left::before { background-color: var(--ribbon-background); border-bottom: 0; height: var(--header-height); }
 	    .workspace-ribbon.mod-left.is-collapsed::before { background-color: var(--ribbon-background-collapsed); }
 
+
 	/* === Refine Certain UI Elements === */
 
 	    /* reintroduce resize handle divider width, only for sidebar tabs */
 	    :is(.mod-left-split, .mod-right-split) .workspace-tabs .workspace-leaf-resize-handle { --divider-width: 4px; }
-		.mod-root .workspace-tabs .workspace-leaf-resize-handle { --divider-width: 4px; border-color: var(--titlebar-background);}
+		.mod-root .workspace-tabs .workspace-leaf-resize-handle:not(:hover),
+		.mod-root .workspace-leaf-resize-handle:not(:hover)
+			{ --divider-width: 4px; border-color: var(--titlebar-background);}
 
 	    /* clean things up -- remove animation for background color */
 	    .workspace-ribbon.mod-left.is-collapsed {transition: unset;}
@@ -75,7 +76,11 @@
 	    /* for scrollbar width */
 	    body:not(.native-scrollbars) ::-webkit-scrollbar { width: 8px; height: 8px;}
 
-		/*.status-bar {margin-bottom: 0.5em;}*/
+		/* ribbon dock rounded corners */
+		.workspace { background-color: var(--titlebar-background-focused); }
+		.workspace-ribbon.mod-left::before { border-top-right-radius: 12px; }
+		.workspace-ribbon.mod-left { border-bottom-right-radius: 12px; }
+
 
 	/* === Introduce Distinct Tabs === */
 
@@ -87,44 +92,26 @@
 	    body:not(.is-focused) .mod-root .workspace-tabs.mod-stacked .workspace-tab-container {background-color: var(--background-secondary);}
 
 	    /* rounded square for normal tab with drop shadow */
-	    .mod-root .workspace-tabs .workspace-tab-header.is-active {box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.3);}
+	    .mod-root .workspace-tabs .workspace-tab-header.is-active {box-shadow: 0px 0px 6px -2px rgba(0, 0, 0, 0.3);}
 	    .mod-root .workspace-tabs .workspace-leaf { background-color: var(--background-modifier-cover); }
 	    .mod-root .workspace-tabs:not(.mod-stacked) .workspace-leaf .view-header { border-top-left-radius: var(--size-4-2); border-top-right-radius: var(--size-4-3); }
 		.workspace .mod-root .workspace-tab-header-inner::after { right: -1px; }
 
 
-/* === Listive Theme - Workspace features - updated 12Nov2022 === *//*
-	- color scheme and theme
-	- general line height
-	- adjustment on markdown elements like callout, quoteblock, table, code block
-*/
-/* FMK Workspace *//*
-	Contains 4 sections
-	- Defaults / Root / Body
-	- General UI
-	- Main Pane
-	- Edge Cases
-	- Mobile
-	- Plugins
-	Typography contained in another css
-	Outlining/indentation/relationship lines contained in another css
-*/
+	/* === Floating Pill tabs or conventional Folder tabs === */
+		.workspace .mod-root .workspace-tab-header { --tab-radius-active: 6px; margin-bottom: 3px; padding-bottom: 0; }
+		.workspace .mod-root .workspace-tab-header::before,
+		.workspace .mod-root .workspace-tab-header::after
+			{ display: none; }
+		body.lst-folder-tabs .workspace .mod-root .workspace-tab-header { --tab-radius-active: 6px; margin-bottom: 0; padding-bottom: 0; }
+		body.lst-folder-tabs .workspace .mod-root .workspace-tab-header::before,
+		body.lst-folder-tabs .workspace .mod-root .workspace-tab-header::after
+			{ display: block; }
 
 
-/*
-   Inspirational colours are two purples #800080 (pure purple) and #993399 (my preferred hue of purple),
-   as well as shades of gray (based on W3S lightness from #000 to #FFF). using adobe color wheel and
-   finding monochromatic derivatives, i'm able to form my preferred color pallette.
+	/* === Gutter div show/hide */
+		.markdown-source-view.mod-cm6 .cm-gutters { display: var(--gutter-display);}
 
-   Monochromatic derivates were determined
-   - based on #800080 to find #4D004D
-   - based on #993399 to find #662266 and #AA6BAA
-   - based on #260D26 (darkness of #993399) to find #732773
-
-   #304050 is a darker shade of #345
-   #5D7C9C is monochromatic of #304050
-   #263340 and #131a20 are darker shades of #304050
-*/
 
 
 /* =============================================================================
@@ -286,18 +273,6 @@
 
 
 
-	/* test for no padding dashboard *//*
-		h2[data-heading^="Journal"] + ul {padding-left: 1px;}
-		h2[data-heading^="Journal"] + ul::before {border-left-width: 0px;}
-
-	/* === Side Toggle === */
-
-	/* === Modal === */
-	/*	.modal.mod-settings .vertical-tab-header { border-right-width: 0;}
-
-
-
-
 /* =============================================================================
 	(11) Section for Typography (including Heading or Header)
 	- header color theme, font type and style
@@ -385,10 +360,9 @@
 		/* - Margin & Padding - Reading View */
 		.markdown-rendered h1, .markdown-rendered h2 { padding-bottom: 0.1em; } /* for distancing the border bottom */
 		:is(*, .markdown-rendered) :not(li) :is(h1, h2, h3) { margin-block: 1.4rem 0.3rem;}
-		.markdown-rendered :not(li) :is(h4, h5, h6) { margin-bottom: 0.1rem; }
+		:is(*, .markdown-rendered) :not(li) :is(h4, h5, h6) { margin-bottom: 0.1rem; }
 		/* margin for headers in lists */
-		.markdown-rendered ul h1,
-		.markdown-rendered ul h2 {margin-top: 0.4rem;}
+		:is(*, .markdown-rendered) :is(ul h1, ul h2) { margin-top: 0.4rem;}
 		:is(*, .markdown-rendered) ul h3 {margin-top: 0.2rem;}
 		/* margin for header in backlinks */
 		.embedded-backlinks .markdown-rendered ul h2 {margin-block: 0rem 0.3rem;}
@@ -407,7 +381,8 @@
 
 
 		/* margin for ul after headers */
-		[class^="el-h"] + .el-ul ul {margin-top: 0;}
+		[class*="el-h"] + .el-ul ul {margin-top: 0;}
+		[data-heading] + div[class*="block-language-dataview"] ul {margin-top: 0;}
 
 
 		/* - Line Height & Font Weight - Editing View */
@@ -439,6 +414,14 @@
 		.cm-s-obsidian .HyperMD-list-line .cm-header-3, .markdown-rendered h3,
 		.cm-s-obsidian .HyperMD-header-3::after { border-bottom: var(--h3-border-width) solid var(--h3-color); }
 
+		/* page-width border-bottom support in LP using :has(). `.cm-s-obsidian` can be removed later on */
+		.cm-s-obsidian .HyperMD-list-line:has(.cm-header-1)::after { content:''; display: block; border-bottom: var(--h1-border-width) solid var(--h1-color); }
+		.cm-s-obsidian .HyperMD-list-line:has(.cm-header-1) .cm-header-1 { border-bottom: none; }
+		.cm-s-obsidian .HyperMD-list-line:has(.cm-header-2)::after { content:''; display: block; border-bottom: var(--h2-border-width) solid var(--h2-color); }
+		.cm-s-obsidian .HyperMD-list-line:has(.cm-header-2) .cm-header-2 { border-bottom: none; }
+		.cm-s-obsidian .HyperMD-list-line:has(.cm-header-3)::after { content:''; display: block; border-bottom: var(--h3-border-width) solid var(--h3-color); }
+		.cm-s-obsidian .HyperMD-list-line:has(.cm-header-3) .cm-header-3 { border-bottom: none; }
+
 		/* this was testing snippet, didn't work well because .cm-header-x is a span level class
 		   - border that i put on block ::after won't be continuous when i have internal links in between the heading
 		*//*
@@ -461,6 +444,7 @@
 			--tag-color-hover: #eee;
 		}
 		.HyperMD-list-line .cm-hashtag { font-size: var(--tag-size); } /* to override 1.1.x header setting trumps .cm-hastag */
+		.HyperMD-header .cm-hashtag { font-size: var(--tag-size) !important; } /* to override 1.1.x header setting trumps .cm-hastag */
 		/* tag pill decoration */
 		/* included ":not(token) as codeblock html seems to put the inside a span with that class" */
 		/* !important added because default theme 0.16.x uses it */
@@ -533,13 +517,15 @@
 		.search-result-file-matches {box-shadow: unset; background-color: unset;}
 
 
-	/* === Internal Query (might touch on NIL's as well) === */
+	/* === Internal Query, Search and Embedded Search === */
+		/* layout control for NIL Query Control in Plugins section */
+
+		.search-input-container input { background-color: var(--background-primary-alt); }
 
 		/* adjustment for query search results */
-		.internal-query { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--background-modifier-border); }
-		.internal-query .internal-query-header { font-weight: bold; color: var(--h5-color); padding: var(--size-4-2); }
-		.internal-query .nav-header { grid-column: 2/3; justify-self: end;}
-		.internal-query .search-result-container { grid-column: 1/3; border: unset; background-color: unset;}
+		.internal-query { border-bottom: 1px solid var(--background-modifier-border); }
+		.internal-query .internal-query-header { font-family: var(--h4-font); font-weight: bold; color: var(--h5-color); padding: var(--size-4-2); }
+		.internal-query .search-result-container { border: unset; background-color: unset;}
 
 
 	/* === Embed & Popover Embed === */
@@ -568,18 +554,18 @@
 		.HyperMD-list-line .internal-embed.is-loaded {display: inline-grid;}
 
 		/* --- Clean Embed in Lists (on by default) --- */
-		.list-embed-global :is(.HyperMD-list-line, ul) .internal-embed.is-loaded.markdown-embed { margin: 0 0 0 calc(-1.70em + var(--list-embed-adj)) !important; padding: 0; border: none; top: 0; background-color: ;}
+		.list-embed-global :is(.HyperMD-list-line, ul) .internal-embed.is-loaded.markdown-embed:not([alt*=".excalidraw"]) { margin: 0 0 0 calc(-1.60em + var(--list-embed-adj)) !important; padding: 0; border: none; top: 0; background-color: ;}
 		.list-embed-global :is(.HyperMD-list-line, ul) .internal-embed.is-loaded.markdown-embed ul:first-of-type { margin-block: 0;}
 		.list-embed-global :is(.HyperMD-list-line, ul) .internal-embed.is-loaded.markdown-embed .markdown-embed-title {display: none;}
-		.list-embed-global .HyperMD-list-line .internal-embed.is-loaded.markdown-embed { width: calc(99%);}
+		.list-embed-global .HyperMD-list-line .internal-embed.is-loaded.markdown-embed:not([alt*=".excalidraw"]) { width: calc(99%);}
 		.list-embed-global ul .internal-embed.is-loaded.markdown-embed.markdown-embed { margin-left: calc(-1.60em + var(--list-embed-adj)); }
 		.list-embed-global .HyperMD-list-line .markdown-embed .markdown-preview-view { padding-bottom: 0; }
 
 		/* --- Clean Embed in Lists (specify in alias/alt) --- */
-		:is(.HyperMD-list-line, li) [alt*="list-embed"].internal-embed.markdown-embed { margin: 0 0 0 calc(-1.70em + var(--list-embed-adj)) !important; padding: 0; border: none; top: 0; }
+		:is(.HyperMD-list-line, li) [alt*="list-embed"].internal-embed.markdown-embed:not([alt*=".excalidraw"]) { margin: 0 0 0 calc(-1.60em + var(--list-embed-adj)) !important; padding: 0; border: none; top: 0; }
 		:is(.HyperMD-list-line, li) [alt*="list-embed"].internal-embed.markdown-embed ul:first-of-type { margin-block: 0;}
 		:is(.HyperMD-list-line, li) [alt*="list-embed"].internal-embed.markdown-embed .markdown-embed-title {display: none;}
-		.HyperMD-list-line [alt*="list-embed"].internal-embed.is-loaded.markdown-embed { width: 99%;}
+		.HyperMD-list-line [alt*="list-embed"].internal-embed.is-loaded.markdown-embed:not([alt*=".excalidraw"]) { width: 99%;}
 		li [alt*="list-embed"].internal-embed.is-loaded.markdown-embed.markdown-embed { margin-left: calc(-1.60em + var(--list-embed-adj)); }
 		.HyperMD-list-line [alt*="list-embed"].markdown-embed .markdown-preview-view { padding-bottom: 0; }
 
@@ -601,6 +587,8 @@
 		:is(.list-embed-global :not(.popover), [alt*="list-embed"].internal-embed) :is(.markdown-embed:hover, .file-embed:hover) { background-color: var(--background-secondary); }
 
 
+	/* === Custom CSS Class to control page width using `cssClass: wide-page` */
+		.wide-page:is(.markdown-source-view, .markdown-preview-view) { --file-line-width: 1400px; }
 
 
 
@@ -608,7 +596,6 @@
 	p { margin-block-end: 0.5em; }
 	*/
 
-	.search-input-container input { background-color: var(--background-primary-alt); }
 
 	/* make it accommodate two lines */
 	.status-bar { padding-top: 0.1em; padding-bottom: 0.1em; line-height: 1em; max-height: unset; }
@@ -660,7 +647,7 @@
 			--callout-content-padding: 10px 0 5px 0; /* i remove first, */
 			--callout-padding: var(--size-4-4) var(--size-4-4) var(--size-4-3) var(--size-4-5); /* give additional padding on the right side */
 		}
-		.callout .callout-content > *:first-of-type {margin-top: 0;}
+		.callout .callout-content > *:first-child {margin-top: 0;}
 		.callout ul:last-of-type {margin-bottom: 0;}
 
 		/* Change icons for default "Note" callout and others */
@@ -680,7 +667,14 @@
 		.callout[data-callout-metadata*="no-title"] { position: relative; }
 		.callout[data-callout-metadata*="no-title"] > .callout-title > .callout-icon { --icon-size: 48px; opacity: 0.3; position: absolute; top: -9px; right: -8px;}
 		.callout[data-callout-metadata*="no-title"] > .callout-title > .callout-title-inner { display: none; }
-		.callout[data-callout-metadata*="no-title"] > .callout-content { padding-top: 0; padding-right: 2em;}
+		.callout[data-callout-metadata*="no-title"] > .callout-content { padding-block: 0; padding-right: 2em;}
+
+		/* no margin for callout in a list */
+		li > .callout { margin: 0; }
+
+		/* custom callout -- update / latest */
+		.callout[data-callout="update"], .callout[data-callout="latest"] { --callout-color: var(--callout-success); --callout-icon: lucide-bell-ring;}
+
 
 	/* === Codeblock / Code block === */
 		/* put border but not for yaml */
@@ -691,6 +685,7 @@
 		/* code block & inline code - font & padding. Editing & Reading */
 		.markdown-preview-view code,
 		.cm-s-obsidian .cm-inline-code { font-size: 0.9em; border-radius: var(--radius-s); padding: 0.1em 0.25em; font-family: var(--font-monospace); }
+		.HyperMD-header .cm-inline-code { font-size: 0.9rem !important; } /* to override 1.1.x header setting trumps .cm-inline-code */
 		/* remove radius and padding on the inline code when it is active (showing formatting) */
 		.cm-formatting-code.cm-inline-code + .cm-inline-code { border-radius: 0; padding-inline: 0; }
 		/* remove radius and padding on the formatting part - left and right */
@@ -703,6 +698,7 @@
 
 	/* === Code Comment === */
 		.HyperMD-list-line .cm-comment {color: var(--code-comment); font-weight: normal; font-family: var(--font-text); font-size: var(--font-text-size);}
+		.HyperMD-header .cm-comment {color: var(--code-comment); font-weight: normal; font-family: var(--font-text); font-size: var(--font-text-size) !important;}
 
 	/* === Graph View Mods ===*/
 		/* to style the new nodes in the 0.9.1+ */
@@ -805,6 +801,9 @@
 			table:not(.dataview) tbody tr:hover td { background-color: var(--background-primary-alt); }
 		/* --------------------------------------------   */
 
+		/* = Table Margin with code block immediately after */
+			div:has(table) + div > p:has(>code) {margin-top: -0.8em;}
+
 
 
 /* =============================================================================
@@ -826,8 +825,8 @@
 		/* adjusting for paragraph inside ul/ol li */
 		li p { margin-block: 0; }
 		/* adjusting for a p immediately after a h3 or h4 */
-		div.el-h3 + div.el-p > p,
-		div.el-h4 + div.el-p > p { margin-block-start: 0.6em; }
+		h3 + p, div.el-h3 + div.el-p > p,
+		h4 + p,	div.el-h4 + div.el-p > p { margin-block-start: 0.6em; }
 
 
 	/* === Mod for escape char === */
@@ -929,7 +928,7 @@
 
 	/* === Mod for Dataview Card and List Nav === */
 		.callout[data-callout-metadata*="dv-list-nav"] ul {display: flex; padding-inline-start: var(--list-indent); --list-indent: 0;}
-		.callout[data-callout-metadata*="dv-list-nav"] li {flex: 1 1 auto; border-radius: 1em; background-color: var(--background-secondary); text-align: center; list-style: none; margin-inline: var(--size-4-1) !important; padding-inline: 0.5em; }
+		.callout[data-callout-metadata*="dv-list-nav"] li {flex: 1 1 0; border-radius: 1em; background-color: var(--background-secondary); text-align: center; list-style: none; margin-inline: var(--size-4-1) !important; padding-inline: 0.5em; }
 
 
 /* =============================================================================
@@ -1011,9 +1010,18 @@
 
 
 	/* === Plugin: Obsidian Query Control adjustment === */
-		.embedded-backlinks .search-input-container input {width: 90%;}
+		.embedded-backlinks .nav-header ~ .search-input-container { width: calc(100% - 200px); }
 		.backlink-pane .search-results-children.is-rendered ul { padding-inline-start: 2em; }
 		.backlink-pane .search-results-children.is-rendered ul ul { padding-inline-start: 1.5em; }
+
+		/* embedded query + OQC nav layout customisation -- make the title and nav side by side */
+		@media (min-width: 600px) {
+			.internal-query { display: grid; grid-template-columns: 7fr 8fr; }
+			.internal-query .internal-query-header:has(.internal-query-header-icon) { grid-column: 1/3; }
+			.internal-query .nav-header { grid-column: 2/3; justify-self: end;}
+			.internal-query .search-result-container { grid-column: 1/3; }
+		}
+
 
 
 	/* === Plugin: Omnisearch === */
@@ -1044,6 +1052,20 @@
 
 
 	/* === Plugin: Strange New Word (SNW) === */
+		/* references
+		.snw-sidepane-container / .snw-popover-container
+			--> .snw-ref-area --> .snw-ref-item-container
+				--> .snw-ref-item-file.search-result-file-title
+				--> .snw-ref-item-collection-items.search-result-file-matches --> .snw-ref-item-info.search-result-file-match
+		*/
+
+		/* General UI */
+		:is(.snw-ref-title-side-pane, .snw-ref-title-popover).tree-item-self:is(*, :hover) { border: none; font-weight: bold; font-family: var(--h1-font); }
+		.snw-ref-title-popover.tree-item-self:is(*, :hover) { padding-block: 2px 5px; margin-bottom: 5px; }
+		/* give some separator between entries */
+		.snw-ref-item-container { background-color: var(--background-secondary-alt); margin-bottom: var(--size-4-1); }
+		.search-result-file-match { padding-top: var(--size-4-1); border-bottom-style: dashed; }
+
 
 		/* adjustment for SNW plugin -- follow exactly per app.css but remove the `.markdown-rendered` */
 		.snw-ref-item-info.search-result-file-match:hover {background-color: var(--background-modifier-hover);}
@@ -1056,7 +1078,9 @@
 		[alt*="list-embed"] .markdown-preview-section > div > ul > li > .snw-reference.snw-block-preview,
 		.list-embed-global :is(.HyperMD-list-line, ul) .internal-embed.is-loaded .markdown-preview-section > div > ul > li > .snw-reference.snw-block-preview { display: none;}
 
-
+		/* tag */
+		.snw-ref-item-info a.tag:not(.token) {color: var(--tag-color) !important; }
+		.snw-ref-item-info a.tag:not(.token):hover {color: var(--tag-color-hover) !important; }
 
 		ul li {position: relative;}
 		li .snw-reference.snw-block-preview { position:absolute; top: 1em; right: 0; }
@@ -1064,6 +1088,18 @@
 
 		/* make the numbers not bold */
 		.snw-reference {font-weight: normal;}
+
+		/* inclusion of standard typography formatting to support SNW */
+		.snw-ref-area :is(li h1, li h2, li h3, li h4, li h5) { margin-top: 0; }
+		.snw-ref-area ul li {padding-block: 0.2em 0.1em; }
+
+
+		/* == Propagate standard UI for SNW -- list indent */
+		.snw-ref-area :is(ol, ul) {
+			padding-inline-start: var(--list-indent)
+		}
+		/* == Propagate standard UI for SNW -- Indentation guide adjustment */
+		.is-css-guide .snw-ref-area :is(ul ul, ol ul, ul ol, ol ol)::before { left: calc(-12px + var(--list-guide-adj)); }
 
 
 	/* === Plugin: Style Settings === */
@@ -1112,16 +1148,9 @@
 		/* bold / strong */
 		:is(.cm-s-obsidian .cm-strong, b, strong) { color: var(--h1-color); }
 		/* highlights */
-		.cm-s-obsidian span.cm-formatting-highlight,
+		.cm-s-obsidian .cm-highlight.cm-formatting-highlight { color: var(--text-faint); font-family: var(--font-monospace) ; background-color: transparent;}
 		.cm-s-obsidian span.cm-highlight,
-		.markdown-preview-view mark { border-radius: 0.2em; padding: 0 0.1em; }
-
-		.cm-s-obsidian span.cm-formatting-highlight,
-		.cm-s-obsidian span.cm-highlight,
-		.markdown-preview-view mark { color: var(--h1-color); }
-
-
-
+		:is(*, .markdown-rendered) mark { color: var(--h1-color); border-radius: 0.2em; padding: 0 0.1em; background-color: var(--text-highlight-bg); }
 
 
 /* === Listive Theme - Outliner features - updated 12Nov2022 === *//*
@@ -1157,6 +1186,7 @@ body {
 	/* Collapse Indicator -- Adjusting the distance a bit */
 	/* List (bullet & number) only. Reading View only, Editing seems okay already */
 	.markdown-preview-view .list-collapse-indicator {padding-left: 0.8em;} /* adjustment for v0.16.0 */
+	.markdown-preview-view .list-collapse-indicator {padding-right: 0;} /* adjustment for v1.1.11 */
 
 	/* -- Editing View & Reading View */
 	/* old adjustment (v0.15.9 and earlier) -- to be deleted later
@@ -1205,48 +1235,6 @@ body {
 	- additional plugins adjustment (non outliner plugins)
 */
 
-/* === DASHBOARD -- General Settings */
-
-	.wide-page.markdown-source-view.mod-cm6.is-readable-line-width:not(.is-rtl) .cm-contentContainer,
-	.wide-page.markdown-source-view.mod-cm6.is-line-wrap.is-readable-line-width .cm-content,
-	.wide-page.markdown-source-view.mod-cm6.is-line-wrap.is-readable-line-width .cm-line:not(.HyperMD-table-row) {	}
-
-	.wide-page.markdown-source-view.mod-cm6 .cm-contentContainer,
-	.wide-page.markdown-source-view.mod-cm6 .cm-contentContainer *
-	{ max-width: 1400px !important;	}
-
-
-	.wide-page.markdown-preview-view .markdown-preview-sizer
-	{ max-width: 1400px; margin: auto; }
-	.wide-page.markdown-preview-view .markdown-preview-sizer > div
-	{ max-width: 1400px; margin: auto; }
-
-	/* set the main container to wide view */
-	.wide-table.cm-contentContainer .cm-content,
-	.wide-dataview.cm-contentContainer .cm-content,
-
-	.wide-table.markdown-source-view.mod-cm6 .cm-contentContainer,
-	.wide-table.markdown-source-view.mod-cm6 .cm-contentContainer *,
-	.wide-dataview.markdown-source-view.mod-cm6 .cm-contentContainer,
-	.wide-dataview.markdown-source-view.mod-cm6 .cm-contentContainer *
-	{ max-width: 1400px !important;	}
-	.wide-table.markdown-source-view.mod-cm6 .cm-contentContainer > div > div,
-	.wide-dataview.markdown-source-view.mod-cm6 .cm-contentContainer > div > div
-	{max-width: 750px !important; margin: auto !important;}
-	.wide-table.markdown-source-view.mod-cm6 .cm-contentContainer > div > div.el-table,
-	.wide-dataview.markdown-source-view.mod-cm6 .cm-contentContainer > div > div.cm-preview-code-block
-	{max-width: 1400px !important; margin: auto !important;}
-
-	.wide-table.markdown-preview-view .markdown-preview-sizer,
-	.wide-dataview.markdown-preview-view .markdown-preview-sizer { max-width: 1400px; }
-	/* set all the div under the main container (including those i want wide view to normal view */
-	.wide-table.markdown-preview-view .markdown-preview-sizer > div,
-	.wide-dataview.markdown-preview-view .markdown-preview-sizer > div	{ max-width: 750px; }
-	/* individually set the div i want wide view to wide view */
-	.wide-table.cm-contentContainer .cm-content > div.el-table,
-	.wide-table.markdown-preview-view .markdown-preview-sizer > div.el-table { max-width: 1400px; }
-	.wide-dataview.markdown-preview-view .markdown-preview-sizer > div.el-lang-dataview { max-width: 1400px; }
-
 
 
 /* === DASHBOARD -- General Settings */
@@ -1266,8 +1254,19 @@ body {
 	.embed-grid .el-embed-page > p > br { display: none; }
 
 /* === WEEKLY specific adjustment === */
+/*
+	.internal-embed.markdown-embed[alt*="float-right"] {
+		display: contents;
+	}
+	.internal-embed.markdown-embed[alt*="float-right"] .markdown-embed-content {
+		float: right;
+		max-width: 60vw;
+	}
+	.wide-page .el-h2 { clear: both; }
+
+
 /* --- will require mgmeyers contextual typography */
-	.wide-page .el-h2[data-heading^="Focus "] + .el-p[data-is-embed="true"]	{ float: right; max-width: 600px; }
+	.wide-page .el-h2[data-heading^="Focus "] + .el-p[data-is-embed="true"]	{ float: right; max-width: 60%; }
 	.wide-page .el-p .markdown-embed h2 { margin-top: 0 !important;}
 	.wide-page .el-p[data-is-embed="true"] + .el-h3 { margin-top: 2em;}
 	.wide-page .HyperMD-header-2,
@@ -1388,12 +1387,6 @@ body {
 */
 
 
-/* === TESTS === */
-
-	/* two columns lists */
-	.two-column-lists ul {
-		columns: 2 !important;
-	}
 
 
 
@@ -1689,6 +1682,7 @@ settings:
 	-
 		id: file-line-width
 		title: Adjust note/page max width
+		description: use `cssClass:wide-page` in frontmatter for per note full width
 		type: variable-text
 		default: 700px
 
@@ -1733,6 +1727,26 @@ settings:
 				value: lst-fm-std
 
 	-
+		id: gutter-title
+		title: Gutter "div"
+		type: heading
+		level: 2
+		collapsed: true
+	-
+		id: gutter-display
+        title: Show/Hide Gutter
+        type: variable-select
+        allowEmpty: false
+        default: block
+        options:
+        	-
+				label: Show
+            	value: block
+			-
+				label: Hide
+				value: none
+
+	-
 		id: lst-mathblock-title
 		title: Math block / Latex
 		type: heading
@@ -1753,6 +1767,26 @@ settings:
 			-
 				label: Right
 				value: right
+
+	-
+		id: tabs-title
+		title: Tabs
+		type: heading
+		level: 2
+		collapsed: true
+	-
+		id: lst-tabs-style
+        title: Tabs UI Style
+        type: class-select
+        allowEmpty: false
+        default: lst-floating-tabs
+        options:
+        	-
+				label: Floating Pill
+            	value: lst-floating-tabs
+			-
+				label: Folder Tabs
+				value: lst-folder-tabs
 
 
     -
