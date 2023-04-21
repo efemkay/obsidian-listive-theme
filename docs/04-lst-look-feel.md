@@ -4,9 +4,9 @@
 - `no-title` callout-metadata option (e.g. `> [!quote|no-title]`) for callout without title. Using this option will force styling to “Icon on Top Right”
 
 > **Example**
-> 
-> ![[pic lst no-title callout.png]]
-> 
+>
+> ![pic lst no-title callout.png (928×449) (raw.githubusercontent.com)](https://raw.githubusercontent.com/efemkay/obsidian-listive-theme/master/docs/assets/pic%20lst%20no-title%20callout.png)
+>
 
 ### Custom Dataview Styling via Callout
 - Use callout metadata `dv-list-nav` e.g. `[!blank-container|dv-list-nav]` to display dataview list in a button like style
@@ -28,7 +28,7 @@
 > 	file.name = "Weekly Review"
 > ```
 > ````
-> ![[pic lst dv navigation.png|400]]
+> ![pic lst dv navigation.png (1082×602) (raw.githubusercontent.com)](https://raw.githubusercontent.com/efemkay/obsidian-listive-theme/master/docs/assets/pic%20lst%20dv%20navigation.png)
 
 ### Frontmatter
 - “Compact” styling as default (Reading View only). Revert-able to original via Style Settings
@@ -42,6 +42,6 @@
 
 > **Example**
 >
-> ![[pic lst FAB.png|400]]
+> ![pic lst FAB.png (903×950) (raw.githubusercontent.com)](https://raw.githubusercontent.com/efemkay/obsidian-listive-theme/master/docs/assets/pic%20lst%20FAB.png)
 
 ### Tabs
