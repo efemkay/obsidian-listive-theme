@@ -2,40 +2,15 @@
 
 > Outliner focused theme with differentiated header style and subtle interface for atomic notes with insight-based points
 
-<!-- updated for v0.4.0 (draft) -->
-
 ![](https://img.shields.io/github/v/release/efemkay/obsidian-listive-theme) ![](https://img.shields.io/github/release-date/efemkay/obsidian-listive-theme) ![](https://img.shields.io/github/license/efemkay/obsidian-listive-theme)
-
-<!-- old TOC
-<table >
-    <tr>
-        <td align="center" colspan="5" style="padding:0.5em 0; border:none; ">Quick TOC:</td>
-    </tr>
-    <tr>
-        <td style="padding:0.5em 1em; border: none; border-right: 1px solid DarkSlateGray">
-            <a href="#guiding-principles">Guiding Principles</a>
-        </td>
-        <td style="padding:0 1em; border: none; border-right: 1px solid DarkSlateGray">
-            <a href="#features">Features</a>
-        </td>
-        <td style="padding:0 1em; border: none; border-right: 1px solid DarkSlateGray">
-            <a href="#companion-plugins">Companion Plugins</a>
-        </td>
-        <td style="padding:0 1em; border: none; border-right: 1px solid DarkSlateGray">
-            <a href="#credits">Credits</a>
-        </td>
-        <td style="padding:0 1em; border: none; border-right: 1px solid DarkSlateGray">
-            <a href="#support-me">Support Me</a>
-        </td>
-    </tr>
-</table>
--->
 
 ![Listive screenshot](Listive.jpg)
 
 Customisation I did for this theme (started off as a personal theme) are now optional / revert-able to cater for wider userbase. I follows this <a href="#guiding-principles">Guiding Principles</a>, and you may log a feature request as long as it doesn’t sway away for it.
 
 Anyway, you might benefit more using this theme together with [Modular CSS Layout (MCL)](https://github.com/efemkay/obsidian-modular-css-layout) snippets for added functionality on multi columns, cards layout, gallery and image control.
+
+> Note that this theme is meant to complement Outliner plugin. It cannot replace the features which the plugin can provide
 
 
 ### Table of Contents
@@ -167,7 +142,8 @@ These are the plugins I use personally on frequent basis, and with that, I make 
 ## Credits
 
 - chrisgrieser (aka pseudometa) for [Theme Design Utilities](https://github.com/chrisgrieser/obsidian-theme-design-utilities) plugin that I use frequently to test mobile UIUX as well helps given in discord
-- [Obsidian You theme](https://github.com) for the FAB I adopted (because I find it very useful when using on a phone)
+- [Obsidian You theme](https://github.com/selfire1/obsidian-you-theme) for the FAB I adopted (because I find it very useful when using on a phone)
+- [Border theme](https://github.com/Akifyss/obsidian-border) for the alternate checkboxes I borrowed here and there (coz i cannot figure out how to customise the SVGs)
 
 
 ## Support Me
