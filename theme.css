@@ -1,4 +1,11 @@
-/* === Listive Theme - v0.6.0 by Efemkay === *//* updated 12Aug2023 *//*
+/* === Listive Theme - v0.6.1 by Efemkay === *//* updated 16Sep2023 *//*
+
+	0.6.1 (updated 16Sep2023)
+	- minor fixes on SNW plugin
+	- minor fixes on active line background not to affect gutter
+	- minor adjustment to highlight's alternate checkboxex for better demarcation
+	- support for Better Search Views plugin
+
 	0.6.0 (updated 12Aug2023)
 	- adjust heading spacing for 1.3.7 (plan to make it adjustable)
 	- improved SNW support for headers in list
@@ -179,7 +186,8 @@
 		}
 
 	/* === Gutter div show/hide */
-		.markdown-source-view.mod-cm6 .cm-gutters { display: var(--gutter-display);}
+		/* only when line numbers option disabled */
+		.markdown-source-view.mod-cm6 .cm-gutters:not(:has(> .cm-lineNumbers)) { display: var(--gutter-display); }
 
 
 
@@ -295,7 +303,7 @@
 		--background-modifier-cover: hsl(223, 7%, 20%);
 		--background-secondary: hsl(218, 8%, 27%);
 		--background-secondary-alt: hsl(218, 8%, 21%);	/* 6% darker than secondary */
-		--background-accent: hsl(223, 7%, 30%);
+		--background-accent: hsl(223, 7%, 30%);			/* 10% lighter than modifier-cover */
 		--background-accent-alt: hsl(220, 8%, 19%);		/* 4% darker shade of background-primary, active line and backlinks */
 
 		/* my custom variables */
@@ -441,8 +449,8 @@
 		/* -- for Normal Heading / Header -- */
 		body {
 			--h2-top-spacing: 1.4rem;
-			--heading-spacing: var(--h2-top-spacing);	/* override obsidian 1.3.7 introduction of top margin */
 			--h2-bottom-spacing: 0.3rem;
+			--heading-spacing: var(--h2-top-spacing);	/* override obsidian 1.3.7 introduction of top margin */
 			--h2-top-spacing-edit: calc(var(--h2-top-spacing) + var(--list-spacing) + var(--list-spacing)/2 );
 			--h2-bottom-spacing-edit: var(--h2-bottom-spacing);
 
@@ -638,11 +646,8 @@
 
 		/* Active Line */
 		/* (1) normal active line that's not list, not header. (2) active list that's not list header. (3) header and list header */
-		.cm-active:not(.HyperMD-quote)::before { content: ''; position: absolute; width: 100%; height: 100%; z-index: -30; top: 0; left: 0; background-color: var(--background-active-line); }
-		/* .cm-active.HyperMD-list-line::before { content:''; position: absolute; width: 100%; height: 100%; z-index: -30; top: 0; left: 0; background-color: var(--background-active-line); } */
-		/* .cm-active.HyperMD-list-line:not(:has(.cm-header))::after { content:''; position: absolute; width: 100%; height: 100%; z-index: -30; top: 0; left: 0; background-color: var(--background-active-line); } */
-		/* .cm-active:is(.HyperMD-header) { background-color: var(--background-active-line); } */
-		/* .cm-active:is(.HyperMD-header,.HyperMD-list-line:has(.cm-header)) { background-color: var(--background-active-line); } */
+		/* .cm-line is need to avoid applying for line number gutter */
+		.cm-line.cm-active:not(.HyperMD-quote)::before { content: ''; position: absolute; width: 100%; height: 100%; z-index: -30; top: 0; left: 0; background-color: var(--background-active-line); }
 
 
 	/* === Backlinks & Results area === */
@@ -660,7 +665,7 @@
 		.mod-root .embedded-backlinks .search-result-file-title:hover,
 		.mod-root .embedded-backlinks .search-result-file-match:hover { background-color: var(--background-modifier-cover); color: var(--text-normal); }
 		/* apply only to search pane */
-		.workspace-tabs .search-result { background-color: var(--background-secondary-alt);}
+		.workspace-tabs .search-result { background-color: var(--background-secondary-alt); }
 		.workspace-tabs .search-result-file-title:hover,
 		.workspace-tabs .search-result-file-match:hover { background-color: var(--background-modifier-cover); color: var(--text-normal); }
 
@@ -816,6 +821,10 @@
 		body {
 			--list-indent-first: 1.6em;
 		}
+		/* remove this first, i see issue betwee editing and reading view */
+		.callout-content ul:not(ul ul) {
+			/* padding-inline-start: 0; */
+		}
 		.markdown-preview-view > div ul:not(ul ul) {
 			padding-inline-start: var(--list-indent-first);
 		}
@@ -876,6 +885,7 @@
 		.callout[data-callout="hint"] { --callout-icon: lucide-lightbulb; }
 		.callout[data-callout="important"] { --callout-icon: lucide-chevrons-up; }
 		.callout[data-callout="missing"] { --callout-icon: lucide-octagon; }
+		.callout[data-callout="success"], .callout[data-callout="check"], .callout[data-callout="done"] { --callout-icon: lucide-check-check; }
 
 		/* Default style: "callout-style-icon-right" i.e. icon on the top right */
 		body:not(.callout-style-original) .callout { position: relative; }
@@ -923,6 +933,7 @@
 		input[data-task="\""]:checked, li[data-task="\""] > input:checked, li[data-task="\""] > p > input:checked,
 		input[data-task="“"]:checked, li[data-task="“"] > input:checked, li[data-task="“"] > p > input:checked,
 		input[data-task="!"]:checked, li[data-task="!"] > input:checked, li[data-task="!"] > p > input:checked,
+		input[data-task="r"]:checked, li[data-task="r"] > input:checked, li[data-task="r"] > p > input:checked,
 		input[data-task="*"]:checked, li[data-task="*"] > input:checked, li[data-task="*"] > p > input:checked {
 			--checkbox-marker-color: transparent;
 			background-color: currentColor;
@@ -934,6 +945,7 @@
 		label.task-list-label:has(> input[data-task="\""]:checked),
 		label.task-list-label:has(> input[data-task="“"]:checked),
 		label.task-list-label:has(> input[data-task="!"]:checked),
+		label.task-list-label:has(> input[data-task="r"]:checked),
 		label.task-list-label:has(> input[data-task="*"]:checked) {
 			pointer-events: none;
 		}
@@ -1002,13 +1014,16 @@
 		li[data-task="“"] > input:checked,
 		li[data-task="“"] > p > input:checked
 			{ background-color: transparent; }
+		input[type=checkbox][data-task="\""]:checked::after,
 		input[type=checkbox][data-task="“"]:checked::after,
+		li[data-task="\""] > input:checked::after,
 		li[data-task="“"] > input:checked::after,
+		li[data-task="\""] > p > input:checked::after,
 		li[data-task="“"] > p > input:checked::after {
 			content: "❝";
 			font-size: 1.6em;
 			text-align: center;
-			top: -3px;
+			top: -5px;
 			left: 0;
 			color: rgba(var(--callout-quote), 1);
 			background-color: transparent;
@@ -1024,12 +1039,37 @@
 		    -webkit-mask-image: url('data:image/svg+xml;utf8,<?xml version="1.0" encoding="UTF-8"?><svg id="svg0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><defs><style>.cls-1{fill:none;}</style></defs><rect class="cls-1" width="16" height="16"/><path d="M2.46,4.19c.94-1.01,2.35-1.53,4.21-1.53h.67v1.88l-.54,.11c-.91,.18-1.55,.54-1.89,1.07-.18,.28-.28,.61-.29,.94h2.05c.18,0,.35,.07,.47,.2,.13,.13,.2,.29,.2,.47v4.67c0,.74-.6,1.33-1.33,1.33H2c-.18,0-.35-.07-.47-.2-.13-.12-.2-.29-.2-.47V7.39c0-.07-.13-1.83,1.13-3.19ZM13.33,13.33h-4c-.18,0-.35-.07-.47-.2-.13-.12-.2-.29-.2-.47V7.39c0-.07-.13-1.83,1.13-3.19,.94-1.01,2.35-1.53,4.21-1.53h.67v1.88l-.54,.11c-.91,.18-1.55,.54-1.89,1.07-.18,.28-.28,.61-.29,.94h2.05c.18,0,.35,.07,.47,.2,.12,.13,.2,.29,.2,.47v4.67c0,.74-.6,1.33-1.33,1.33Z"/></svg>');
 		}
 
+		/* For [r] or "r" i.e. reference */
+		input[type=checkbox][data-task="r"]:is(*,:hover,:active),
+		li[data-task="r"] > input:checked,
+		li[data-task="r"] > p > input:checked
+			{ background-color: transparent; }
+		input[type=checkbox][data-task="r"]:checked::after,
+		li[data-task="r"] > input:checked::after,
+		li[data-task="r"] > p > input:checked::after {
+			content: "🕮";
+			font-size: 0.9em;
+			font-weight: bold;
+			text-align: center;
+			top: -2px;
+			left: 0;
+			color: rgba(var(--callout-quote), 1);
+			background-color: transparent;
+			-webkit-mask-image: revert;
+		}
+		/* additional adjustment for reading view only */
+		li[data-task="r"] > input:checked::after,
+		li[data-task="r"] > p > input:checked::after
+			{ top: -2px; left: 0px; }
+
 		/* For [*] "*" i.e. Star or Favourites */
 		input[data-task="*"]:checked, li[data-task="*"]>input:checked, li[data-task="*"]>p>input:checked {
 			--checkbox-color-hover: var(--color-yellow);
 			color: var(--color-yellow);
 			-webkit-mask-image: url('data:image/svg+xml;utf8,<?xml version="1.0" encoding="UTF-8"?><svg id="svg0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><defs><style>.cls-1{fill:none;}</style></defs><rect class="cls-1" width="16" height="16"/><path d="M8.91,.58c-.08-.17-.21-.32-.37-.42C8.38,.05,8.19,0,8,0s-.38,.05-.54,.16c-.16,.1-.29,.25-.37,.42l-1.93,4.12L.85,5.36c-.18,.03-.35,.1-.49,.22-.14,.12-.25,.27-.3,.45-.06,.17-.07,.36-.03,.54,.04,.18,.13,.34,.26,.48l3.15,3.23-.75,4.57c-.03,.19,0,.38,.06,.55,.07,.17,.19,.32,.35,.43,.15,.11,.33,.17,.52,.18,.19,0,.37-.03,.54-.12l3.84-2.13,3.84,2.13c.16,.09,.35,.13,.54,.12,.19-.01,.37-.07,.52-.18,.15-.11,.27-.26,.35-.43,.07-.17,.09-.36,.06-.55l-.75-4.57,3.15-3.23c.13-.13,.22-.3,.26-.48,.04-.18,.03-.37-.03-.54-.06-.17-.16-.33-.31-.45-.14-.12-.31-.2-.49-.22l-4.31-.66L8.91,.58Z"/></svg>');
 		}
+
+
 
 		/* -- background option. for info/highlight alternate checkbox */
 
@@ -1048,6 +1088,9 @@
 			.HyperMD-list-line:has(> .task-list-label > [data-task="!"])::after,
 			li[data-task="!"]::after
 				{ background: rgba(var(--color-red-rgb), 0.18); }
+			.HyperMD-list-line:has(> .task-list-label > [data-task="r"])::after,
+			li[data-task="r"]::after
+				{ background: rgba(var(--callout-quote), 0.18); }
 			.HyperMD-list-line:has(> .task-list-label > [data-task="*"])::after,
 			li[data-task="*"]::after
 				{ background: rgba(var(--color-orange-rgb), 0.18); }
@@ -1061,10 +1104,11 @@
 			.HyperMD-list-line:has(> .task-list-label > [data-task="\""])::after,
 			.HyperMD-list-line:has(> .task-list-label > [data-task="“"])::after,
 			.HyperMD-list-line:has(> .task-list-label > [data-task="!"])::after,
+			.HyperMD-list-line:has(> .task-list-label > [data-task="r"])::after,
 			.HyperMD-list-line:has(> .task-list-label > [data-task="*"])::after {
 		        content: var(--alt-checkbox-bg-content); position: absolute;
-		        inset: 0 0em 0 1.6em;
-		        height: 100%; width: calc(100% - 1.6em);
+		        inset: 1px 0em 0 1.6em;
+		        height: calc(100% -  1px); width: calc(100% - 1.6em);
 				z-index: -1;
 		        border-radius: var(--size-4-1)
 		    }
@@ -1075,6 +1119,7 @@
 			.HyperMD-list-line-2:has(> .task-list-label > [data-task="\""])::after,
 			.HyperMD-list-line-2:has(> .task-list-label > [data-task="“"])::after,
 			.HyperMD-list-line-2:has(> .task-list-label > [data-task="!"])::after,
+			.HyperMD-list-line-2:has(> .task-list-label > [data-task="r"])::after,
 			.HyperMD-list-line-2:has(> .task-list-label > [data-task="*"])::after {
 				left: 3em;
 				width: calc(100% - 3em);
@@ -1084,6 +1129,7 @@
 			.HyperMD-list-line-3:has(> .task-list-label > [data-task="\""])::after,
 			.HyperMD-list-line-3:has(> .task-list-label > [data-task="“"])::after,
 			.HyperMD-list-line-3:has(> .task-list-label > [data-task="!"])::after,
+			.HyperMD-list-line-3:has(> .task-list-label > [data-task="r"])::after,
 			.HyperMD-list-line-3:has(> .task-list-label > [data-task="*"])::after {
 				left: 4.6em;
 				width: calc(100% - 4.6em);
@@ -1093,6 +1139,7 @@
 			.HyperMD-list-line-4:has(> .task-list-label > [data-task="\""])::after,
 			.HyperMD-list-line-4:has(> .task-list-label > [data-task="“"])::after,
 			.HyperMD-list-line-4:has(> .task-list-label > [data-task="!"])::after,
+			.HyperMD-list-line-4:has(> .task-list-label > [data-task="r"])::after,
 			.HyperMD-list-line-4:has(> .task-list-label > [data-task="*"])::after {
 				left: 6.2em;
 				width: calc(100% - 6.2em);
@@ -1104,6 +1151,7 @@
 			li[data-task="\""],
 			li[data-task="“"],
 			li[data-task="!"],
+			li[data-task="r"],
 			li[data-task="*"] {
 		        position: relative;
 		        z-index: 30;
@@ -1113,10 +1161,11 @@
 			li[data-task="\""]::after,
 			li[data-task="“"]::after,
 			li[data-task="!"]::after,
+			li[data-task="r"]::after,
 			li[data-task="*"]::after {
 		        content: ''; position: absolute;
-		        top:0; left: -0.25em;
-		        height: 100%; width: calc(100% + 0.25em);
+		        top: 1px; left: -0.25em;
+		        height: calc(100% - 1px); width: calc(100% + 0.25em);
 		        z-index: -1;
 		        border-radius: var(--size-4-1)
 		    }
@@ -1540,6 +1589,13 @@
 
 
 	/* === Plugin: Checklist === */
+		/* remove margin-left introduce by the plugin */
+		.better-search-views-tree .search-result-file-matches { margin-left: unset; }
+		/* if better search is enabled, reduce the file-match padding */
+		.better-search-views-tree .search-result-file-match {padding-left: var(--size-4-1); }
+
+
+	/* === Plugin: Checklist === */
 		.checklist-plugin-main li.svelte-6nbpzm.svelte-6nbpzm {margin-bottom: 2px; padding-top: 0;}
 		.checklist-plugin-main.checklist-plugin-main {
 			--checklist-headerFontSize: 1.1em;
@@ -1673,8 +1729,10 @@
 
 
 		/* -- for header in list (as it is not part of display block) */
-			/* ul li:has([data-heading],.snw-block-preview) {position: relative;} */
-			li:has([data-heading]):has(.snw-block-preview) .snw-reference.snw-block-preview { position:absolute; top: 1em; right: 0; }
+			ul li:has(> [data-heading]):has(> .snw-block-preview) {position: relative;}
+			li:has(> [data-heading]:is(h1,h2)) > .snw-reference { --lst-snw-top: calc(var(--h2-top-spacing) * 1.5); }
+			li:has(> [data-heading]:not(h1,h2)) > .snw-reference { --lst-snw-top: calc(var(--h3-top-spacing) * 1.5); }
+			li:has(> [data-heading]):has(> .snw-block-preview) > .snw-reference.snw-block-preview { position:absolute; top: var(--lst-snw-top); right: 0; }
 			.snw-reference.snw-embed + br {display: none;}
 
 
@@ -2342,6 +2400,7 @@ settings:
 	-
 		id: gutter-display
         title: Show/Hide Gutter
+		description: When "Show line number" option disabled
         type: variable-select
         allowEmpty: false
         default: block
