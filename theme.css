@@ -1608,6 +1608,12 @@
 		.markdown-source-view.mod-cm6 .dataview .task-list-item-checkbox { margin-inline-start: calc(var(--checkbox-size) * -1.5); }
 
 
+	/* === Plugin: Digital Garden by Oleeskid === */
+		main.content.cm-s-obsidian {
+			font-size: 16px;
+		}
+
+
 	/*=== Plugin: Excalidraw ===*/
 		/* supporting excalidraw in list as inline to work well with SNW */
 		.excalidraw-svg-clean-embed { display: inline; }
