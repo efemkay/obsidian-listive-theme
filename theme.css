@@ -1,4 +1,4 @@
-/* === Listive Theme - v0.6.1 by Efemkay === *//* updated 14oct2023 *//*
+/* === Listive Theme - v0.6.2 by Efemkay === *//* updated 14oct2023 *//*
 
 	0.6.2 (updated 14Oct2023)
 	- improved support for Digital Garden plugin (filetree, backlinks and mobile UI)
@@ -1612,42 +1612,68 @@
 
 
 	/* === Plugin: Digital Garden by Oleeskid === */
-		main.content.cm-s-obsidian {
-			font-size: 16px;
-		}
+		/* using body.markdown-preview-view will narrow to this plugin only */
+
+		/* set the font, since default is 18px */
+		body.markdown-preview-view main.content.cm-s-obsidian { font-size: 16px; }
 
 		/* -- Layout -- */
+			/* applied to all screen size */
+			body.markdown-preview-view aside { z-index: 100; position: fixed; }
+			body.markdown-preview-view .sidebar .graph { width: 100%; }
+			body.markdown-preview-view .sidebar .graph #link-graph { width: 100%; }
+			body.markdown-preview-view .backlinks { width: 100%; }
+			body.markdown-preview-view .toc > ol { padding-inline-start: 5px; margin-block: 0; }
 
 			/* when you have all the screen real estate */
 			@media(min-width: 1300px) {
-				.markdown-preview-view .sidebar {
+				body.markdown-preview-view .sidebar {
 					width: 280px; position: fixed;
 					margin-right: 1em; margin-left: 1em;
 					height: calc(100% - 75px - 1em);
 				}
-				.markdown-preview-view .sidebar-container { height: 100%; padding-right: 0; }
+				body.markdown-preview-view .sidebar-container { height: 100%; padding-right: 0; }
+				body.markdown-preview-view .sidebar-container { flex-wrap: wrap; }
+				body.markdown-preview-view .toc { display: block; width: 100%; padding-block: 0; order: 1; }
+				body.markdown-preview-view .backlinks { order: 2; flex-basis: auto; }
+				body.markdown-preview-view .graph { order: 3; }
+				body.markdown-preview-view .force-graph-container > canvas { width: 100%; }
 			}
-			/* this one no need media query coz its parent div only appear based on js */
-			.markdown-preview-view .filetree-sidebar {
-				width: 280px; height: calc(100% - 2em);
-				margin-top: 1em; margin-left: 1em;
-				border-radius: 0.5em;
+			@media(min-width: 1400px) {
+				body.markdown-preview-view .sidebar-container { flex-wrap: nowrap; }
+			}
+			@media (min-width: 1300px) and (max-width: 1330px) {
+				body.markdown-preview-view main.content { width: 670px; }
 			}
 
 			/* when filetree visible and right sidebar push to bottom */
-			@media (min-width: 1000px) and (max-width: 1300px) {
-				main.content { max-width: none; }
-				main.content, .markdown-preview-view .sidebar { margin-left: 295px; }
+			@media (min-width: 1000px) and (max-width: 1301px) {
+				body.markdown-preview-view :is(main.content, .sidebar) { max-width: none; }
+				body.markdown-preview-view :is(main.content, .sidebar) { margin-left: 295px; }
+				.graph { flex: 0 1 50%; }
+			}
+
+			/* when sidebar/backlinks at the bottom */
+			@media (max-width: 1300px) {
+				body.markdown-preview-view .sidebar { margin-bottom: 7em; }
+			}
+
+			/* this one no need media query coz its parent div only appear based on js */
+			body.markdown-preview-view .filetree-sidebar {
+				width: 275px; height: calc(100% - 2em);
+				margin-top: 1em; margin-left: 1em;
+				border-radius: 0.5em;
 			}
 
 			/* when on mobile that is not tablet */
 			@media(max-width: 1000px) {
 				body.markdown-preview-view { --file-margins: 16px; }
+				body.markdown-preview-view .sidebar-container { padding-right: 0; }
 			}
 
 		/* -- Indentation guide for content for bullets */
-			ul { position: relative; }
-			ul ul::before {
+			body.markdown-preview-view ul { position: relative; }
+			body.markdown-preview-view ul ul::before {
 				content: "";
 				position: absolute; margin-left: -0.9em; margin-top: 0;
 				border-left: 1px solid var(--background-modifier-border);
@@ -1655,16 +1681,16 @@
 			}
 
 		/* -- site title -- */
-			:is(.navbar-inner, .filetree-sidebar) h1 { --h1-border-width: 0px; --h2-bottom-spacing: 0.8rem; }
+			body.markdown-preview-view :is(.navbar-inner, .filetree-sidebar) h1 { --h1-border-width: 0px; --h2-bottom-spacing: 0.8rem; }
 
 		/* -- Filetree -- */
 			/* content mod only. for layout see above */
-			.filelist > .notelink > svg { display: none; }
-			.folder:not(.inner-folder) > div > .inner-folder { padding-right: 10px; }
+			body.markdown-preview-view .filelist > .notelink > svg { display: none; }
+			body.markdown-preview-view .folder:not(.inner-folder) > div > .inner-folder { padding-right: 10px; }
 
 			/* indentation guide for file tree */
-			.folder.inner-folder { position: relative; }
-			.folder.inner-folder::before {
+			body.markdown-preview-view .folder.inner-folder { position: relative; }
+			body.markdown-preview-view .folder.inner-folder::before {
 				content: "";
 				display: block;
 				position: absolute;
@@ -1672,13 +1698,13 @@
 				height: calc(100% - 2em);
 				border-left: 1px solid var(--background-modifier-border);
 			}
-			.foldername-wrapper:has(~ div > .active-note) { color: white; }
+			body.markdown-preview-view .foldername-wrapper:has(~ div > .active-note) { color: white; }
 
 			/* note list and active note */
-			.notelink { padding-inline: 5px; margin-inline: 10px 0px; border-radius: 0.5em; }
-			.notelink.active-note { transform: unset; }
+			body.markdown-preview-view .notelink { padding-inline: 5px; margin-inline: 10px 0px; border-radius: 0.5em; }
+			body.markdown-preview-view .notelink.active-note { transform: unset; }
 			@media(min-width: 1000px) {
-				.notelink.active-note {
+				body.markdown-preview-view .notelink.active-note {
 					width: calc(100% + 10px);
 					padding-right: 20px;
 					border-top-right-radius: 0;
@@ -1687,23 +1713,28 @@
 			}
 
 		/* -- Right Sidebar and backlinks -- */
-			.backlink-card > a { --link-decoration: none; }
-			.backlink-card > svg { display: none; }
-
-			/* when sidebar/backlinks at the bottom */
-			@media (max-width: 1300px) {
-				.markdown-preview-view .sidebar { margin-bottom: 7em; }
+			body.markdown-preview-view .backlink-card > a { --link-decoration: none; }
+			body.markdown-preview-view .backlink-card > svg { display: none; }
+			body.markdown-preview-view .toc ol {
+				margin-left: 7px;
+			}
+			body.markdown-preview-view .toc ol a {
+				margin-left: 5px;
+			}
+			body.markdown-preview-view .toc li {
+				display: block;
+			}
+			body.markdown-preview-view .toc li::before {
+				margin-left: -14px;
+				margin-right: -4px;
+				color: var(--text-normal);
 			}
 
 		/* -- Custom Callout */
-			.callout-icon > svg { width: 48px; height: 48px; }
+			body.markdown-preview-view .callout-icon > svg { width: 48px; height: 48px; }
 
 		/* -- Spacing */
-			:is(h1,h2,h3,h4,h5,h6) + ul,
-			[data-heading] + div[class*="block-language-dataview"] ul,
-			.callout-content [data-heading] + ul {
-				margin-top: 0;
-			}
+			body.markdown-preview-view :is(h1,h2,h3,h4,h5,h6) + ul { margin-top: 0; }
 
 
 
