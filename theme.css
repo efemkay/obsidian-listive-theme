@@ -1,4 +1,7 @@
-/* === Listive Theme - v0.6.1 by Efemkay === *//* updated 16Sep2023 *//*
+/* === Listive Theme - v0.6.1 by Efemkay === *//* updated 14oct2023 *//*
+
+	0.6.2 (updated 14Oct2023)
+	- improved support for Digital Garden plugin (filetree, backlinks and mobile UI)
 
 	0.6.1 (updated 16Sep2023)
 	- minor fixes on SNW plugin
@@ -1612,6 +1615,96 @@
 		main.content.cm-s-obsidian {
 			font-size: 16px;
 		}
+
+		/* -- Layout -- */
+
+			/* when you have all the screen real estate */
+			@media(min-width: 1300px) {
+				.markdown-preview-view .sidebar {
+					width: 280px; position: fixed;
+					margin-right: 1em; margin-left: 1em;
+					height: calc(100% - 75px - 1em);
+				}
+				.markdown-preview-view .sidebar-container { height: 100%; padding-right: 0; }
+			}
+			/* this one no need media query coz its parent div only appear based on js */
+			.markdown-preview-view .filetree-sidebar {
+				width: 280px; height: calc(100% - 2em);
+				margin-top: 1em; margin-left: 1em;
+				border-radius: 0.5em;
+			}
+
+			/* when filetree visible and right sidebar push to bottom */
+			@media (min-width: 1000px) and (max-width: 1300px) {
+				main.content { max-width: none; }
+				main.content, .markdown-preview-view .sidebar { margin-left: 295px; }
+			}
+
+			/* when on mobile that is not tablet */
+			@media(max-width: 1000px) {
+				body.markdown-preview-view { --file-margins: 16px; }
+			}
+
+		/* -- Indentation guide for content for bullets */
+			ul { position: relative; }
+			ul ul::before {
+				content: "";
+				position: absolute; margin-left: -0.9em; margin-top: 0;
+				border-left: 1px solid var(--background-modifier-border);
+				top: 0; bottom: 0.4em; left: 0;
+			}
+
+		/* -- site title -- */
+			:is(.navbar-inner, .filetree-sidebar) h1 { --h1-border-width: 0px; --h2-bottom-spacing: 0.8rem; }
+
+		/* -- Filetree -- */
+			/* content mod only. for layout see above */
+			.filelist > .notelink > svg { display: none; }
+			.folder:not(.inner-folder) > div > .inner-folder { padding-right: 10px; }
+
+			/* indentation guide for file tree */
+			.folder.inner-folder { position: relative; }
+			.folder.inner-folder::before {
+				content: "";
+				display: block;
+				position: absolute;
+				left: 1.2em; bottom: 0;
+				height: calc(100% - 2em);
+				border-left: 1px solid var(--background-modifier-border);
+			}
+			.foldername-wrapper:has(~ div > .active-note) { color: white; }
+
+			/* note list and active note */
+			.notelink { padding-inline: 5px; margin-inline: 10px 0px; border-radius: 0.5em; }
+			.notelink.active-note { transform: unset; }
+			@media(min-width: 1000px) {
+				.notelink.active-note {
+					width: calc(100% + 10px);
+					padding-right: 20px;
+					border-top-right-radius: 0;
+					border-bottom-right-radius: 0;
+				}
+			}
+
+		/* -- Right Sidebar and backlinks -- */
+			.backlink-card > a { --link-decoration: none; }
+			.backlink-card > svg { display: none; }
+
+			/* when sidebar/backlinks at the bottom */
+			@media (max-width: 1300px) {
+				.markdown-preview-view .sidebar { margin-bottom: 7em; }
+			}
+
+		/* -- Custom Callout */
+			.callout-icon > svg { width: 48px; height: 48px; }
+
+		/* -- Spacing */
+			:is(h1,h2,h3,h4,h5,h6) + ul,
+			[data-heading] + div[class*="block-language-dataview"] ul,
+			.callout-content [data-heading] + ul {
+				margin-top: 0;
+			}
+
 
 
 	/*=== Plugin: Excalidraw ===*/
