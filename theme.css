@@ -1,4 +1,8 @@
-/* === Listive Theme - v0.6.2 by Efemkay === *//* updated 14oct2023 *//*
+/* === Listive Theme - v0.6.3 by Efemkay === *//* updated 19Nov2023 *//*
+
+	0.6.3 (updated 19Nov2023)
+	- added customisation for Emoji Toolbar
+	- improved performance by optimising has() use in certain places
 
 	0.6.2 (updated 14Oct2023)
 	- improved support for Digital Garden plugin (filetree, backlinks and mobile UI)
@@ -27,15 +31,16 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Karla&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lexend&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,400;0,600;1,400;1,600&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Lexend&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,400;0,600;1,400;1,600&display=swap'); */
 /* serif fonts */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@0;1&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@0;1&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap'); */
 /* arabic fonts */
 @import url('https://fonts.googleapis.com/css2?family=Amiri+Quran&display=swap');
 
@@ -47,7 +52,7 @@
 ============================================================================= */
 
 	/* === Hide Listive theme identifier in Style Settings === */
-		[data-id="listive-theme"].setting-item.mod-toggle { display: none;}
+		[data-id="listive-theme"].setting-item.mod-toggle { contain: strict; display: none;}
 
 	/* --- WORKSPACE - Readable Line Length --- */
 		/* this feature uses Style Settings */
@@ -83,8 +88,6 @@
 			- set the ribbon bar (when expanded) to be same as background-primary
 			- setting the background when app is not on focus
 		*/
-		body.is-focused {
-		}
 	    .workspace-tabs .workspace-leaf { background-color: var(--titlebar-background-focused); }
 	    body.is-focused .workspace-ribbon.mod-left:not(.is-collapsed) { --titlebar-background: var(--background-primary); }
 	    body:not(.is-focused) .clickable-icon { color: var(--tab-text-color); }
@@ -368,14 +371,18 @@
 	- tags pill
 	- internal link formatting
 ==============================================================================*/
-
+	.view-content {
+		/* font-weight: var(--font-light); */
+	}
 	body {
 		--h1-font: Courgette;
 		--h2-font: Courgette;
 		--h3-font: 'Karla', 'Inter';
 		--h4-font: 'Karla', 'Inter';
 		--default-font: 'Inter';
-		--font-text-theme: 'Inter'; /* obsidian app.css variable */
+		--font-text-theme: 'Inter';
+		/* --font-text-theme: 'Lexend'; */
+
 		--keyheader-font: 'Open Sans'; /* Delius */
 		/* these are obsidian app.css variables */
 
@@ -428,6 +435,7 @@
 		--h1-color: hsl(217, 22%, 90%);
 		--h2-color: #bccad6; /* shade of #55A6AD. #8d9db6 #AAA 00bdbd */
 		--h2-color: hsl(217, 22%, 80%);
+		/* --h2-color-lighter: color-mix(in lch, var(--h2-color) 50%, transparent); */
 		--h3-color: #8d9db6; /* #667292 #2DC1C1 00a3a3 */
 		--h3-color: hsl(217, 22%, 70%);
 		--h4-color: #fbefcc; /* #fbefcc AntiqueWhite */
@@ -440,10 +448,10 @@
 	}
 
 	/* === Added formatting support for html <sub> <sup>. format copied from app's default rule === */
-	.cm-header-3 ~ span :is(sub,sup) { font-variant: var(--h3-variant); line-height: var(--h3-line-height); color: var(--h3-color); font-weight: var(--h3-weight); font-style: var(--h3-style); font-family: var(--h3-font); }
-	.cm-header-4 ~ span :is(sub,sup) { font-variant: var(--h4-variant); line-height: var(--h4-line-height); color: var(--h4-color); font-weight: var(--h4-weight); font-style: var(--h4-style); font-family: var(--h4-font); }
-	.cm-header-5 ~ span :is(sub,sup) { font-variant: var(--h5-variant); line-height: var(--h5-line-height); color: var(--h5-color); font-weight: var(--h5-weight); font-style: var(--h5-style); font-family: var(--h5-font); }
-	.cm-header-6 ~ span :is(sub,sup) { font-variant: var(--h6-variant); line-height: var(--h6-line-height); color: var(--h6-color); font-weight: var(--h6-weight); font-style: var(--h6-style); font-family: var(--h6-font); }
+		.cm-header-3 ~ span :is(sub,sup) { font-variant: var(--h3-variant); line-height: var(--h3-line-height); color: var(--h3-color); font-weight: var(--h3-weight); font-style: var(--h3-style); font-family: var(--h3-font); }
+		.cm-header-4 ~ span :is(sub,sup) { font-variant: var(--h4-variant); line-height: var(--h4-line-height); color: var(--h4-color); font-weight: var(--h4-weight); font-style: var(--h4-style); font-family: var(--h4-font); }
+		.cm-header-5 ~ span :is(sub,sup) { font-variant: var(--h5-variant); line-height: var(--h5-line-height); color: var(--h5-color); font-weight: var(--h5-weight); font-style: var(--h5-style); font-family: var(--h5-font); }
+		.cm-header-6 ~ span :is(sub,sup) { font-variant: var(--h6-variant); line-height: var(--h6-line-height); color: var(--h6-color); font-weight: var(--h6-weight); font-style: var(--h6-style); font-family: var(--h6-font); }
 
 	/* === Margin, Padding and Line Height === */
 		/* for list's margin/padding go to (12) Section for Content Core Customisation */
@@ -532,7 +540,7 @@
 
 
 
-	/* === Border Decoration === */
+	/* === Header Border Decoration === */
 
 		/* -- for Heading NOT in bullet, use ::after so that there's padding below the bottom border */
 		.cm-s-obsidian .HyperMD-header-1::after,
@@ -542,20 +550,54 @@
 
 		/* create border-bottom for headers not in lists */
 		.cm-s-obsidian .HyperMD-list-line .cm-header-1, .markdown-rendered h1,
-		.cm-s-obsidian .HyperMD-header-1::after { border-bottom: var(--h1-border-width) solid var(--h1-color); }
+		.cm-s-obsidian .HyperMD-header-1::after { border-bottom: var(--h1-border-width) solid color-mix(in lch, var(--h1-color) 50%, transparent); }
 		.cm-s-obsidian .HyperMD-list-line .cm-header-2, .markdown-rendered h2,
-		.cm-s-obsidian .HyperMD-header-2::after { border-bottom: var(--h2-border-width) solid var(--h2-color); }
+		.cm-s-obsidian .HyperMD-header-2::after {
+			/* border-bottom: var(--h2-border-width) solid color-mix(in lch, var(--h2-color) 50%, transparent); */
+			border-bottom: var(--h2-border-width) solid;
+			border-image-slice: 1;
+			border-image-source: linear-gradient(to right, color-mix(in lch, var(--h2-color) 60%, transparent), transparent);
+		}
 		.cm-s-obsidian .HyperMD-list-line .cm-header-3, .markdown-rendered h3,
-		.cm-s-obsidian .HyperMD-header-3::after { border-bottom: var(--h3-border-width) solid var(--h3-color); }
+		.cm-s-obsidian .HyperMD-header-3::after { border-bottom: var(--h3-border-width) solid color-mix(in lch, var(--h3-color) 50%, transparent); }
 
-		/* page-width border-bottom support in LP using :has(). `.cm-s-obsidian` can be removed later on */
-		.cm-s-obsidian .HyperMD-list-line:has(.cm-header-1)::after { content:''; display: block; border-bottom: var(--h1-border-width) solid var(--h1-color); }
-		.cm-s-obsidian .HyperMD-list-line:has(.cm-header-1) .cm-header-1 { border-bottom: none; }
-		.cm-s-obsidian .HyperMD-list-line:has(.cm-header-2)::after { content:''; display: block; border-bottom: var(--h2-border-width) solid var(--h2-color); }
-		.cm-s-obsidian .HyperMD-list-line:has(.cm-header-2) .cm-header-2 { border-bottom: none; }
-		.cm-s-obsidian .HyperMD-list-line:has(.cm-header-3)::after { content:''; display: block; border-bottom: var(--h3-border-width) solid var(--h3-color); }
-		.cm-s-obsidian .HyperMD-list-line:has(.cm-header-3) .cm-header-3 { border-bottom: none; }
+		/* -- page-width border-bottom support in LP */
+		/* use :has() to remove need for MA plugin. use css nesting for cleaner code *//*
+		.HyperMD-list-line:has(.cm-header-1, .cm-header-2, .cm-header-3) {
+			&::after { content: ''; display: block; border-bottom: solid; border-image-slice: 1; }
+			& span:is(.cm-header-1, .cm-header-2, .cm-header-3) { border-bottom: none;}
+		}
+		.HyperMD-list-line {
+			&:has(.cm-header-1)::after { border-bottom-width: var(--h1-border-width); border-image-source: linear-gradient(to right, color-mix(in lch, var(--h1-color) 60%, transparent), transparent); }
+			&:has(.cm-header-2)::after { border-bottom-width: var(--h2-border-width); border-image-source: linear-gradient(to right, color-mix(in lch, var(--h2-color) 60%, transparent), transparent); }
+			&:has(.cm-header-3)::after { border-bottom-width: var(--h3-border-width); border-image-source: linear-gradient(to right, color-mix(in lch, var(--h3-color) 60%, transparent), transparent); }
+		}
 
+		/* new version */
+		.HyperMD-list-line:has(.cm-header-1) {
+			&::after {
+				contain: strict;
+				content: ''; display: block; border-bottom: solid; border-image-slice: 1;
+				border-bottom-width: var(--h1-border-width); border-image-source: linear-gradient(to right, color-mix(in lch, var(--h1-color) 60%, transparent), transparent);
+			}
+			& .cm-header-1 { contain: strict; border-bottom: none;}
+		}
+		.HyperMD-list-line:has(.cm-header-2) {
+			&::after {
+				contain: strict;
+				content: ''; display: block; border-bottom: solid; border-image-slice: 1;
+				border-bottom-width: var(--h2-border-width); border-image-source: linear-gradient(to right, color-mix(in lch, var(--h2-color) 60%, transparent), transparent);
+			}
+			& .cm-header-2 { contain: strict; border-bottom: none;}
+		}
+		.HyperMD-list-line:has(.cm-header-3) {
+			&::after {
+				contain: strict;
+				content: ''; display: block; border-bottom: solid; border-image-slice: 1;
+				border-bottom-width: var(--h3-border-width); border-image-source: linear-gradient(to right, color-mix(in lch, var(--h3-color) 60%, transparent), transparent);
+			}
+			& .cm-header-3 { contain: strict; border-bottom: none;}
+		}
 
 
 	/* === Markdown bold / strong === */
@@ -564,6 +606,7 @@
 			--bold-weight: var(--font-bold);
 			--bold-color: var(--h1-color);
 		}
+		/* needed to overwrite .cm-header default style */
 		.cm-strong.cm-header {
 			font-weight: var(--bold-weight);
 			color: var(--bold-color);
@@ -604,20 +647,16 @@
 		.HyperMD-header .cm-hashtag { font-size: var(--tag-size) !important; } /* to override 1.1.x header setting trumps .cm-hastag */
 		/* tag pill decoration */
 		/* included ":not(token) as codeblock html seems to put the inside a span with that class" */
-		/* !important added because default theme 0.16.x uses it */
-		.cm-s-obsidian span.cm-hashtag,
-		.tag:not(.token) {color: var(--tag-color); font-family: var(--font-text) !important; font-weight: normal;
+		.cm-hashtag,
+		.tag:not(.token) {
 			background-image: none; /* to remove spell-error underline in hashtag */
-			/* display: inline-block; margin-bottom: 0.3em; /* this line added to make the tag float similar to h2 */
 		}
 
 
 	/* === INTERNAL LINK === */
-
-		.markdown-preview-view .internal-link { text-decoration: none; }
-		/*
-		.cm-s-obsidian span.cm-hmd-internal-link .cm-underline { text-decoration: none !important; }
-		*/
+		body {
+			--link-decoration: none;
+		}
 
 
 
@@ -647,10 +686,93 @@
 
 		.cm-s-obsidian .cm-formatting-link { font-weight: 300; }
 
+
+	/* === Active Line and Partial Bullet Threading === */
+
 		/* Active Line */
 		/* (1) normal active line that's not list, not header. (2) active list that's not list header. (3) header and list header */
 		/* .cm-line is need to avoid applying for line number gutter */
-		.cm-line.cm-active:not(.HyperMD-quote)::before { content: ''; position: absolute; width: 100%; height: 100%; z-index: -30; top: 0; left: 0; background-color: var(--background-active-line); }
+		.cm-line.cm-active:not(.HyperMD-quote)::before { contain: strict; content: ''; position: absolute; width: 100%; height: 100%; z-index: -30; top: 0; left: 0; background-color: var(--background-active-line); }
+
+		/*-- Partial Bullet Threading /*
+		/* Only immediate parent, using Core feature indentation guide
+		   and still not work well with changing font size. Only works well at 14px */
+
+		/* up to immediate parent */
+		.lst-partial-bt {
+
+			--indent-dash-width: 1.50em;       /* 1.45rem / 1.20rem */
+			--indent-dash-top: 0.80em;         /* 0.75rem / 0.70rem */
+			--indent-dash-left: 0.68rem;        /* 0.80rem / 0.70rem */
+			--indent-dash-spacing2: 0.45rem;     /* 0.50rem / 0.55rem */
+			--indent-dash-spacing3: 0.50rem;    /* 0.55rem / 0.52rem */
+			--indent-dash-spacing4: 0.50rem;    /* 0.55rem / 0.52rem */
+			--indent-dash-spacing5: 0.60rem;    /* 0.55rem / 0.52rem */
+			--indent-dash-spacing6: 0.60rem;    /* 0.55rem / 0.52rem */
+			--indent-dash-spacing7: 0.65rem;    /* 0.55rem / 0.52rem */
+			--indent-dash-spacing8: 0.70rem;    /* 0.55rem / 0.52rem */
+			--indent-dash-spacing9: 0.70rem;    /* 0.55rem / 0.52rem */
+
+			/* this can be deleted later, it's for Indentation Guide community plugin */
+			.ig-lists .HyperMD-list-line.ig-indent-group .ig-tab.ig-indent-group-level::before {
+				width: 2px !important;
+			}
+			.cm-active .cm-formatting-list-ul .list-bullet.list-bullet.list-bullet::after {
+				contain: strict;
+				width: var(--list-bullet-size);
+				height: var(--list-bullet-size);
+				outline: 0;
+				background-color: var(--indentation-guide-active-color);
+			}
+			.cm-active .cm-hmd-list-indent::before {
+				contain: strict;
+				content: "";
+				position: absolute;
+				top: var(--indent-dash-top); /* subtract half of the height of the pseudo-element */
+				width: var(--indent-dash-width);
+				height: 2px;
+				background-color: var(--indentation-guide-active-color);
+			}
+
+			/* set distance from top for headers in list */
+		    .cm-hmd-list-indent:has(~ .cm-header-2) { --indent-dash-top: 1.4rem; }
+		    .cm-hmd-list-indent:has(~ .cm-header-3) { --indent-dash-top: 1rem; }
+
+		    /* paint the horizontal arm, support up to 9 indent levels */
+		    .HyperMD-list-line-2 .cm-hmd-list-indent::before { contain:strict; left: calc(0 * var(--indent-dash-left) + var(--indent-dash-spacing2)); }
+		    .HyperMD-list-line-3 .cm-hmd-list-indent::before { contain:strict; left: calc(2 * var(--indent-dash-left) + var(--indent-dash-spacing3)); }
+		    .HyperMD-list-line-4 .cm-hmd-list-indent::before { contain:strict; left: calc(4 * var(--indent-dash-left) + var(--indent-dash-spacing4)); }
+		    .HyperMD-list-line-5 .cm-hmd-list-indent::before { contain:strict; left: calc(6 * var(--indent-dash-left) + var(--indent-dash-spacing5)); }
+		    .HyperMD-list-line-6 .cm-hmd-list-indent::before { contain:strict; left: calc(8 * var(--indent-dash-left) + var(--indent-dash-spacing6)); }
+		    .HyperMD-list-line-7 .cm-hmd-list-indent::before { contain:strict; left: calc(10 * var(--indent-dash-left) + var(--indent-dash-spacing7)); }
+		    .HyperMD-list-line-8 .cm-hmd-list-indent::before { contain:strict; left: calc(12 * var(--indent-dash-left) + var(--indent-dash-spacing8)); }
+		    .HyperMD-list-line-9 .cm-hmd-list-indent::before { contain:strict; left: calc(14 * var(--indent-dash-left) + var(--indent-dash-spacing9)); }
+
+			/* paint the immediate parent vertical arm */
+			:is(.HyperMD-list-line-2, .HyperMD-list-line-3, .HyperMD-list-line-4, .HyperMD-list-line-5, .HyperMD-list-line-6, .HyperMD-list-line-7, .HyperMD-list-line-8, .HyperMD-list-line-9):not(:has(~ .HyperMD-list-line-1 ~ .HyperMD-list-line.cm-active)):has(~ .HyperMD-list-line-2.cm-active) .cm-indent:nth-child(1 of .cm-indent)::before,
+			:is(.HyperMD-list-line-3, .HyperMD-list-line-4, .HyperMD-list-line-5, .HyperMD-list-line-6, .HyperMD-list-line-7, .HyperMD-list-line-8, .HyperMD-list-line-9):not(:has(~ .HyperMD-list-line-2 ~ .HyperMD-list-line.cm-active)):has(~ .HyperMD-list-line-3.cm-active) .cm-indent:nth-child(2 of .cm-indent)::before,
+			:is(.HyperMD-list-line-4, .HyperMD-list-line-5, .HyperMD-list-line-6, .HyperMD-list-line-7, .HyperMD-list-line-8, .HyperMD-list-line-9):not(:has(~ .HyperMD-list-line-3 ~ .HyperMD-list-line.cm-active)):has(~ .HyperMD-list-line-4.cm-active) .cm-indent:nth-child(3 of .cm-indent)::before,
+			:is(.HyperMD-list-line-5, .HyperMD-list-line-6, .HyperMD-list-line-7, .HyperMD-list-line-8, .HyperMD-list-line-9):not(:has(~ .HyperMD-list-line-4 ~ .HyperMD-list-line.cm-active)):has(~ .HyperMD-list-line-5.cm-active) .cm-indent:nth-child(4 of .cm-indent)::before,
+			:is(.HyperMD-list-line-6, .HyperMD-list-line-7, .HyperMD-list-line-8, .HyperMD-list-line-9):not(:has(~ .HyperMD-list-line-5 ~ .HyperMD-list-line.cm-active)):has(~ .HyperMD-list-line-6.cm-active) .cm-indent:nth-child(5 of .cm-indent)::before,
+			:is(.HyperMD-list-line-7, .HyperMD-list-line-8, .HyperMD-list-line-9):not(:has(~ .HyperMD-list-line-6 ~ .HyperMD-list-line.cm-active)):has(~ .HyperMD-list-line-7.cm-active) .cm-indent:nth-child(6 of .cm-indent)::before,
+			:is(.HyperMD-list-line-8, .HyperMD-list-line-9):not(:has(~ .HyperMD-list-line-7 ~ .HyperMD-list-line.cm-active)):has(~ .HyperMD-list-line-8.cm-active) .cm-indent:nth-child(7 of .cm-indent)::before,
+			:is(.HyperMD-list-line-9):not(:has(~ .HyperMD-list-line-8 ~ .HyperMD-list-line.cm-active)):has(~ .HyperMD-list-line-9.cm-active) .cm-indent:nth-child(8 of .cm-indent)::before {
+				contain: strict;
+				--indentation-guide-color: var(--background-modifier-border-active);
+				border-width: 2px;
+			}
+
+			.cm-active.HyperMD-list-line { --last-ig-height: 0.9em; }
+			.cm-active.HyperMD-list-line:has(.cm-header-2) { --last-ig-height: calc(0.95em + var(--h2-top-spacing-edit)); }
+			.cm-active.HyperMD-list-line:has(.cm-header-3) { --last-ig-height: calc(0.85em + var(--h3-top-spacing-edit)); }
+			.HyperMD-list-line.cm-active > .cm-hmd-list-indent > .cm-indent:last-child::before {
+				contain: strict;
+				--indentation-guide-color: var(--background-modifier-border-active);
+				border-width: 2px;
+				height: var(--last-ig-height);
+			}
+		}
+
 
 
 	/* === Backlinks & Results area === */
@@ -690,18 +812,12 @@
 
 	/* === Embed & Popover Embed === */
 
-		/* embeds in Editing & Reading View */
-		.markdown-embed,
-		.markdown-embed .markdown-preview-view { padding: 0 0.5em 0.2em 0.5em; }
-		.markdown-embed { margin: 0.5em 0; } /* previously have !important here */
-
 		/* embeds in popover view */
-		body {
-			--popover-width: 500px;
-		}
-		/* these can be deleted later (31July2023) */
-			/* .popover.hover-popover { width: 550px; min-height: 400px; border: 1px solid Gray; } */
-			/*.popover.hover-popover .markdown-embed { height: 390px; }*/
+		body { --popover-width: 500px; }
+
+		/* embeds in Editing & Reading View */
+		.markdown-embed, .markdown-embed .markdown-preview-view { padding: 0 0.5em 0.2em 0.5em; }
+		.markdown-embed { margin: 0.5em 0; } /* previously have !important here */
 
 		/* adjust the padding for popover */
 		.popover.hover-popover > .markdown-embed > .markdown-embed-content > .markdown-preview-view { --file-margins: var(--size-4-2) var(--size-4-6); }
@@ -712,7 +828,7 @@
 
 
 	/* === Embed -- List Embed === */
-		body {--list-embed-adj: 0px;}
+		body { --list-embed-adj: 0px; }
 
 		/* --- Clean Embed in Lists -- General effect to hide the link --- */
 		.HyperMD-list-line .internal-embed.is-loaded,
@@ -769,21 +885,23 @@
 		.status-bar { padding-top: 0.1em; padding-bottom: 0.1em; line-height: 1em; max-height: unset; }
 
 
-	/* === General Declaration / Definition === */
+	/* === List Indent / List Spacing === */
 		body {
 			--list-indent: 1.6em; /* as of v0.16.0, default obsidian variable */
 			/* my own variables */
+			--list-indent-first: 1.6em;
 			--list-indent-read: 1.5em;
 			--list-guide-adj: 0px;
 			--list-guide-adj-mobile: 0px;
 			--list-guide-outliner-adj: 0px;
 		}
-			/* make the reading view indent same as editing view *//* not needed
-			ul, ol { padding-inline-start: var(--list-indent);}
-			*/
+
+		/* remove this first, i see issue between editing and reading view */
+		/* .callout-content ul:not(ul ul) { padding-inline-start: 0; } */
+		.markdown-preview-view > div ul:not(ul ul) { padding-inline-start: var(--list-indent-first); }
 
 
-	/* === Relationship Lines and Collapse Indicator === */
+	/* === List Relationship Lines and Collapse Indicator === */
 		/* -- Reading View Only. Adjust the distance between UL OL */
 		ul ul,
 		ol ul,
@@ -801,7 +919,7 @@
 		.markdown-preview-view .list-collapse-indicator {padding-right: 0;} /* adjustment for v1.1.11 */
 
 
-	/* == Indentation Lines / Outliner in Reading View == */
+	/* == List Indentation Lines / Outliner in Reading View == */
 		/* -- Draw the indentation guide lines in reading view only */
 		.is-css-guide .markdown-rendered:not(.show-indentation-guide) :is(ul ul, ol ul, ul ol, ol ol)::before { content:''; border-left: 1px solid var(--background-modifier-border); position: absolute; left: calc(-13px + var(--list-guide-adj)); top: 0; bottom: 0; }
 		.is-mobile.is-css-guide .markdown-rendered :is(ul ul, ol ul, ul ol, ol ol)::before { left: calc(-16px + 2px + var(--list-guide-adj-mobile)); }
@@ -820,17 +938,6 @@
 		/* .show-indentation-guide :is(h2[data-heading^="Journal"], h3[data-heading^="on "]) + ul ul::before { left: calc(-13px + var(--list-guide-adj) - 3px); } */
 
 
-	/* === List Indent adjustment === */
-		body {
-			--list-indent-first: 1.6em;
-		}
-		/* remove this first, i see issue betwee editing and reading view */
-		.callout-content ul:not(ul ul) {
-			/* padding-inline-start: 0; */
-		}
-		.markdown-preview-view > div ul:not(ul ul) {
-			padding-inline-start: var(--list-indent-first);
-		}
 
 
 /* =============================================================================
@@ -1185,18 +1292,14 @@
 		.markdown-preview-view code,
 		.cm-s-obsidian .cm-inline-code { font-size: 0.9em; border-radius: var(--radius-s); padding: 0.1em 0.25em; font-family: var(--font-monospace); }
 		.HyperMD-header .cm-inline-code { font-size: 0.9rem !important; } /* to override 1.1.x header setting trumps .cm-inline-code */
-		/* remove radius and padding on the inline code when it is active (showing formatting) */
+		/* remove radius and padding on the (a) inline code when it is active (showing formatting), and (b) formatting part - left and right */
 		.cm-formatting-code.cm-inline-code + .cm-inline-code { border-radius: 0; padding-inline: 0; }
-		/* remove radius and padding on the formatting part - left and right */
 		.cm-formatting-code:not(.cm-inline-code + .cm-formatting-code) { border-radius: var(--radius-s) 0 0 var(--radius-s); padding-inline: 0.25em 0; }
 		.cm-inline-code + .cm-formatting-code { border-radius: 0 var(--radius-s) var(--radius-s) 0; padding-inline: 0 0.25em; }
 
 		/* code block only - margin. Reading only */
 		/* .markdown-preview-view pre { margin: 0.1em 0 1em; } */
 		.markdown-preview-view li pre { margin: 0.1em 0 0.1em; }
-
-		/* -- Improved UI in LP for Code Block in List
-			/* padding more natural. experimental, using :has(). in personal staging */
 
 
 
@@ -1364,7 +1467,7 @@
 		/* -- Reposition Properties Title and Add Property button and customise them */
 			.metadata-container .metadata-properties-heading {
 				position: absolute; z-index: 30;
-				top: -0.5em; right: 0.5em;
+				top: -0.8em; right: 0.5em;
 				font-size: var(--metadata-label-font-size);
 				background: var(--metadata-background);
 				border-radius: var(--size-4-3);
@@ -1375,7 +1478,7 @@
 			body:is(.lst-prop-super-compact, .lst-prop-compact) .mod-root .metadata-container .metadata-add-button {
 				position: absolute;
 				margin-top: 0;
-				top: -0.6em; right: 8em;
+				top: -0.8em; right: 8em;
 				padding: 1px 8px 1px 4px;
 				height: unset;
 				background: var(--metadata-background);
@@ -1452,27 +1555,6 @@
 		/* -- hide the headings */
 		.markdown-embed-heading div[data-tag-name*="h"] {display: none;}
 
-		/* -- testing Timeline in lists *//* to be deleted post 31 Dec 2023
-		    .tag-mcltimeline > ul > li {padding-bottom: 0.5em; }
-		    .tag-mcltimeline > ul > li > *:not(ul) { text-align: center; align-self: baseline; }
-		    .tag-mcltimeline > ul > li {
-		        display: grid;
-		        grid-template-columns: 0 3fr 7fr;
-		        grid-template-rows: auto;
-		        grid-template-areas:
-		            "indicator timeline details"
-		            "indicator . details";
-		        grid-column-gap: 1em;
-
-		        border-radius: 1em;
-		        margin-bottom: 0.5em;
-		        text-align: center;
-
-		    }
-		    .tag-mcltimeline > ul > li > ul { grid-area: details; text-align: left; padding-right: 1em; }
-			/* squeezed the bullet/indicator in the indicator area with 0 width *//*
-			.tag-mcltimeline > ul > li > .list-bullet { grid-area: indicator; }
-			.tag-mcltimeline > ul > li > .collapse-indicator { grid-area: indicator; }
 
 
 	/* === image modifier === */
@@ -1619,7 +1701,8 @@
 
 		/* -- Layout -- */
 			/* applied to all screen size */
-			body.markdown-preview-view aside { z-index: 100; position: fixed; }
+			body.markdown-preview-view aside { z-index: 30; position: fixed; }
+			body.markdown-preview-view div#tooltip-wrapper { z-index: 60; }
 			body.markdown-preview-view .sidebar .graph { width: 100%; }
 			body.markdown-preview-view .sidebar .graph #link-graph { width: 100%; }
 			body.markdown-preview-view .backlinks { width: 100%; }
@@ -1737,20 +1820,37 @@
 			body.markdown-preview-view :is(h1,h2,h3,h4,h5,h6) + ul { margin-top: 0; }
 
 
+	/*=== Plugin: Emoji Toolbar ===*/
+		.emoji-mart {
+			font-family: var(--font-default);
+			background: var(--background-secondary-alt);
+			border-radius: var(--modal-radius);
+			.emoji-mart-anchor { height: 38px; margin-block: 5px !important; }
+			.emoji-mart-anchor-selected { background-color: var(--background-secondary) !important; }
+			.emoji-mart-anchor-bar { display: none; }
+			.emoji-mart-category-label { margin-top: 0.5em;
+				& span { padding-top: 0.5em; border-top-left-radius: 0.5em; border-top-right-radius: 0.5em; background-color: var(--background-primary-alt); }
+			}
+			.emoji-mart-search-icon { top: 0px; }
+		}
+
 
 	/*=== Plugin: Excalidraw ===*/
 		/* supporting excalidraw in list as inline to work well with SNW */
+		.excalidraw-svg,
 		.excalidraw-svg-clean-embed { display: inline; }
 
 
 	/* === Plugin: Indentation Guide (mgmeyer) === */
 		.dataview.task-list-item:hover, .dataview.task-list-basic-item:hover {--text-selection: black;}
 
+
 	/* === Plugin: Command Palette (core plugin) === */
 		.prompt .suggestion-prefix { background-color: var(--background-secondary); }
 		.theme-dark.is-mobile .prompt .suggestion-prefix { background-color: var(--background-primary); }
 		.prompt .suggestion-prefix { padding-inline: var(--size-4-1); margin-right: var(--size-4-1); color: var(--text-muted); border-radius: var(--size-4-1); }
 		.prompt .suggestion-prefix::after {display: none;}
+
 
 	/* === Plugin: Indentation Guide (mgmeyer) === */
 
@@ -1953,27 +2053,8 @@
 	.wide-page.home div > ul
 	{ display: grid; grid-column-gap:3em; grid-template-columns:repeat(auto-fit,minmax(18em,1fr));}
 
-	/* old codes, deprecated *//*
-	.wide-page.home div > ul { display: flex; column-gap: 3em; row-gap: 1em; flex-flow: row wrap; }
-	.wide-page.home div > ul > li { min-width: 18em; width: 30% }
-	*/
 
 
-
-/*
-	.internal-query .search-result-container {
-
-	}
-	.internal-query .search-results-children {
-		display: flex;
-		flex-flow: row wrap;
-	}
-	.search-results-children .tree-item.search-result {
-		width: auto;
-		flex-grow: 1;
-		margin: 0 0.3em 0.6em 0.3em;
-	}
-*/
 
 /* Create two columns bullet list only for 2nd level
    bullets that is adjacent to H4. Exclude any
@@ -2419,6 +2500,19 @@ settings:
 	-
 		id: list-embed-global
 		title: Enable List Embed vault-wide
+		type: class-toggle
+		default: false
+
+
+	-
+		id: list-bt-title
+		title: Bullet Threading
+		type: heading
+		level: 2
+		collapsed: true
+	-
+		id: lst-partial-bt
+		title: Enable Partial Bullet Threading
 		type: class-toggle
 		default: false
 
