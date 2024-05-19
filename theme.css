@@ -1,4 +1,11 @@
-/* === Listive Theme - v0.7.0 by Efemkay === *//* updated 02Dec2023 *//*
+/* === Listive Theme - v0.7.1 by Efemkay === *//* updated 19May2024 *//*
+
+    v0.7.1 (updated 19May2024)
+    - minor update on cosmetic for collapse indicator
+    - minor update on collapse indicator (support v1.5.5)
+    - fixed issue on internal font-weight in list heading
+    - revert first bullet indentation (Obs1.6.0 already reset to 0)
+    - refine FAB for better control with Commander plugin
 
     v0.7.0 (updated 02Dec2023)
     - updated for Obsidian v1.5.0 support
@@ -23,14 +30,6 @@
 	- improved SNW support for headers in list
 	- blockquote LP improvement
 	- customisation on Properties
-
-	0.5.0
-	- “Collapsed” frontmatter in Live Preview. Show on hover/active.
-	- Fixes on rounded note pane (for when tab title disabled)
-	- Refine popover to use default variables
-	- added option for blockquote font style
-	- Improved FAB - control to (a) adjust position and (b) enable/disable
-	- Various small UI refinement for mobile (tablet and phone)
 
 */
 
@@ -84,9 +83,8 @@
 	/* === Hide Listive theme identifier in Style Settings === */
 		[data-id="listive-theme"].setting-item.mod-toggle { contain: strict; display: none;}
 
-	/* --- WORKSPACE - Readable Line Length --- */
+	/* === WORKSPACE - Readable Line Length === */
 		/* this feature uses Style Settings */
-
 
 
 	/* === Set Proper Background Colors === */
@@ -243,154 +241,149 @@
 		--divider-color: var(--background-secondary);
 	}
 
-	.theme-light {
-		/* #d1ccd1 is inversed lightness of #332E33, define the secondary to #DEC8C8 */
-		/* ecdfdf lighter shade of #DEC8C8 */
-		/* #ecdfdf #e2cfcf */
-		--background-primary: hsl(0, 0%, 92%);
+	/* === Base Style Color Scheme === */
+    	.theme-light {
+    		/* #d1ccd1 is inversed lightness of #332E33, define the secondary to #DEC8C8 */
+    		/* ecdfdf lighter shade of #DEC8C8 */
+    		/* #ecdfdf #e2cfcf */
+    		--background-primary: hsl(0, 0%, 92%);
 
-		--background-secondary: hsl(300, 5%, 80%); /*#9e949e*/
-		--background-secondary-alt: #a6a6a6; /*#a6a6a6; /*#867986*/
+    		--background-secondary: hsl(300, 5%, 80%); /*#9e949e*/
+    		--background-secondary-alt: #a6a6a6; /*#a6a6a6; /*#867986*/
 
-		--background-accent: #afbfcf; /* inverse of #304050 */
-		--background-accent-alt: hsl(0, 0%, 88%);	/* 4% darker shade of background-primary, active line and backlinks */
+    		--background-accent: #afbfcf; /* inverse of #304050 */
+    		--background-accent-alt: hsl(0, 0%, 88%);	/* 4% darker shade of background-primary, active line and backlinks */
 
-		--background-modifier-border: #ada7a4;
-		--background-modifier-cover: hsl(0, 0%, 85%);
-		/*hsl(0, 0%, 90%)*/
-		--background-modifier-form-field: #e6e6e6;
-	/*	--interactive-accent: #60809f; /* for interactive buttons */
-		--interactive-accent-hover: #708ca9; /* for interactive buttons */
+    		--background-modifier-border: #ada7a4;
+    		--background-modifier-cover: hsl(0, 0%, 85%);
+    		/*hsl(0, 0%, 90%)*/
+    		--background-modifier-form-field: #e6e6e6;
+    	/*	--interactive-accent: #60809f; /* for interactive buttons */
+    		--interactive-accent-hover: #708ca9; /* for interactive buttons */
 
-		/* color variables for Hover Editor plugin, monochromatic & compound of #e6e6e6 */
-		--he-title-bar-active-bg: #EAA4A4;
-		--he-title-bar-inactive-bg: #EAA4A4;
-		--he-title-bar-active-pinned-bg: #A7B3A1;
-		--he-title-bar-inactive-pinned-bg: #A7B3A1;
+    		/* color variables for Hover Editor plugin, monochromatic & compound of #e6e6e6 */
+    		--he-title-bar-active-bg: #EAA4A4;
+    		--he-title-bar-inactive-bg: #EAA4A4;
+    		--he-title-bar-active-pinned-bg: #A7B3A1;
+    		--he-title-bar-inactive-pinned-bg: #A7B3A1;
 
-		--text-muted: #1a1a1a;
-		--text-faint: #808080;
+    		--text-muted: #1a1a1a;
+    		--text-faint: #808080;
 
-		/* my custom variables */
-		--background-modifier-backlinks: hsl(0, 0%, 90%);	/* for backlinks, 2% darker than primary */
+    		/* my custom variables */
+    		--background-modifier-backlinks: hsl(0, 0%, 90%);	/* for backlinks, 2% darker than primary */
 
-	}
+    	}
 
-	.color-scheme-base.theme-dark,
-	.theme-dark {
-		/* Base Color - #262626
-		   - #3D373A - analogous
-		   - #332E33 - analogous
-		   |-- #433d43 - ligher shade
-		   - #1a1a1a - darker shade
-		   - #333333 - lighter shade
-		   - #735050 - monochromatic
-		   - #595350 - compound
-		   Base Color 2 - #304050 - special purple
-		   Base Color 3 - #4682B4 (SteelBlue) & lighter #5a91bf
-		*/
+    	.color-scheme-base.theme-dark,
+    	.theme-dark {
+    		/* Base Color - #262626
+    		   - #3D373A - analogous
+    		   - #332E33 - analogous
+    		   |-- #433d43 - ligher shade
+    		   - #1a1a1a - darker shade
+    		   - #333333 - lighter shade
+    		   - #735050 - monochromatic
+    		   - #595350 - compound
+    		   Base Color 2 - #304050 - special purple
+    		   Base Color 3 - #4682B4 (SteelBlue) & lighter #5a91bf
+    		*/
 
-		/* Base Color 1 - for main workspace */
-		--background-primary: hsl(0, 0%, 20%);	/* for main workspace / #333 */
-		--background-primary-alt: #1a1a1a; 		/* and pre (code) background */
-		/* Using Analogous of #262626 - for sidebar and modal dialog */
-		--background-secondary: hsl(300, 5%, 25%); /* #433d43 */
-		--background-secondary-alt: hsl(300, 5%, 19%);	/* 6% darker than secondary */
-		/* auxilary, mixed of shade of gray & blue-purple */
-		--background-accent: hsl(300, 15%, 27%);			/* for blockquote & journal shading / before this #304050 or #394d60 */
-		--background-accent-alt: hsl(0, 0%, 16%);	/* 4% darker shade of background-primary, active line and backlinks */
-		--background-modifier-border: hsl(20, 5%, 33%); /* #595350; 	/* for horizontal line & border */
-		--background-modifier-cover: #262626; 	/* for title bar / #332E33 */
-		--background-modifier-cover: hsl(0, 0%, 16%); 	/* for title bar / #332E33 */
-	/*	--background-modifier-cover: #262626; 	/* for title bar / #332E33 */
-	/*	--interactive-accent: #4682B4; 			/* for interactive buttons */
-	/*	--interactive-accent-hover: #5a91bf; 	/* for interactive buttons */
+    		/* Base Color 1 - for main workspace */
+    		--background-primary: hsl(0, 0%, 20%);            /* for main workspace / #333 */
+    		--background-primary-alt: #1a1a1a;                /* and pre (code) background */
+    		/* Using Analogous of #262626 - for sidebar and modal dialog */
+    		--background-secondary: hsl(300, 5%, 25%);        /* #433d43 */
+    		--background-secondary-alt: hsl(300, 5%, 19%);    /* 6% darker than secondary */
+    		/* auxilary, mixed of shade of gray & blue-purple */
+    		--background-accent: hsl(300, 15%, 27%);          /* for blockquote & journal shading / before this #304050 or #394d60 */
+    		--background-accent-alt: hsl(0, 0%, 16%);         /* 4% darker shade of background-primary, active line and backlinks */
+    		--background-modifier-border: hsl(20, 5%, 33%);   /* #595350; 	/* for horizontal line & border */
+    		--background-modifier-cover: #262626;             /* for title bar / #332E33 */
+    		--background-modifier-cover: hsl(0, 0%, 16%);     /* for title bar / #332E33 */
+    	/*  --interactive-accent: #4682B4;                    /* for interactive buttons */
+    	/*	--interactive-accent-hover: #5a91bf; 	/* for interactive buttons */
 
-		/* my custom variables */
-		--background-modifier-border-active: hsl(20, 5%, 53%);	/* for border active, lighter for dark mode */
-		--background-modifier-backlinks: hsl(0, 0%, 18%);	/* for backlinks, 2% darker than primary */
+    		/* my custom variables */
+    		--background-modifier-border-active: hsl(20, 5%, 53%);	/* for border active, lighter for dark mode */
+    		--background-modifier-backlinks: hsl(0, 0%, 18%);	/* for backlinks, 2% darker than primary */
 
-		/* plugins variables */
-		/* color variables for Hover Editor plugin, #735050 is monochromatic of #262626 */
-		--he-title-bar-active-pinned-bg: #735050;
-		--he-title-bar-inactive-pinned-bg: #735050;
-		--he-title-bar-active-bg: #3D373A;
-		--he-title-bar-inactive-bg: #3D373A;
+    		/* plugins variables */
+    		/* color variables for Hover Editor plugin, #735050 is monochromatic of #262626 */
+    		--he-title-bar-active-pinned-bg: #735050;
+    		--he-title-bar-inactive-pinned-bg: #735050;
+    		--he-title-bar-active-bg: #3D373A;
+    		--he-title-bar-inactive-bg: #3D373A;
 
-	}
+    	}
 
-	/* override default app's redefine dark theme to background-primary */
-	.is-tablet.theme-dark {
-		--titlebar-background: var(--background-modifier-cover);
-		--titlebar-background-focused: var(--titlebar-background);
-	}
-
-	/* alternative color scheme */
-
-	.color-scheme-discord.theme-dark {
-		/*
-			hsl(220, 8%, 23%) -- main pane/chat window
-			hsl(223, 7%, 20%) -- sidebar for channels (dark)
-			hsl(218, 8%, 27%) -- input for chats (lighter)
-			hsl(216, 7%, 14%) -- sidebar for servers (darker)
-			hsl(225, 8%, 10%) -- popup (almost black)
-			hsl(217, 8%, 34%) -- buttons (lightest)
-		*/
-		--background-primary: hsl(220, 8%, 23%);
-		--background-modifier-cover: hsl(223, 7%, 20%);
-		--background-secondary: hsl(218, 8%, 27%);
-		--background-secondary-alt: hsl(218, 8%, 21%);	/* 6% darker than secondary */
-		--background-accent: hsl(223, 7%, 30%);			/* 10% lighter than modifier-cover */
-		--background-accent-alt: hsl(220, 8%, 19%);		/* 4% darker shade of background-primary, active line and backlinks */
-
-		/* my custom variables */
-		--background-modifier-backlinks: hsl(220, 8%, 21%);	/* for backlinks, 2% darker than primary */
-	}
-	.color-scheme-discord.theme-light {
-		/*
-			hsl(0, 0%, 100%) -- main pane/chat window
-			hsl(220, 13%, 95%) -- sidebar for channels (dark)
-			hsl(210, 11%, 93%) -- input for chats (lighter)
-			hsl(216, 10%, 90%) -- sidebar for servers (darker)
-			hsl(0, 0%, 100%) -- popup (white)
-			hsl(213, 9%, 46%) -- buttons (bit darker)
-		*/
-		--background-primary: hsl(220, 16%, 92%);
-		--background-modifier-cover: hsl(223, 14%, 85%);
-		--background-secondary: hsl(218, 16%, 85%);
-		--background-secondary-alt: hsl(218, 16%, 81%);	/* 6% darker than secondary */
-		--background-accent: hsl(223, 14%, 90%);
-		--background-accent-alt: hsl(220, 16%, 88%);		/* 4% darker shade of background-primary, active line and backlinks */
-
-		/* my custom variables */
-		--background-modifier-backlinks: hsl(220, 16%, 90%);	/* for backlinks, 2% darker than primary */
-	}
-
-	.is-mobile.is-force-oled-black-mobile.theme-dark,
-	.oled-black.theme-dark {
-		--background-primary: black;
-		--background-primary-alt: hsl(0, 0%, 8%);
-		--background-modifier-cover: #1a1a1a;
-		--background-secondary: hsl(0, 0%, 16%);
-		--background-secondary-alt: hsl(0, 0%, 12%);
-		--background-accent: hsl(300, 20%, 15%);
-		--background-accent-alt: hsl(0, 0%, 20%);
-
-		--color-base-100: hsl(0, 0%, 78%); /* original dark-theme base-100 is hsl(0, 0%, 85%), for font color */
-
-		/* my custom variables */
-		--background-modifier-backlinks: hsl(0, 0%, 12%);	/* for backlinks, 12% lighter than primary, special for oled black */
-	}
+    	/* override default app's redefine dark theme to background-primary */
+    	.is-tablet.theme-dark {
+    		--titlebar-background: var(--background-modifier-cover);
+    		--titlebar-background-focused: var(--titlebar-background);
+    	}
 
 
-	/*
-	--background-primary: #2e3437
-	--background-primary-alt: #444444
-	--background-secondary: #333333
-	--background-secondary-alt: #000000
-	--background-accent: #000
-	--background-modifier-border: #565656
-	*/
+	/* === Discord Style Color Scheme === */
+
+    	.color-scheme-discord.theme-dark {
+    		/*
+    			hsl(220, 8%, 23%) -- main pane/chat window
+    			hsl(223, 7%, 20%) -- sidebar for channels (dark)
+    			hsl(218, 8%, 27%) -- input for chats (lighter)
+    			hsl(216, 7%, 14%) -- sidebar for servers (darker)
+    			hsl(225, 8%, 10%) -- popup (almost black)
+    			hsl(217, 8%, 34%) -- buttons (lightest)
+    		*/
+    		--background-primary: hsl(220, 8%, 23%);
+    		--background-modifier-cover: hsl(223, 7%, 20%);
+    		--background-secondary: hsl(218, 8%, 27%);
+    		--background-secondary-alt: hsl(218, 8%, 21%);	/* 6% darker than secondary */
+    		--background-accent: hsl(223, 7%, 30%);			/* 10% lighter than modifier-cover */
+    		--background-accent-alt: hsl(220, 8%, 19%);		/* 4% darker shade of background-primary, active line and backlinks */
+
+    		/* my custom variables */
+    		--background-modifier-backlinks: hsl(220, 8%, 21%);	/* for backlinks, 2% darker than primary */
+    	}
+    	.color-scheme-discord.theme-light {
+    		/*
+    			hsl(0, 0%, 100%) -- main pane/chat window
+    			hsl(220, 13%, 95%) -- sidebar for channels (dark)
+    			hsl(210, 11%, 93%) -- input for chats (lighter)
+    			hsl(216, 10%, 90%) -- sidebar for servers (darker)
+    			hsl(0, 0%, 100%) -- popup (white)
+    			hsl(213, 9%, 46%) -- buttons (bit darker)
+    		*/
+    		--background-primary: hsl(220, 16%, 92%);
+    		--background-modifier-cover: hsl(223, 14%, 85%);
+    		--background-secondary: hsl(218, 16%, 85%);
+    		--background-secondary-alt: hsl(218, 16%, 81%);	/* 6% darker than secondary */
+    		--background-accent: hsl(223, 14%, 90%);
+    		--background-accent-alt: hsl(220, 16%, 88%);		/* 4% darker shade of background-primary, active line and backlinks */
+
+    		/* my custom variables */
+    		--background-modifier-backlinks: hsl(220, 16%, 90%);	/* for backlinks, 2% darker than primary */
+    	}
+
+
+	/* === OLED Black Color Scheme === */
+        /* there's no light version of this */
+
+    	.is-mobile.is-force-oled-black-mobile.theme-dark,
+    	.oled-black.theme-dark {
+    		--background-primary: black;
+    		--background-primary-alt: hsl(0, 0%, 8%);
+    		--background-modifier-cover: #1a1a1a;
+    		--background-secondary: hsl(0, 0%, 16%);
+    		--background-secondary-alt: hsl(0, 0%, 12%);
+    		--background-accent: hsl(300, 20%, 15%);
+    		--background-accent-alt: hsl(0, 0%, 20%);
+
+    		--color-base-100: hsl(0, 0%, 78%); /* original dark-theme base-100 is hsl(0, 0%, 85%), for font color */
+
+    		/* my custom variables */
+    		--background-modifier-backlinks: hsl(0, 0%, 12%);	/* for backlinks, 12% lighter than primary, special for oled black */
+    	}
 
 
 
@@ -579,69 +572,57 @@
         .HyperMD-list-line:has(.cm-header-2)::after
 			{ padding-bottom: 0.1rem; }
 
-		/* create border-bottom for headers not in lists */
-        h1,
-        .HyperMD-header-1::after {
-		/* .HyperMD-list-line .cm-header-1 { */
-            /* border-bottom: var(--h1-border-width) solid color-mix(in lch, var(--h1-color) 50%, transparent); */
-            border-bottom: var(--h1-border-width) solid;
-            border-image-slice: 1;
-            border-image-source: linear-gradient(to right, color-mix(in lch, var(--h1-color) 60%, transparent), transparent);
-        }
-		h2,
-		.HyperMD-header-2::after {
-        /* .HyperMD-list-line .cm-header-2 { */
-			/* border-bottom: var(--h2-border-width) solid color-mix(in lch, var(--h2-color) 50%, transparent); */
-			border-bottom: var(--h2-border-width) solid;
-			border-image-slice: 1;
-			border-image-source: linear-gradient(to right, color-mix(in lch, var(--h2-color) 60%, transparent), transparent);
-		}
-		h3,
-		.HyperMD-header-3::after {
-        /* .HyperMD-list-line .cm-header-3 { */
-            /* border-bottom: var(--h3-border-width) solid color-mix(in lch, var(--h3-color) 50%, transparent); */
-            border-bottom: var(--h3-border-width) solid;
-            border-image-slice: 1;
-            border-image-source: linear-gradient(to right, color-mix(in lch, var(--h3-color) 60%, transparent), transparent);
-        }
+        /* -- Page-width border-bottom for Normal Heading (not in lists) */
+            /* Only support up to H3 */
+            h1,
+            .HyperMD-header-1::after {
+                border-bottom: var(--h1-border-width) solid;
+                border-image-slice: 1;
+                border-image-source: linear-gradient(to right, color-mix(in lch, var(--h1-color) 60%, transparent), transparent);
+            }
+    		h2,
+    		.HyperMD-header-2::after {
+    			border-bottom: var(--h2-border-width) solid;
+    			border-image-slice: 1;
+    			border-image-source: linear-gradient(to right, color-mix(in lch, var(--h2-color) 60%, transparent), transparent);
+    		}
+    		h3,
+    		.HyperMD-header-3::after {
+                border-bottom: var(--h3-border-width) solid;
+                border-image-slice: 1;
+                border-image-source: linear-gradient(to right, color-mix(in lch, var(--h3-color) 60%, transparent), transparent);
+            }
 
-		/* -- page-width border-bottom support in LP */
-		/* use :has() to remove need for MA plugin. use css nesting for cleaner code *//*
-		.HyperMD-list-line:has(.cm-header-1, .cm-header-2, .cm-header-3) {
-			&::after { content: ''; display: block; border-bottom: solid; border-image-slice: 1; }
-			& span:is(.cm-header-1, .cm-header-2, .cm-header-3) { border-bottom: none;}
-		}
-		.HyperMD-list-line {
-			&:has(.cm-header-1)::after { border-bottom-width: var(--h1-border-width); border-image-source: linear-gradient(to right, color-mix(in lch, var(--h1-color) 60%, transparent), transparent); }
-			&:has(.cm-header-2)::after { border-bottom-width: var(--h2-border-width); border-image-source: linear-gradient(to right, color-mix(in lch, var(--h2-color) 60%, transparent), transparent); }
-			&:has(.cm-header-3)::after { border-bottom-width: var(--h3-border-width); border-image-source: linear-gradient(to right, color-mix(in lch, var(--h3-color) 60%, transparent), transparent); }
-		}
+		/* -- Page-width border-bottom for List Heading; support in LP */
+    		/* New version replacing previous that rely on :has(). Also, only support up to H3 */
+    		.HyperMD-list-line:has(.cm-header-1) {
+    			&::after {
+    				contain: strict;
+    				content: ''; display: block; border-bottom: solid; border-image-slice: 1;
+    				border-bottom-width: var(--h1-border-width); border-image-source: linear-gradient(to right, color-mix(in lch, var(--h1-color) 60%, transparent), transparent);
+    			}
+    			& .cm-header-1 { contain: strict; border-bottom: none;}
+    		}
+    		.HyperMD-list-line:has(.cm-header-2) {
+    			&::after {
+    				contain: strict;
+    				content: ''; display: block; border-bottom: solid; border-image-slice: 1;
+    				border-bottom-width: var(--h2-border-width); border-image-source: linear-gradient(to right, color-mix(in lch, var(--h2-color) 60%, transparent), transparent);
+    			}
+    			& .cm-header-2 { contain: strict; border-bottom: none;}
+    		}
+    		.HyperMD-list-line:has(.cm-header-3) {
+    			&::after {
+    				contain: strict;
+    				content: ''; display: block; border-bottom: solid; border-image-slice: 1;
+    				border-bottom-width: var(--h3-border-width); border-image-source: linear-gradient(to right, color-mix(in lch, var(--h3-color) 60%, transparent), transparent);
+    			}
+    			& .cm-header-3 { contain: strict; border-bottom: none;}
+    		}
 
-		/* new version */
-		.HyperMD-list-line:has(.cm-header-1) {
-			&::after {
-				contain: strict;
-				content: ''; display: block; border-bottom: solid; border-image-slice: 1;
-				border-bottom-width: var(--h1-border-width); border-image-source: linear-gradient(to right, color-mix(in lch, var(--h1-color) 60%, transparent), transparent);
-			}
-			& .cm-header-1 { contain: strict; border-bottom: none;}
-		}
-		.HyperMD-list-line:has(.cm-header-2) {
-			&::after {
-				contain: strict;
-				content: ''; display: block; border-bottom: solid; border-image-slice: 1;
-				border-bottom-width: var(--h2-border-width); border-image-source: linear-gradient(to right, color-mix(in lch, var(--h2-color) 60%, transparent), transparent);
-			}
-			& .cm-header-2 { contain: strict; border-bottom: none;}
-		}
-		.HyperMD-list-line:has(.cm-header-3) {
-			&::after {
-				contain: strict;
-				content: ''; display: block; border-bottom: solid; border-image-slice: 1;
-				border-bottom-width: var(--h3-border-width); border-image-source: linear-gradient(to right, color-mix(in lch, var(--h3-color) 60%, transparent), transparent);
-			}
-			& .cm-header-3 { contain: strict; border-bottom: none;}
-		}
+        /* -- Adjustment for "bold" on internal link in List Heading */
+            /* Need to override Obs1.6.0. Set "bold" weight for internal link in list header */
+            .HyperMD-list-line span.cm-header.cm-hmd-internal-link { font-weight: 600; }
 
 
 	/* === Markdown bold / strong === */
@@ -689,7 +670,18 @@
 
         /* setting font size, override app's default 1.1.x */
 		.HyperMD-list-line .cm-hashtag { font-size: var(--tag-size); }
-		.HyperMD-header .cm-hashtag { font-size: var(--tag-size) !important; font-weight: normal; }
+        /* "standardised" tag even for those in a heading */
+		.HyperMD-header .cm-hashtag {
+            --tag-weight: normal;
+            font-size: var(--tag-size) !important;
+            font-weight: var(--tag-weight);
+            font-family: var(--font-text);
+        }
+        :is(h1, h2, h3, h4, h5, h6) a.tag {
+            --tag-weight: normal;
+            font-weight: var(--tag-weight);
+            font-family: var(--font-text);
+        }
         /* remove spell-error underline in hashtag, included ":not(token) as codeblock html seems to put the inside a span with that class" */
 		.cm-hashtag, .tag:not(.token) { background-image: none;  }
 
@@ -746,14 +738,14 @@
 			--indent-dash-top: 0.82em;         /* 0.75rem / 0.70rem */
 			/* --indent-dash-left: 0.82em; */
             --indent-dash-left: calc( var(--list-indent) / 1.95 );
-			--indent-dash-spacing2: 1.05em;     /* 0.50rem / 0.55rem */
-			--indent-dash-spacing3: 1.00em;    /* 0.55rem / 0.52rem */
-			--indent-dash-spacing4: 1.00em;    /* 0.55rem / 0.52rem */
-			--indent-dash-spacing5: 0.95em;    /* 0.55rem / 0.52rem */
+			--indent-dash-spacing2: 0.90em;    /* 0.50rem / 0.55rem */
+			--indent-dash-spacing3: 0.90em;    /* 0.55rem / 0.52rem */
+			--indent-dash-spacing4: 0.90em;    /* 0.55rem / 0.52rem */
+			--indent-dash-spacing5: 0.90em;    /* 0.55rem / 0.52rem */
 			--indent-dash-spacing6: 0.92em;    /* 0.55rem / 0.52rem */
-			--indent-dash-spacing7: 0.85em;    /* 0.55rem / 0.52rem */
-			--indent-dash-spacing8: 0.80em;    /* 0.55rem / 0.52rem */
-			--indent-dash-spacing9: 0.75em;    /* 0.55rem / 0.52rem */
+			--indent-dash-spacing7: 0.75em;    /* 0.55rem / 0.52rem */
+			--indent-dash-spacing8: 0.75em;    /* 0.55rem / 0.52rem */
+			--indent-dash-spacing9: 0.70em;    /* 0.55rem / 0.52rem */
 
 			/* this can be deleted later, it's for Indentation Guide community plugin */
 			.ig-lists .HyperMD-list-line.ig-indent-group .ig-tab.ig-indent-group-level::before {
@@ -936,7 +928,7 @@
 
 		/* remove this first, i see issue between editing and reading view */
 		/* .callout-content ul:not(ul ul) { padding-inline-start: 0; } */
-		.markdown-preview-view > div ul:not(ul ul) { padding-inline-start: var(--list-indent-first); }
+		/* .markdown-preview-view > div ul:not(ul ul) { padding-inline-start: var(--list-indent-first); } */
 
 
 	/* === List Relationship Lines and Collapse Indicator === */
@@ -951,10 +943,19 @@
 		.markdown-rendered :is(ol, ul):not(.callout :is(ul, ol))
 			{ margin-top: 0.1em; padding-left: var(--list-indent-read); }
 
-		/* Collapse Indicator -- Adjusting the distance a bit */
-		/* List (bullet & number) only. Reading View only, Editing seems okay already */
-		.markdown-preview-view .list-collapse-indicator {padding-left: 0.8em;} /* adjustment for v0.16.0 */
-		.markdown-preview-view .list-collapse-indicator {padding-right: 0;} /* adjustment for v1.1.11 */
+		/* -- Collapse Indicator -- Adjusting the distance a bit */
+
+		/* Follow Obsidian 1.5.3 selectors. List (bullet & number) only */
+		.markdown-preview-view .list-collapse-indicator
+            { margin-inline-start: -2.35em; }
+        .markdown-source-view.mod-cm6.is-live-preview .cm-line.HyperMD-list-line:not(.cm-active):not(.HyperMD-task-line) .cm-fold-indicator .collapse-indicator
+            { padding-inline-end: calc(var(--list-bullet-end-padding) - 0.3rem); }
+
+        /* no longer required after Obsidian 1.6.0 *//*
+        .markdown-source-view.mod-cm6 .cm-line.HyperMD-list-line.HyperMD-list-line {
+            & .cm-fold-indicator .collapse-indicator { right: -0.2rem; }
+            &:not(.HyperMD-task-line) .cm-fold-indicator .collapse-indicator { right: -0.4rem; }
+        }
 
 
 	/* == List Indentation Lines / Outliner in Reading View == */
@@ -1061,7 +1062,7 @@
 	/* === (Normal) Checkboxes === */
 		/* no strikethrough for children node of checked parent */
 		ul > li.task-list-item:is([data-task="x"], [data-task="X"]) > ul > li.task-list-item {
-			display: inline-block;
+			/* display: inline-block; */ /* comment out because it makes subtasks overlap in reading view */
 			color: var(--text-normal);
 		}
 
@@ -1449,7 +1450,13 @@
 		/* Scale, and Zoom feature to use MCL */
 
 		/* Title customisation */
-		.mermaid .titleText {font-family: var(--h2-font) !important;}
+        .mermaid {
+            .titleText {font-family: var(--h2-font) !important;}
+            .exclude-range {
+                fill: #dddddd50 !important;
+            }
+
+        }
 
 
 	/* === TABLE formatting === */
@@ -1536,6 +1543,7 @@
                 & .multi-select-pill .multi-select-pill-remove-button { visibility: collapse; }
                 /* remove the remove button special for tags property */
                 & .metadata-property[data-property-key="tags"] .multi-select-pill-remove-button { display: none; }
+                & .metadata-property[data-property-key="tags"] .multi-select-pill-content { margin-right: var(--pill-padding-x); } /* adding "padding to the right after 1.5.1 update "*/
                 & .markdown-reading-view .metadata-property[data-property-key="tags"] .multi-select-pill-content { margin-right: var(--pill-padding-x); }
             }
 
@@ -1654,33 +1662,40 @@
 
 	/* positioning control */
 	body {
-		--lst-fab-1-y: 55vh;
-		--lst-fab-1-x: 0vw;
-		--lst-fab-view-y: 75vh;
-		--lst-fab-view-x: 0vw;
+
+        --lst-fab-view-y: 10vh;   /* set to 0 for flushed bottom position */
+        --lst-fab-b2-y: 30vh;   /* set to 0 for flushed bottom position */
+    	--lst-fab-view-x: 2vw;   /* set to 0 for flushed right position */
+
+        --lst-fab-button-size: 60px;   /* set button box size */
+        --lst-fab-button-radius: calc(var(--lst-fab-button-size) / 3);   /* divide 3 for square circle, divide 2 for circle */
 	}
 
-	/* to allow for controlling position for the FAB buttons via Style Settings */
-	body.is-mobile.lst-fab-b2-3:not(.lst-disable-fab-b2):not(.custom-page-header) div.view-actions > .view-action:nth-last-child(3),
-	body.is-mobile.lst-fab-b2-4:not(.lst-disable-fab-b2):not(.custom-page-header) div.view-actions > .view-action:nth-last-child(4)
-		{ top: calc(var(--lst-fab-1-y)); right: calc(var(--lst-fab-1-x) - 24px); }
-	body.is-mobile:not(.lst-disable-fab-view):not(.custom-page-header) div.view-actions > .view-action[aria-label^="Current view"]
-		{ top: calc(var(--lst-fab-view-y)); right: calc(var(--lst-fab-view-x) - 24px); }
-	/* make the FAB a floating button */
-	body.is-mobile.lst-fab-b2-3:not(.lst-disable-fab-b2):not(.custom-page-header) div.view-actions > .view-action:nth-last-child(3),
-	body.is-mobile.lst-fab-b2-4:not(.lst-disable-fab-b2):not(.custom-page-header) div.view-actions > .view-action:nth-last-child(4),
-	body.is-mobile:not(.lst-disable-fab-view):not(.custom-page-header) div.view-actions > .view-action[aria-label^="Current view"] {
-	  background-color: var(--background-secondary);
-	  display: flex;
-	  position: absolute;
-	  padding: 0px;
-	  margin: 16px;
-	  transform: translate(-50%, -50%);
-	  width: 56px;
-	  height: 56px;
-	  border-radius: 1.5em;
-	  box-shadow: 0.8px 0.8px 4px rgba(0, 0, 0, 0.028), 2.7px 2.7px 13.4px rgba(0, 0, 0, 0.042), 12px 12px 60px rgba(0, 0, 0, 0.07);
-	}
+    /* make the button "floating" and define customisation */
+    body.is-mobile:not(.lst-disable-fab-view) div.view-actions > .view-action[aria-label^="Current view"] {
+        position: absolute;
+    	top: calc(88vh - var(--lst-fab-view-y));
+    	right: calc(0vw + var(--lst-fab-view-x));
+    	width: var(--lst-fab-button-size);
+    	aspect-ratio: 1;
+    	border-radius: var(--lst-fab-button-radius);
+    	background-color: var(--background-secondary);
+    	box-shadow: 0px 0px var(--size-4-2) rgba(255,255,255,0.3);
+    }
+
+    /* make the 1st added commander button as FAB as well. change 1 to 2 for 2nd commander button */
+    body.is-mobile.lst-fab-b2-1 div.view-actions > .view-action:nth-child(1 of .cmdr-page-header),
+    body.is-mobile.lst-fab-b2-2 div.view-actions > .view-action:nth-child(2 of .cmdr-page-header) {
+        position: absolute;
+    	top: calc(88vh - var(--lst-fab-b2-y));
+    	right: calc(0vw + var(--lst-fab-view-x));
+    	width: var(--lst-fab-button-size);
+    	aspect-ratio: 1;
+    	border-radius: var(--lst-fab-button-radius);
+    	background-color: var(--background-secondary);
+    	box-shadow: 0px 0px var(--size-4-2) rgba(255,255,255,0.3);
+    }
+
 	/* recolor icon for commander button */
 	.view-action.cmdr-page-header svg { color: var(--icon-color); }
 	/* make sure FAB is higher than (a) backlinks control, and (b) alt checkbox background */
@@ -1689,8 +1704,7 @@
 	body.is-mobile:not(.custom-page-header) div.view-actions > .view-action.clickable-icon:hover { background-color: var(--background-accent); }
 
 	/* Style Settings -- hide axis options when FAB disabled */
-	body.is-mobile.lst-disable-fab-b2 .style-settings-container .setting-item[data-id^="lst-fab-1-"] { display: none; }
-	body.is-mobile.lst-disable-fab-view .style-settings-container .setting-item[data-id^="lst-fab-view-"] { display: none; }
+	body.is-mobile.lst-disable-fab-view .style-settings-container .setting-item[data-id^="lst-fab-view-y"] { display: none; }
 
 
 
@@ -1934,6 +1948,13 @@
 		.zoom-plugin-bls-zoom .cm-editor .cm-formatting-list-ul:hover:before,
 		.zoom-plugin-bls-zoom .cm-editor .list-bullet:hover:before
 			{ margin-top: -0.05em !important; margin-left: -0.15em !important; }
+
+        /* adjustment for Obsidian v1.5.5 *//*
+        .zoom-plugin-bls-zoom .markdown-source-view.mod-cm6 .cm-line:not(.cm-active):not(.HyperMD-header):not(.HyperMD-task-line) .cm-fold-indicator .collapse-indicator {
+            margin-right: 1.8rem;
+            padding-right: unset;
+        }
+
 		/* --- Adjustment for Outliner Plugin --- */
 		.outliner-plugin-list-lines-content-container { left: calc(1px + var(--list-guide-outliner-adj)); }
 
@@ -2067,12 +2088,6 @@
 
 /* === DASHBOARD -- General Settings */
 
-	/* adjustment for embeds in Weekly Review */
-	.dashboard .markdown-embed .markdown-preview-sizer.markdown-preview-section { margin: 0; }
-	/* quick fix for bug in insider build v0.13.26 *//*
-	.markdown-embed .markdown-preview-sizer.markdown-preview-section { padding-bottom: 0 !important; }
-	.dashboard .el-p > p { margin-block-start: 0; margin-block-end: 0; }
-	*/
 
 
 /* === DASHBOARD -- embed-grid === */
@@ -2089,38 +2104,36 @@
 	{ display: grid; grid-column-gap:3em; grid-template-columns:repeat(auto-fit,minmax(18em,1fr));}
 
 
+    /* Create two columns bullet list only for 2nd level
+       bullets that is adjacent to H4. Exclude any
+       other sub-bullets deeper than that                */
+    .mycolumn h4 + ul:not(ul > li > ul > li > ul) {
+    	columns: 18rem;
+    }
+    /* this adjacent trick only works for header bullet. if applied
+       to non-bullet header, the structure is actually not adjacent.
+       the :not() is to prevent 2-column structure on sub-bullets.   */
+    .reviewcolumn div > ul {
+    /*	list-style:none; */
+    /*
+    	display: grid;
+    	grid-auto-flow: column;
+    */
+    }
 
+    /* same thing but for dataview lists */
+    .mycolumn ul.dataview.list-view-ul li ul {
+    	columns: 18rem;
+    }
+    .mycolumn ul.dataview.list-view-ul > li {
+    	padding-bottom: 0.5em;
+    	border-bottom: 1px solid DarkSlateGray;
+    }
 
-/* Create two columns bullet list only for 2nd level
-   bullets that is adjacent to H4. Exclude any
-   other sub-bullets deeper than that                */
-.mycolumn h4 + ul:not(ul > li > ul > li > ul) {
-	columns: 18rem;
-}
-/* this adjacent trick only works for header bullet. if applied
-   to non-bullet header, the structure is actually not adjacent.
-   the :not() is to prevent 2-column structure on sub-bullets.   */
-.reviewcolumn div > ul {
-/*	list-style:none; */
-/*
-	display: grid;
-	grid-auto-flow: column;
-*/
-}
-
-/* same thing but for dataview lists */
-.mycolumn ul.dataview.list-view-ul li ul {
-	columns: 18rem;
-}
-.mycolumn ul.dataview.list-view-ul > li {
-	padding-bottom: 0.5em;
-	border-bottom: 1px solid DarkSlateGray;
-}
-
-.dv-sublist-cols ul.dataview.list-view-ul > li > ul {
-	columns: 10rem;
-	column-gap: 2rem;
-}
+    .dv-sublist-cols ul.dataview.list-view-ul > li > ul {
+    	columns: 10rem;
+    	column-gap: 2rem;
+    }
 
 
 
@@ -2222,48 +2235,44 @@ settings:
 		type: heading
 		level: 2
 		collapsed: true
+    -
+ 		id: lst-fab-view-x
+ 		title: FAB button X-Axis Adjustment
+ 		type: variable-text
+ 		default: 2vw
+    -
+        id: lst-disable-fab-view
+        title: Disable FAB Edit/View Button (mobile only)
+        type: class-toggle
+        default: false
+    -
+        id: lst-fab-view-y
+        title: FAB Edit/View Button Y-Axis Adjustment
+        type: variable-text
+        default: 10vh
 	-
 		id: fab-2nd-button-select
-        title: FAB 2nd button selection
+        title: FAB 2nd Button Selection
         description: Select which button for 2nd button or disable it
         type: class-select
         allowEmpty: false
-        default: lst-fab-b2-3
+        default: lst-fab-b2-1
         options:
         	-
-				label: 3rd Header button
-            	value: lst-fab-b2-3
+				label: 1st Cmdr button
+            	value: lst-fab-b2-1
 			-
-				label: 4th Header button
-				value: lst-fab-b2-4
+				label: 2nd Cmdr button
+				value: lst-fab-b2-2
         	-
-				label: Disable FAB 2nd
+				label: Disable 2nd FAB
 				value: lst-disable-fab-b2
 	-
- 		id: lst-fab-1-y
- 		title: Adjust FAB button 1 Y-Axis
+ 		id: lst-fab-b2-y
+ 		title: FAB 2nd Button Y-Axis Adjustment
  		type: variable-text
- 		default: 55vh
-	-
- 		id: lst-fab-1-x
- 		title: Adjust FAB button 1 X-Axis
- 		type: variable-text
- 		default: 0vw
-	-
-		id: lst-disable-fab-view
-		title: Disable FAB button Edit/View (mobile only)
-		type: class-toggle
-		default: false
-	-
- 		id: lst-fab-view-y
- 		title: Adjust FAB button Edit/View Y-Axis
- 		type: variable-text
- 		default: 75vh
-	-
- 		id: lst-fab-view-x
- 		title: Adjust FAB button Edit/View X-Axis
- 		type: variable-text
- 		default: 0vw
+ 		default: 30vh
+
 
 	-
 		id: typography-headers-title
